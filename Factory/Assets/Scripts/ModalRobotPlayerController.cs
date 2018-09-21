@@ -155,7 +155,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void UpdateWalkingAnimation()
         {
-            if (CrossPlatformInputManager.GetButton("Vertical") || (horizontalMovement && CrossPlatformInputManager.GetButton("Horizontal")))
+            if (((CrossPlatformInputManager.GetAxis("Vertical"))!= 0f) || ((CrossPlatformInputManager.GetAxis("Horizontal"))!= 0f))
             {
                 anim.SetBool("IsWalking", true);
             }
@@ -357,7 +357,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 StopAllCoroutines();
                 StartCoroutine(!walking ? fovKick.FOVKickUp() : fovKick.FOVKickDown());
-            }
+            }  
         }
 
         private void RotateView()
