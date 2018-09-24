@@ -24,6 +24,8 @@ public class PickUpScript: MonoBehaviour
     [SerializeField] private Vector3 throwOffset;
     [SerializeField] private Transform headDirection;
 
+    private GameControllerScript gameController = null;
+
     // Use this for initialization
     void Start ()
     {
@@ -32,7 +34,15 @@ public class PickUpScript: MonoBehaviour
 
         leftIDs.AddIdentifier(Identifier.HandEmpty);
         rightIDs.AddIdentifier(Identifier.HandEmpty);
-	}
+
+        gameController = GameObject.Find("GameController").GetComponent<GameControllerScript>();
+
+        if (gameController == null)
+        {
+            Debug.Log("Why is there no object in the scene named GameController? There needs to be an object with a GameControllerScript called" +
+                " 'GameController'. Fix it. NOW!!");
+        }
+    }
 
     private void ChangeIDsFromPickUp(Hand h)
     {
@@ -95,7 +105,7 @@ public class PickUpScript: MonoBehaviour
         }
         else
         {
-            leftHandInput = CrossPlatformInputManager.GetButtonDown("LeftHandInput");
+            leftHandInput = gameController.GetInput("LeftHandInput");
         }
 
         if (rightHandInput)
@@ -105,7 +115,7 @@ public class PickUpScript: MonoBehaviour
         }
         else
         {
-            rightHandInput = CrossPlatformInputManager.GetButtonDown("RightHandInput");
+            rightHandInput = gameController.GetInput("RightHandInput");
         }
 
         if (throwWhenDropped)
