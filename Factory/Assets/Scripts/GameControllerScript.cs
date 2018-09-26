@@ -53,6 +53,7 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
+    //Checks if the player clicked the specified button
     public bool GetButtonDown(string s)
     {
         bool result = false;
@@ -67,6 +68,72 @@ public class GameControllerScript : MonoBehaviour
             case "ToggleHorizontal":
             case "ChangeCamera":
                 result = CrossPlatformInputManager.GetButtonDown(GetGamepadPrefix() + s);
+                break;
+            case "LeftArm":
+            case "RightArm":
+                if (gamepad == Gamepad.MouseAndKeyboard)
+                {
+                    result = CrossPlatformInputManager.GetButtonDown(GetGamepadPrefix() + s);
+                }
+                else if (GetAxis(s) != 0)
+                {
+                    result = true;
+                }
+
+                break;
+        }
+
+        return result;
+    }
+
+    //Checks if the player is holding the specified button down
+    public bool GetButton(string s)
+    {
+        bool result = false;
+
+        switch (s)
+        {
+            //check which action the player wants
+            case "LeftHand":
+            case "RightHand":
+            case "ToggleThrow":
+            case "Jump":
+            case "ToggleHorizontal":
+            case "ChangeCamera":
+                result = CrossPlatformInputManager.GetButton(GetGamepadPrefix() + s);
+                break;
+            case "LeftArm":
+            case "RightArm":
+                if (gamepad == Gamepad.MouseAndKeyboard)
+                {
+                    result = CrossPlatformInputManager.GetButton(GetGamepadPrefix() + s);
+                }
+                else if (GetAxis(s) != 0)
+                {
+                    result = true;
+                }
+
+                break;
+        }
+
+        return result;
+    }
+
+    public float GetAxis(string s)
+    {
+        float result = 0f;
+
+        switch (s)
+        {
+            //check which action the player wants
+            
+            case "MoveHorizontal":
+            case "MoveVertical":
+            case "LookHorizontal":
+            case "LookVertical":
+            case "LeftArm":
+            case "RightArm":
+                result = CrossPlatformInputManager.GetAxis(GetGamepadPrefix() + s);
                 break;
         }
 
@@ -93,41 +160,4 @@ public class GameControllerScript : MonoBehaviour
 
         return result;
     }
-
-    /*private bool GetXboxControllerButtonDown(string s)
-    {
-        
-    }
-
-    private bool GetPlayDualShockControllerButtonDown(string s)
-    {
-        switch (s)
-        {
-            //check which action the player wants
-            case "LeftHand":
-            case "RightHand":
-            case "ToggleThrow":
-            case "Jump":
-            case "ToggleHorizontal":
-                return CrossPlatformInputManager.GetButtonDown("DS" + s);
-        }
-
-        return false;
-    }
-
-    private bool GetMouseAndKeyboardButtonDown(string s)
-    {
-        switch (s)
-        {
-            //check which action the player wants
-            case "LeftHand":
-            case "RightHand":
-            case "ToggleThrow":
-            case "Jump":
-            case "ToggleHorizontal":
-                return CrossPlatformInputManager.GetButtonDown("MK" + s);
-        }
-
-        return false;
-    }*/
 }
