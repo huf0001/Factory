@@ -53,64 +53,81 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
-    public bool GetInput(string s)
+    public bool GetButtonDown(string s)
     {
         bool result = false;
 
-        switch (gamepad)
+        switch (s)
         {
-            case Gamepad.XboxController:
-                result = GetXboxControllerInput(s);
-                break;
-            case Gamepad.DualshockController:
-                result = GetPlayDualShockControllerInput(s);
-                break;
-            default:
-                result = GetMouseAndKeyboardInput(s);
+            //check which action the player wants
+            case "LeftHand":
+            case "RightHand":
+            case "ToggleThrow":
+            case "Jump":
+            case "ToggleHorizontal":
+            case "ChangeCamera":
+                result = CrossPlatformInputManager.GetButtonDown(GetGamepadPrefix() + s);
                 break;
         }
 
         return result;
     }
 
-    private bool GetXboxControllerInput(string s)
+    //Returns the matching input prefix for the gamepad selected by the player
+    private string GetGamepadPrefix()
     {
-        switch (s)
+        string result = "";
+
+        switch (gamepad)
         {
-            //check which action the player wants
-            case "LeftHandInput":
-            case "RightHandInput":
-                {
-                    return CrossPlatformInputManager.GetButtonDown("XB" + s);
-                }
+            case Gamepad.XboxController:
+                result = "XB";
+                break;
+            case Gamepad.DualshockController:
+                result = "DS";
+                break;
+            default:
+                result = "MK";
+                break;
         }
 
-        return false;
+        return result;
     }
 
-    private bool GetPlayDualShockControllerInput(string s)
+    /*private bool GetXboxControllerButtonDown(string s)
+    {
+        
+    }
+
+    private bool GetPlayDualShockControllerButtonDown(string s)
     {
         switch (s)
         {
             //check which action the player wants
-            case "LeftHandInput":
-            case "RightHandInput":
+            case "LeftHand":
+            case "RightHand":
+            case "ToggleThrow":
+            case "Jump":
+            case "ToggleHorizontal":
                 return CrossPlatformInputManager.GetButtonDown("DS" + s);
         }
 
         return false;
     }
 
-    private bool GetMouseAndKeyboardInput(string s)
+    private bool GetMouseAndKeyboardButtonDown(string s)
     {
         switch (s)
         {
             //check which action the player wants
-            case "LeftHandInput":
-            case "RightHandInput":
+            case "LeftHand":
+            case "RightHand":
+            case "ToggleThrow":
+            case "Jump":
+            case "ToggleHorizontal":
                 return CrossPlatformInputManager.GetButtonDown("MK" + s);
         }
 
         return false;
-    }
+    }*/
 }
