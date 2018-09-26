@@ -18,7 +18,7 @@ public class PickUpScript: MonoBehaviour
 
     private bool leftHandInput = false;
     private bool rightHandInput = false;
-    private bool throwWhenDropped = false;
+    private bool toggleThrow = false;
 
     [SerializeField] private float throwForce = 5f;
     [SerializeField] private Vector3 throwOffset;
@@ -105,7 +105,7 @@ public class PickUpScript: MonoBehaviour
         }
         else
         {
-            leftHandInput = gameController.GetInput("LeftHandInput");
+            leftHandInput = gameController.GetButtonDown("LeftHand");
         }
 
         if (rightHandInput)
@@ -115,17 +115,17 @@ public class PickUpScript: MonoBehaviour
         }
         else
         {
-            rightHandInput = gameController.GetInput("RightHandInput");
+            rightHandInput = gameController.GetButtonDown("RightHand");
         }
 
-        if (throwWhenDropped)
+        if (toggleThrow)
         {
             throwOn = !throwOn;
-            throwWhenDropped = false;
+            toggleThrow = false;
         }
         else
         {
-            throwWhenDropped = CrossPlatformInputManager.GetButtonDown("ThrowWhenDropped");
+            toggleThrow = gameController.GetButtonDown("ToggleThrow");
         }
     }
 

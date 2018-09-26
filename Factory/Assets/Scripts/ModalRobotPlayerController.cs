@@ -63,6 +63,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool walking;
         private bool toggleHorizontal = false;
         private AudioSource audioSource;
+        private GameControllerScript gameController;
 
         // Use this for initialization
         private void Start()
@@ -91,6 +92,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             jumping = false;
             audioSource = GetComponent<AudioSource>();
 			mouseLook.Init(transform , currentCamera.transform);
+
+            gameController = GameObject.Find("GameController").GetComponent<GameControllerScript>();
+
+            if (gameController == null)
+            {
+                Debug.Log("Why is there no object in the scene named GameController? There needs to be an object with a GameControllerScript called" +
+                    " 'GameController'. Fix it. NOW!!");
+            }
         }
 
         // Update is called once per frame
@@ -101,17 +110,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // the jump state needs to read here to make sure it is not missed
             if (!jump)
             {
-                jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                jump = gameController.GetButtonDown("Jump");
             }
 
             if (!changeCamera)
             {
-                changeCamera = CrossPlatformInputManager.GetButtonDown("ChangeCamera");
+                changeCamera = gameController.GetButtonDown("ChangeCamera");
             }
 
             if (!toggleHorizontal)
             {
-                toggleHorizontal = CrossPlatformInputManager.GetButtonDown("ToggleHorizontal");
+                toggleHorizontal = gameController.GetButtonDown("ToggleHorizontal");
             }
 
             if (!previouslyGrounded && characterController.isGrounded)
