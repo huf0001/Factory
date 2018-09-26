@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class UIButtonScript : MonoBehaviour {
@@ -9,8 +10,10 @@ public class UIButtonScript : MonoBehaviour {
     // Use this for initialization
     void Start() {
         currentScene = SceneManager.GetActiveScene();
-        if ((currentScene.name == "MainMenu")&&(PlayerPrefs.GetString("music") == null)) { PlayerPrefs.SetString("music", "true"); }
-          
+        if ((currentScene.name == "MainMenu")&&(PlayerPrefs.GetString("music") == null))
+        {
+            PlayerPrefs.SetString("music", "true");
+        }//sets the intial music value only if first time play; music toggling isnt preserved after instructions screen otherwise   
     }
 
     // Update is called once per frame
