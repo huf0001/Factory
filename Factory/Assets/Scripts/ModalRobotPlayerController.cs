@@ -48,6 +48,8 @@ public class ModalRobotPlayerController : MonoBehaviour
     [SerializeField] private AudioClip[] footStepSounds;    // an array of footstep sounds that will be randomly selected from.
     [SerializeField] private AudioClip jumpSound;           // the sound played when character leaves the ground.
     [SerializeField] private AudioClip landSound;           // the sound played when character touches back on ground.
+    [SerializeField] private AudioClip changeCameraSound;           // the sound played when character touches back on ground.
+    [SerializeField] private AudioClip toggleHorizontalSound;           // the sound played when character touches back on ground.
 
     private bool jump;
     private Vector2 input;
@@ -190,16 +192,30 @@ public class ModalRobotPlayerController : MonoBehaviour
     {
         if (movingLeftArm)
         {
+            //if left arm audio not playing
+                //start left arm audio
+
             leftHand.AddForce(leftTarget.forward * grabSpeed, ForceMode.Acceleration);
             movingLeftArm = false;
             leftHand.velocity = Vector3.zero;
         }
+        else
+        {
+            //Stop left arm audio
+        }
 
         if (movingRightArm)
         {
+            //if left arm audio not playing
+                //start left arm audio
+                
             rightHand.AddForce(rightTarget.forward * grabSpeed, ForceMode.Acceleration);
             movingRightArm = false;
             rightHand.velocity = Vector3.zero;
+        }
+        else
+        {
+            //stop right arm audio
         }
     }
 
@@ -236,7 +252,7 @@ public class ModalRobotPlayerController : MonoBehaviour
             if (jump)
             {
                 moveDir.y = jumpSpeed;
-                PlayJumpSound();
+                PlaySoundEffect(jumpSound);
                 jump = false;
                 jumping = true;
             }
@@ -252,12 +268,14 @@ public class ModalRobotPlayerController : MonoBehaviour
 
         if (changeCamera)
         {
+            PlaySoundEffect(changeCameraSound);
             ChangeCamera();
             changeCamera = false;
         }
 
         if (toggleHorizontal)
         {
+            PlaySoundEffect(toggleHorizontalSound);
             horizontalMovement = !horizontalMovement;
             toggleHorizontal = false;
         }
@@ -269,12 +287,24 @@ public class ModalRobotPlayerController : MonoBehaviour
 
         gamepadLook.UpdateCursorLock();
     }
-
-    private void PlayJumpSound()
+    
+    private void PlaySoundEffect(AudioClip sound)
     {
-        audioSource.clip = jumpSound;
+        audioSource.clip = sound;
         audioSource.Play();
     }
+
+    /*private void PlayChangeCameraSound()
+    {
+        audioSource.clip = changeCameraSound;
+        audioSource.Play();
+    }
+
+    private void PlayToggleHorizontalSound()
+    {
+        audioSource.clip = toggleHorizontalSound;
+        audioSource.Play();
+    }*/
 
     private void ProgressStepCycle(float speed)
     {

@@ -26,9 +26,18 @@ public class PickUpScript: MonoBehaviour
 
     private GameControllerScript gameController = null;
 
+    [SerializeField] private AudioClip pickUpSound;
+    [SerializeField] private AudioClip throwSound;
+    [SerializeField] private AudioClip dropSound;
+    [SerializeField] private AudioClip toggleThrowSound;
+
+    private AudioSource audioSource = new AudioSource();
+
     // Use this for initialization
     void Start ()
     {
+        audioSource = GetComponent<AudioSource>();
+
         leftIDs = leftHandGuide.GetComponent<IdentifiableScript>();
         rightIDs = rightHandGuide.GetComponent<IdentifiableScript>();
 
@@ -122,6 +131,7 @@ public class PickUpScript: MonoBehaviour
         {
             throwOn = !throwOn;
             toggleThrow = false;
+            PlaySoundEffect(toggleThrowSound);
         }
         else
         {
@@ -164,6 +174,8 @@ public class PickUpScript: MonoBehaviour
 
             if (handledClick)
             {
+                PlaySoundEffect(pickUpSound);
+
                 if (hand == Hand.Left)
                 {
                     movingInLeft = item;
@@ -235,6 +247,11 @@ public class PickUpScript: MonoBehaviour
             if (throwOn)
             {
                 ThrowObject(item, hand);
+                PlaySoundEffect(throwSound);
+            }
+            else
+            {
+                PlaySoundEffect(dropSound);
             }
 
             ChangeIDsFromDrop(hand);
@@ -265,4 +282,28 @@ public class PickUpScript: MonoBehaviour
         else
             Debug.LogError("The gameobject you are trying to throw does not have a rigidbody");
     }
+
+    private void PlaySoundEffect(AudioClip sound)
+    {
+        audioSource.clip = sound;
+        audioSource.Play();
+    }
+
+    /*private void PlayDropSound()
+    {
+        audioSource.clip = dropSound;
+        audioSource.Play();
+    }
+
+    private void PlayThrowSound()
+    {
+        audioSource.clip = throwSound;
+        audioSource.Play();
+    }
+
+    private void PlayToggleThrowSound()
+    {
+        audioSource.clip = toggleThrowSound;
+        audioSource.Play();
+    }*/
 }
