@@ -12,8 +12,10 @@ public class DropDownScript : MonoBehaviour {
        dropdownBar = GetComponent<Dropdown>();
 
         dropdownBar.onValueChanged.AddListener(delegate {
-
-            PlayerPrefs.SetInt("difficulty", dropdownBar.value);
+            //stores difficulty based on dropdown choice 
+            if (dropdownBar.value == 0) { PlayerPrefs.SetString("difficulty", "easy"); }
+            else if (dropdownBar.value == 1) { PlayerPrefs.SetString("difficulty", "medium"); }
+            else { PlayerPrefs.SetString("difficulty", "hard"); }
         });
     }
 }
