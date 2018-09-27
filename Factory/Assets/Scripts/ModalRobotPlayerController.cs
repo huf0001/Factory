@@ -294,18 +294,6 @@ public class ModalRobotPlayerController : MonoBehaviour
         audioSource.Play();
     }
 
-    /*private void PlayChangeCameraSound()
-    {
-        audioSource.clip = changeCameraSound;
-        audioSource.Play();
-    }
-
-    private void PlayToggleHorizontalSound()
-    {
-        audioSource.clip = toggleHorizontalSound;
-        audioSource.Play();
-    }*/
-
     private void ProgressStepCycle(float speed)
     {
         if (characterController.velocity.sqrMagnitude > 0 && (input.x != 0 || input.y != 0))
