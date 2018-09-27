@@ -6,7 +6,7 @@ InputManager:
   serializedVersion: 2
   m_Axes:
   - serializedVersion: 3
-    m_Name: Horizontal
+    m_Name: MKMoveHorizontal
     descriptiveName: for keyboard
     descriptiveNegativeName: 
     negativeButton: a
@@ -22,7 +22,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Vertical
+    m_Name: MKMoveVertical
     descriptiveName: for keyboard
     descriptiveNegativeName: 
     negativeButton: s
@@ -86,7 +86,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Mouse X
+    m_Name: MKLookHorizontal
     descriptiveName: for keyboard
     descriptiveNegativeName: 
     negativeButton: 
@@ -102,7 +102,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Mouse Y
+    m_Name: MKLookVertical
     descriptiveName: for keyboard
     descriptiveNegativeName: 
     negativeButton: 
@@ -134,8 +134,8 @@ InputManager:
     axis: 2
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Horizontal
-    descriptiveName: for controller
+    m_Name: DSHorizontal
+    descriptiveName: for DualShock controller
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -150,8 +150,8 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Vertical
-    descriptiveName: for controller
+    m_Name: DSVertical
+    descriptiveName: for DualShock controller
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -182,8 +182,8 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: GrabLeft
-    descriptiveName: for controller
+    m_Name: DSLeftArm
+    descriptiveName: for DualShock controller
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick button 6
@@ -198,8 +198,8 @@ InputManager:
     axis: 3
     joyNum: 0
   - serializedVersion: 3
-    m_Name: GrabRight
-    descriptiveName: for controller
+    m_Name: DSRightArm
+    descriptiveName: for DualShock controller
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick button 7
@@ -342,7 +342,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: GrabLeft
+    m_Name: MKLeftArm
     descriptiveName: for keyboard
     descriptiveNegativeName: 
     negativeButton: 
@@ -358,7 +358,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: GrabRight
+    m_Name: MKRightArm
     descriptiveName: for keyboard
     descriptiveNegativeName: 
     negativeButton: 
@@ -390,8 +390,8 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Mouse X
-    descriptiveName: for controller
+    m_Name: DSLookHorizontal
+    descriptiveName: for DualShock controller
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -406,8 +406,8 @@ InputManager:
     axis: 2
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Mouse Y
-    descriptiveName: 'for controller '
+    m_Name: DSLookVertical
+    descriptiveName: 'for DualShock controller '
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -596,4 +596,100 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: XBLookHorizontal
+    descriptiveName: 'for Xbox controllers '
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.025
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: XBLookVertical
+    descriptiveName: 'for Xbox controllers '
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.025
+    sensitivity: 1
+    snap: 0
+    invert: 1
+    type: 2
+    axis: 4
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: XBLeftArm
+    descriptiveName: 'for Xbox controllers '
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 8
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: XBRightArm
+    descriptiveName: 'for Xbox controllers '
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 9
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: XBMoveHorizontal
+    descriptiveName: 'for Xbox controllers '
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.019
+    sensitivity: 0.1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: XBMoveVertical
+    descriptiveName: 'for Xbox controllers '
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.019
+    sensitivity: 0.1
+    snap: 0
+    invert: 1
+    type: 2
+    axis: 1
     joyNum: 0
