@@ -128,6 +128,8 @@ public class BuildSchemaScript : MonoBehaviour
                     loadedComponents.Add(orp.Component, item);
                     itemIds.RemoveIdentifier(Identifier.HasNotBeenLoadedInBuildZoneYet);
 
+                    this.transform.parent.gameObject.GetComponent<BuildZoneScript>().PlayLoadedSound();
+
                     MoveTowardsBuildPoint(item);
 
                     if (itemIds.HasIdentifier(Identifier.AttachBase))
@@ -305,6 +307,7 @@ public class BuildSchemaScript : MonoBehaviour
                     }
 
                     baseIds.AddIdentifier(Identifier.Built);
+                    this.transform.parent.gameObject.GetComponent<BuildZoneScript>().PlayBuiltSound();
                 }
                 else
                 {

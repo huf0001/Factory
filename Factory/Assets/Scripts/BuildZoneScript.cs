@@ -8,9 +8,16 @@ public class BuildZoneScript : MonoBehaviour
 
     private List<BuildSchemaScript> schemas = new List<BuildSchemaScript>();
 
+    [SerializeField] private AudioClip loadedSound;
+    [SerializeField] private AudioClip builtSound;
+
+    private AudioSource audioSource;
+
     // Use this for initialization
-	void Start ()
+    void Start ()
     {
+        audioSource = GetComponent<AudioSource>();
+
         foreach (GameObject o in buildSchemaObjects)
         {
             schemas.Add(o.GetComponent<BuildSchemaScript>());
@@ -59,5 +66,21 @@ public class BuildZoneScript : MonoBehaviour
             }
         }
         
+    }
+
+    public void PlayLoadedSound()
+    {
+        PlaySoundEffect(loadedSound);
+    }
+
+    public void PlayBuiltSound()
+    {
+        PlaySoundEffect(builtSound);
+    }
+
+    private void PlaySoundEffect(AudioClip sound)
+    {
+        audioSource.clip = sound;
+        audioSource.Play();
     }
 }
