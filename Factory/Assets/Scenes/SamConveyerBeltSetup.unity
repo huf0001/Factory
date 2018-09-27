@@ -1058,7 +1058,7 @@ Prefab:
     - target: {fileID: 114378517065077064, guid: 0870aaaceee210342b93e826ca24f015,
         type: 2}
       propertyPath: gamepad
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0870aaaceee210342b93e826ca24f015, type: 2}

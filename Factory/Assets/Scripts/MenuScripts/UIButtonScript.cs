@@ -17,7 +17,7 @@ public class UIButtonScript : MonoBehaviour {
         if ((currentScene.name == "MainMenu")&&(PlayerPrefs.GetString("music") == null))
         {
             PlayerPrefs.SetString("music", "true");
-            musicButton. = musicOn;
+            musicButton.spriteState = musicOn;
         }//sets the intial music value only if first time play; music toggling isnt preserved after instructions screen otherwise   
     }
 
