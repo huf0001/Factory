@@ -146,7 +146,10 @@ public class ModalRobotPlayerController : MonoBehaviour
 
     private void RotateView()
     {
-        gamepadLook.LookRotation(transform, firstPersonCamera.transform);
+        //Vector3 movement = new Vector3(gameController.GetAxis("MoveHorizontal"), 0f, gameController.GetAxis("MoveVertical"));
+        //characterController.transform.localRotation = Quaternion.LookRotation(movement);
+        transform.forward = new Vector3(gameController.GetAxis("MoveHorizontal"), 0f, gameController.GetAxis("MoveVertical"));
+        //gamepadLook.LookRotation(transform, firstPersonCamera.transform);
     }
 
     private void PlayLandingSound()
@@ -208,6 +211,7 @@ public class ModalRobotPlayerController : MonoBehaviour
 
         // always move along the camera forward as it is the direction that it being aimed at
         desiredMove = transform.forward * input.y + transform.right * input.x;
+        
 
         // get a normal for the surface that is being touched to move along it
         RaycastHit hitInfo;
@@ -215,8 +219,8 @@ public class ModalRobotPlayerController : MonoBehaviour
                             characterController.height/2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
         desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
-        moveDir.x = desiredMove.x*speed;
-        moveDir.z = desiredMove.z*speed;
+        moveDir.x = desiredMove.x * speed;
+        moveDir.z = desiredMove.z * speed;
 
         if (characterController.isGrounded)
         {
