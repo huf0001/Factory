@@ -8,7 +8,6 @@ public class PickUpScript: MonoBehaviour
     [SerializeField] private GameObject leftHandGuide;
     [SerializeField] private GameObject rightHandGuide;
     [SerializeField] private Camera myCamera;
-    [SerializeField] private bool throwOn = false;
 
     private IdentifiableScript leftIDs;
     private IdentifiableScript rightIDs;
@@ -18,7 +17,6 @@ public class PickUpScript: MonoBehaviour
 
     private bool leftHandInput = false;
     private bool rightHandInput = false;
-    private bool toggleThrow = false;
 
     [SerializeField] private float throwForce = 5f;
     [SerializeField] private Vector3 throwOffset;
@@ -27,9 +25,12 @@ public class PickUpScript: MonoBehaviour
     private GameControllerScript gameController = null;
 
     [SerializeField] private AudioClip pickUpSound;
-    [SerializeField] private AudioClip throwSound;
     [SerializeField] private AudioClip dropSound;
-    [SerializeField] private AudioClip toggleThrowSound;
+
+    //[SerializeField] private AudioClip throwSound;
+    //[SerializeField] private AudioClip toggleThrowSound;
+    //[SerializeField] private bool throwOn = false;
+    //private bool toggleThrow = false;
 
     private AudioSource audioSource = new AudioSource();
 
@@ -107,27 +108,31 @@ public class PickUpScript: MonoBehaviour
 
     private void Update()
     {
-        if (leftHandInput)
+        if (gameController.GetButton("LeftArm"))
         {
-            HandleHandInput(Hand.Left);            
-            leftHandInput = false;
+            if (IsEmpty(Hand.Left))
+            {
+                HandlePickUp(Hand.Left);
+            }
         }
-        else
+        else if (IsHolding(Hand.Left))
         {
-            leftHandInput = gameController.GetButtonDown("LeftHand");
-        }
-
-        if (rightHandInput)
-        {
-            HandleHandInput(Hand.Right);
-            rightHandInput = false;
-        }
-        else
-        {
-            rightHandInput = gameController.GetButtonDown("RightHand");
+            HandleDrop(Hand.Left, movingInLeft);
         }
 
-        if (toggleThrow)
+        if (gameController.GetButton("RightArm"))
+        {
+            if (IsEmpty(Hand.Right))
+            {
+                HandlePickUp(Hand.Right);
+            }
+        }
+        else if (IsHolding(Hand.Right))
+        {
+            HandleDrop(Hand.Right, movingInRight);
+        }
+
+        /*if (toggleThrow)
         {
             throwOn = !throwOn;
             toggleThrow = false;
@@ -136,19 +141,7 @@ public class PickUpScript: MonoBehaviour
         else
         {
             toggleThrow = gameController.GetButtonDown("ToggleThrow");
-        }
-    }
-
-    private void HandleHandInput(Hand hand)
-    {
-        if (IsEmpty(hand))
-        {
-            HandlePickUp(hand);
-        }
-        else if (IsHolding(hand))
-        {
-            HandleDrop(hand);
-        }
+        }*/
     }
 
     private void HandlePickUp(Hand hand)
@@ -190,34 +183,20 @@ public class PickUpScript: MonoBehaviour
         }
     }
 
-    private void HandleDrop(Hand hand)
+    private void HandleDrop(Hand hand, GameObject movingInHand)
     {
         bool handledClick = false;
         AttachableScript attachable = null;
         MovableScript movable = null;
         GameObject item = null;
 
-        if (hand == Hand.Left)
+        if (movingInHand.GetComponent<AttachableScript>() != null)
         {
-            if (movingInLeft.GetComponent<AttachableScript>() != null)
-            {
-                attachable = movingInLeft.GetComponent<AttachableScript>();
-            }
-            else if (movingInLeft.GetComponent<MovableScript>() != null)
-            {
-                movable = movingInLeft.GetComponent<MovableScript>();
-            }
+            attachable = movingInHand.GetComponent<AttachableScript>();
         }
-        else
+        else if (movingInHand.GetComponent<MovableScript>() != null)
         {
-            if (movingInRight.GetComponent<AttachableScript>() != null)
-            {
-                attachable = movingInRight.GetComponent<AttachableScript>();
-            }
-            else if (movingInRight.GetComponent<MovableScript>() != null)
-            {
-                movable = movingInRight.GetComponent<MovableScript>();
-            }
+            movable = movingInHand.GetComponent<MovableScript>();
         }
 
         if (attachable != null)
@@ -233,32 +212,32 @@ public class PickUpScript: MonoBehaviour
 
         if (handledClick)
         {
+            item = movingInHand;
+
             if (hand == Hand.Left)
             {
-                item = movingInLeft;
                 movingInLeft = null;
             }
             else
             {
-                item = movingInRight;
                 movingInRight = null;
             }
 
-            if (throwOn)
+            /*if (throwOn)
             {
                 ThrowObject(item, hand);
                 PlaySoundEffect(throwSound);
             }
             else
-            {
+            {*/
                 PlaySoundEffect(dropSound);
-            }
+            //}
 
             ChangeIDsFromDrop(hand);
         }
     }
 
-    private void ThrowObject(GameObject projectile, Hand hand)
+    /*private void ThrowObject(GameObject projectile, Hand hand)
     {
         // Adjusting the throwOffset for the hand that's doing the throwing
         if (hand == Hand.Left)
@@ -281,29 +260,11 @@ public class PickUpScript: MonoBehaviour
         }
         else
             Debug.LogError("The gameobject you are trying to throw does not have a rigidbody");
-    }
+    }*/
 
     private void PlaySoundEffect(AudioClip sound)
     {
         audioSource.clip = sound;
         audioSource.Play();
     }
-
-    /*private void PlayDropSound()
-    {
-        audioSource.clip = dropSound;
-        audioSource.Play();
-    }
-
-    private void PlayThrowSound()
-    {
-        audioSource.clip = throwSound;
-        audioSource.Play();
-    }
-
-    private void PlayToggleThrowSound()
-    {
-        audioSource.clip = toggleThrowSound;
-        audioSource.Play();
-    }*/
 }
