@@ -333,7 +333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1251912838633516
 GameObject:
   m_ObjectHideFlags: 1
@@ -1323,7 +1323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4000099966433672
 Transform:
   m_ObjectHideFlags: 1
@@ -4223,7 +4223,6 @@ MonoBehaviour:
   leftTarget: {fileID: 4597992108956696}
   rightTarget: {fileID: 4069173568281536}
   grabSpeed: 150
-  horizontalMovement: 1
   walkSpeed: 5
   runSpeed: 10
   runStepLengthen: 0.7
@@ -4317,9 +4316,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   jumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   landSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
-  changeCameraSound: {fileID: 8300000, guid: a698c0d2f4852124483597250e3a2c08, type: 3}
-  toggleHorizontalSound: {fileID: 8300000, guid: a698c0d2f4852124483597250e3a2c08,
-    type: 3}
 --- !u!114 &114646713215315340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4353,11 +4349,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4611acf857fa41a4f83c64c46684c035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCamera: {fileID: 20265195097170430}
   leftHandGuide: {fileID: 1560882595689678}
   rightHandGuide: {fileID: 1792945697515496}
   pickUpSound: {fileID: 8300000, guid: a698c0d2f4852124483597250e3a2c08, type: 3}
   dropSound: {fileID: 8300000, guid: a698c0d2f4852124483597250e3a2c08, type: 3}
+  throwForce: 5
+  throwOffset: {x: 0, y: 0, z: 0}
+  headDirection: {fileID: 0}
+  throwSound: {fileID: 0}
 --- !u!124 &124080434674779972
 Behaviour:
   m_ObjectHideFlags: 1

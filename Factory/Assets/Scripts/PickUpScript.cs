@@ -5,9 +5,10 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PickUpScript: MonoBehaviour
 {
-    [SerializeField] private Camera myCamera;
     [SerializeField] private GameObject leftHandGuide;
     [SerializeField] private GameObject rightHandGuide;
+    private Vector3 leftHandStartPoint;
+    private Vector3 rightHandStartPoint;
     
     private IdentifiableScript leftIDs;
     private IdentifiableScript rightIDs;
@@ -23,14 +24,14 @@ public class PickUpScript: MonoBehaviour
     [SerializeField] private AudioClip pickUpSound;
     [SerializeField] private AudioClip dropSound;
 
-    /*[SerializeField] private bool throwOn = false;
     [SerializeField] private float throwForce = 5f;
     [SerializeField] private Vector3 throwOffset;
     [SerializeField] private Transform headDirection;
     [SerializeField] private AudioClip throwSound;
-    [SerializeField] private AudioClip toggleThrowSound;
-    
-    private bool toggleThrow = false;*/
+    private bool throwOn = false;
+    //[SerializeField] private AudioClip toggleThrowSound;
+
+    //private bool toggleThrow = false;
 
     private AudioSource audioSource = new AudioSource();
 
@@ -39,11 +40,16 @@ public class PickUpScript: MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
+        leftHandStartPoint = leftHandGuide.transform.localPosition;
+        rightHandStartPoint = rightHandGuide.transform.localPosition;
+
         leftIDs = leftHandGuide.GetComponent<IdentifiableScript>();
         rightIDs = rightHandGuide.GetComponent<IdentifiableScript>();
 
         leftIDs.AddIdentifier(Identifier.HandEmpty);
+        leftIDs.AddIdentifier(Identifier.Hand);
         rightIDs.AddIdentifier(Identifier.HandEmpty);
+        rightIDs.AddIdentifier(Identifier.Hand);
 
         gameController = GameObject.Find("GameController").GetComponent<GameControllerScript>();
 
@@ -51,6 +57,19 @@ public class PickUpScript: MonoBehaviour
         {
             Debug.Log("Why is there no object in the scene named GameController? There needs to be an object with a GameControllerScript called" +
                 " 'GameController'. Fix it. NOW!!");
+        }
+    }
+
+    public bool ThrowOn
+    {
+        get
+        {
+            return throwOn;
+        }
+
+        set
+        {
+            throwOn = value;
         }
     }
 
@@ -134,6 +153,8 @@ public class PickUpScript: MonoBehaviour
             HandleDrop(Hand.Right, movingInRight);
         }
 
+        UpdateHandGuidePosition();
+
         /*if (toggleThrow)
         {
             throwOn = !throwOn;
@@ -144,6 +165,19 @@ public class PickUpScript: MonoBehaviour
         {
             toggleThrow = gameController.GetButtonDown("ToggleThrow");
         }*/
+    }
+
+    private void UpdateHandGuidePosition()
+    {
+        if (leftHandGuide.transform.localPosition != leftHandStartPoint)
+        {
+            leftHandGuide.transform.localPosition = leftHandStartPoint;
+        }
+
+        if (rightHandGuide.transform.localPosition != rightHandStartPoint)
+        {
+            rightHandGuide.transform.localPosition = rightHandStartPoint;
+        }
     }
 
     private Vector3 GetHandColliderPosition(Hand hand)
@@ -180,8 +214,6 @@ public class PickUpScript: MonoBehaviour
 
         Collider[] colliders = Physics.OverlapSphere(center, radius);
 
-        //Debug.Log("Detected " + colliders.Length + " objects in hand range.");
-
         if (colliders.Length > 0)
         {
             GetMovableObjectsForPickUp(hand, colliders);
@@ -199,8 +231,6 @@ public class PickUpScript: MonoBehaviour
                 movableItems.Add(c.gameObject);
             }
         }
-
-        //Debug.Log("Identified " + movableItems.Count + " objects as movable");
 
         if (movableItems.Count > 0)
         {
@@ -224,8 +254,7 @@ public class PickUpScript: MonoBehaviour
                 item = i;
             }
         }
-
-        //Debug.Log("Selected " + item + " for pickup.");
+        
         if (item != null)
         {
             HandlePickUp(hand, item);
@@ -293,6 +322,7 @@ public class PickUpScript: MonoBehaviour
         if (handledClick)
         {
             item = movingInHand;
+            ChangeIDsFromDrop(hand);
 
             if (hand == Hand.Left)
             {
@@ -303,21 +333,19 @@ public class PickUpScript: MonoBehaviour
                 movingInRight = null;
             }
 
-            /*if (throwOn)
+            if (throwOn)
             {
                 ThrowObject(item, hand);
                 PlaySoundEffect(throwSound);
             }
             else
-            {*/
+            {
                 PlaySoundEffect(dropSound);
-            //}
-
-            ChangeIDsFromDrop(hand);
+            }
         }
     }
 
-    /*private void ThrowObject(GameObject projectile, Hand hand)
+    private void ThrowObject(GameObject projectile, Hand hand)
     {
         // Adjusting the throwOffset for the hand that's doing the throwing
         if (hand == Hand.Left)
@@ -340,7 +368,7 @@ public class PickUpScript: MonoBehaviour
         }
         else
             Debug.LogError("The gameobject you are trying to throw does not have a rigidbody");
-    }*/
+    }
 
     private void PlaySoundEffect(AudioClip sound)
     {
