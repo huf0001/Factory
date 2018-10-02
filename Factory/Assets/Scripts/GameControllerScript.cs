@@ -53,6 +53,14 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
+    public Gamepad Gamepad
+    {
+        get
+        {
+            return gamepad;
+        }
+    }
+
     //Checks if the player clicked the specified button
     public bool GetButtonDown(string s)
     {
@@ -119,10 +127,9 @@ public class GameControllerScript : MonoBehaviour
     {
         float result = 0f;
 
+        //check which action the player wants
         switch (s)
         {
-            //check which action the player wants
-            
             case "MoveHorizontal":
             case "MoveVertical":
             case "LookHorizontal":

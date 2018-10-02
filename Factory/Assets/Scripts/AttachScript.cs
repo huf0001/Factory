@@ -61,6 +61,7 @@ public class AttachScript : MonoBehaviour
     }
 
     //For use if a dropped object collides with this object or an attached object
+    //If disabling the ability to drop something on something else to build, remove this method.
     public void HandleOnTriggerStay(Collider other)
     {
         IdentifiableScript ids = other.gameObject.GetComponent<IdentifiableScript>();
@@ -79,9 +80,7 @@ public class AttachScript : MonoBehaviour
     public bool CheckCanAttach(IdentifiableScript ids)
     {
         if (
-                // (AvailableGuides.Count == 0)||
                 (ids.HasIdentifier(Identifier.Attached))||
-                // (!HasCompatibleAttachableObjectID(ids))||
                 (!CheckGuideIsAvailable(ids)) ||
                 (
                     (!ids.HasIdentifier(Identifier.Dropped))&&
@@ -115,19 +114,6 @@ public class AttachScript : MonoBehaviour
         return false;
     }
 
-    /*private bool HasCompatibleAttachableObjectID(IdentifiableScript ids)
-    {
-        foreach (ComponentGuidePair p in attachableComponents)
-        {
-            if (ids.HasIdentifier(p.Component))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }*/
-
     //Attaches attachable objects to this object
     public void Attach(GameObject attaching)
     {
@@ -144,8 +130,6 @@ public class AttachScript : MonoBehaviour
     //Assigns the object being attached to an appropriate attached object slot (and guide object?)
     private void AssignAttaching(GameObject attaching)
     {
-        // Transform tempGuide = AvailableGuides[0];
-
         foreach (ComponentGuidePair p in attachableComponents)
         {
             if (attaching.GetComponent<IdentifiableScript>().HasIdentifier(p.Component))
