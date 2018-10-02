@@ -390,7 +390,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 4830835700914546, guid: 1ccca8a2d45e90c40b11af7968bc97bf, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.12
@@ -409,8 +408,6 @@ Prefab:
       propertyPath: consoleSensitivityMultiplier
       value: 10
       objectReference: {fileID: 0}
-=======
->>>>>>> 3acc00d0406cf5486f42dc986935b64d89a05d5f
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ccca8a2d45e90c40b11af7968bc97bf, type: 2}
   m_IsPrefabAsset: 0
@@ -1011,14 +1008,11 @@ Prefab:
       propertyPath: playerRightHand
       value: 
       objectReference: {fileID: 1879188666}
-<<<<<<< HEAD
     - target: {fileID: 114378517065077064, guid: 0870aaaceee210342b93e826ca24f015,
         type: 2}
       propertyPath: gamepad
       value: 0
       objectReference: {fileID: 0}
-=======
->>>>>>> 3acc00d0406cf5486f42dc986935b64d89a05d5f
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0870aaaceee210342b93e826ca24f015, type: 2}
   m_IsPrefabAsset: 0
