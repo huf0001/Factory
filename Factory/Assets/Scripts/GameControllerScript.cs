@@ -61,8 +61,6 @@ public class GameControllerScript : MonoBehaviour
         switch (s)
         {
             //check which action the player wants
-            case "LeftHand":
-            case "RightHand":
             case "ToggleThrow":
             case "Jump":
             case "ToggleHorizontal":
@@ -94,8 +92,6 @@ public class GameControllerScript : MonoBehaviour
         switch (s)
         {
             //check which action the player wants
-            case "LeftHand":
-            case "RightHand":
             case "ToggleThrow":
             case "Jump":
             case "ToggleHorizontal":

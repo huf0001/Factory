@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3215b60945aecf48b1cb810e16c4870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamepad: 1
   buildZone: {fileID: 0}
   playerLeftHand: {fileID: 0}
   playerRightHand: {fileID: 0}

@@ -7,6 +7,9 @@ public enum Identifier
     // The "null" identifier
     zero,
 
+    // Value denoting that the object is a player's hand and should not be destroyed by BinScript
+    Hand,
+
     // Values that can be used to check if a hand is holding something or if it is empty instead
     HandHolding,
     HandEmpty,
