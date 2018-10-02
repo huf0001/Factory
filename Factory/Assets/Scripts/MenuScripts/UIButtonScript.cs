@@ -19,6 +19,15 @@ public class UIButtonScript : MonoBehaviour {
             PlayerPrefs.SetString("music", "true");
             musicButton.GetComponent<Image>().sprite = musicOn;
         }//sets the intial music value only if first time play; music toggling isnt preserved after instructions screen otherwise   
+         //set intial music icon value based on player preference otherwise it automatically comes up as on even when off
+        if ((PlayerPrefs.GetString("music") == "true"))
+        {
+            musicButton.GetComponent<Image>().sprite = musicOn;
+        }
+        else
+        {
+            musicButton.GetComponent<Image>().sprite = musicOff;
+        }
     }
 
     // Update is called once per frame

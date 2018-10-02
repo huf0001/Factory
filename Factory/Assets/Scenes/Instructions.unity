@@ -327,6 +327,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuAudio: {fileID: 1373181829}
+  musicOn: {fileID: 0}
+  musicOff: {fileID: 0}
+  musicButton: {fileID: 0}
 --- !u!82 &1373181829
 AudioSource:
   m_ObjectHideFlags: 0
