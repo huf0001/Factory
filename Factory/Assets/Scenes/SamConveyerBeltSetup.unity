@@ -356,6 +356,16 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0.12
       objectReference: {fileID: 0}
+    - target: {fileID: 114422838543089398, guid: 1ccca8a2d45e90c40b11af7968bc97bf,
+        type: 2}
+      propertyPath: consoleRotateMultiplier
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114422838543089398, guid: 1ccca8a2d45e90c40b11af7968bc97bf,
+        type: 2}
+      propertyPath: consoleSensitivityMultiplier
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ccca8a2d45e90c40b11af7968bc97bf, type: 2}
   m_IsPrefabAsset: 0
@@ -1205,7 +1215,7 @@ Prefab:
     - target: {fileID: 114378517065077064, guid: 0870aaaceee210342b93e826ca24f015,
         type: 2}
       propertyPath: gamepad
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0870aaaceee210342b93e826ca24f015, type: 2}

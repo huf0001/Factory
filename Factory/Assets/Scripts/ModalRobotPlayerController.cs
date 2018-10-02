@@ -9,39 +9,22 @@ using Random = UnityEngine.Random;
 
 public class ModalRobotPlayerController : MonoBehaviour
 {
-    //Variables for functional crap related to cameras
-    [SerializeField] private Camera firstPersonCamera;
-    [SerializeField] private Camera thirdPersonCamera;
-    [SerializeField] private bool thirdPerson = true;
-
-    private Vector3 FPCameraStartPosition;
-    private Vector3 TPCameraStartPosition;
-    private Vector3 cameraStartPosition;
-    private Camera currentCamera;
-    private bool changeCamera;
-
     //Variables for the cool looking shit
     [SerializeField] private Animator anim;
-    [SerializeField] private Transform playerHead;
     [SerializeField] private Rigidbody leftHand, rightHand;
     [SerializeField] private Transform leftTarget, rightTarget;
-    [SerializeField] private float grabSpeed = 150f;
+    [SerializeField] private float armSpeed = 150f;
 
     private bool movingRightArm = false;
     private bool movingLeftArm = false;
-
-    //Variables for functional crap related to movement
+    
+    [SerializeField] private float rotateSpeed = 0.15f;
     [SerializeField] private float walkSpeed = 5;
-    [SerializeField] private float runSpeed = 10;
-    [SerializeField] [Range(0f, 1f)] private float runStepLengthen = 0.7f;
+    [SerializeField] private float walkSensitivity = 0.1f;
+    [SerializeField] private float consoleWalkSensitivityMultiplier = 10f;
     [SerializeField] private float jumpSpeed = 10;
     [SerializeField] private float stickToGroundForce = 10;
     [SerializeField] private float gravityMultiplier = 2;
-    [SerializeField] private GamepadLook gamepadLook;
-    [SerializeField] private bool useFovKick = true;
-    [SerializeField] private FOVKick fovKick = new FOVKick();
-    [SerializeField] private bool useHeadBob = false;
-    [SerializeField] private CurveControlledBob headBob = new CurveControlledBob();
     [SerializeField] private LerpControlledBob jumpBob = new LerpControlledBob();
     [SerializeField] private float stepInterval = 5;
     [SerializeField] private AudioClip[] footStepSounds;    // an array of footstep sounds that will be randomly selected from.
@@ -49,49 +32,26 @@ public class ModalRobotPlayerController : MonoBehaviour
     [SerializeField] private AudioClip landSound;           // the sound played when character touches back on ground.
 
     private bool jump;
-    private Vector2 input;
-    private Vector3 moveDir = Vector3.zero;
+    private Vector3 walkInput;
+    private Vector3 jumpMovement = Vector3.zero;
     private CharacterController characterController;
     private CollisionFlags collisionFlags;
     private bool previouslyGrounded;
     private float stepCycle;
     private float nextStep;
     private bool jumping;
-    private bool walking;
-    private bool toggleHorizontal = false;
     private AudioSource audioSource;
     private GameControllerScript gameController;
-
-    private Quaternion cameraLastCheckedRotation;
 
     // Use this for initialization
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
-        FPCameraStartPosition = firstPersonCamera.transform.localPosition;
-        TPCameraStartPosition = thirdPersonCamera.transform.localPosition;
-            
-        if (!thirdPerson)
-        {
-            currentCamera = firstPersonCamera;
-            cameraStartPosition = FPCameraStartPosition;
-            thirdPersonCamera.enabled = false;
-        }
-        else
-        {
-            currentCamera = thirdPersonCamera;
-            cameraStartPosition = TPCameraStartPosition;
-            firstPersonCamera.enabled = false;
-        }
-            
-        fovKick.Setup(currentCamera);
-        headBob.Setup(currentCamera, stepInterval);
+        audioSource = GetComponent<AudioSource>();
+
         stepCycle = 0f;
         nextStep = stepCycle/2f;
         jumping = false;
-        audioSource = GetComponent<AudioSource>();
-		gamepadLook.Init(transform , currentCamera.transform);
-        cameraLastCheckedRotation = firstPersonCamera.transform.rotation;
 
         gameController = GameObject.Find("GameController").GetComponent<GameControllerScript>();
 
@@ -100,13 +60,18 @@ public class ModalRobotPlayerController : MonoBehaviour
             Debug.Log("Why is there no object in the scene named GameController? There needs to be an object with a GameControllerScript called" +
                 " 'GameController'. Fix it. NOW!!");
         }
+        else
+        {
+            if (gameController.Gamepad != Gamepad.MouseAndKeyboard)
+            {
+                walkSensitivity = walkSensitivity * consoleWalkSensitivityMultiplier;
+            }
+        }
     }
 
     // Update is called once per frame
     private void Update()
     {
-        RotateView();
-
         // the jump state needs to read here to make sure it is not missed
         if (!jump)
         {
@@ -117,13 +82,13 @@ public class ModalRobotPlayerController : MonoBehaviour
         {
             StartCoroutine(jumpBob.DoBobCycle());
             PlayLandingSound();
-            moveDir.y = 0f;
+            jumpMovement.y = 0f;
             jumping = false;
         }
 
         if (!characterController.isGrounded && !jumping && previouslyGrounded)
         {
-            moveDir.y = 0f;
+            jumpMovement.y = 0f;
         }
 
         previouslyGrounded = characterController.isGrounded;
@@ -139,17 +104,37 @@ public class ModalRobotPlayerController : MonoBehaviour
             movingRightArm = true;
         }
 
+        walkInput = GetWalkInput();
+
         //Updating the Robot so that it looks cool
-        UpdateWalkingAnimation();
+        RotatePlayer(walkInput, rotateSpeed);
+        UpdateWalkingAnimation(walkInput);
         UpdateArms();
     }
 
-    private void RotateView()
+    private Vector3 GetWalkInput()
     {
-        //Vector3 movement = new Vector3(gameController.GetAxis("MoveHorizontal"), 0f, gameController.GetAxis("MoveVertical"));
-        //characterController.transform.localRotation = Quaternion.LookRotation(movement);
-        transform.forward = new Vector3(gameController.GetAxis("MoveHorizontal"), 0f, gameController.GetAxis("MoveVertical"));
-        //gamepadLook.LookRotation(transform, firstPersonCamera.transform);
+        Vector3 input = new Vector3(gameController.GetAxis("MoveHorizontal"), 0f, gameController.GetAxis("MoveVertical"));
+
+        // normalize input if it exceeds 1 in combined length:
+        if (input.sqrMagnitude > 1)
+        {
+            input.Normalize();
+        }
+
+        return input;
+    }
+
+    private void RotatePlayer(Vector3 movement, float speed)
+    {
+        if (movement.x != 0 || movement.z != 0)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), speed);
+        }
+        else if (movement.x == 0 && movement.z == 0 && gameController.GetAxis("LookHorizontal") != 0)
+        {
+            transform.Rotate(new Vector3(0f, gameController.GetAxis("LookHorizontal"), 0f), Space.World);
+        }
     }
 
     private void PlayLandingSound()
@@ -159,9 +144,9 @@ public class ModalRobotPlayerController : MonoBehaviour
         nextStep = stepCycle + .5f;
     }
 
-    private void UpdateWalkingAnimation()
+    private void UpdateWalkingAnimation(Vector3 movement)
     {
-        if ((gameController.GetAxis("MoveVertical")!= 0f) || (gameController.GetAxis("MoveHorizontal") != 0f))
+        if ((movement.x != 0f) || (movement.z != 0f))
         {
             anim.SetBool("IsWalking", true);
         }
@@ -179,7 +164,7 @@ public class ModalRobotPlayerController : MonoBehaviour
             //if left arm audio not playing
                 //start left arm audio
 
-            leftHand.AddForce(leftTarget.forward * grabSpeed, ForceMode.Acceleration);
+            leftHand.AddForce(leftTarget.forward * armSpeed, ForceMode.Acceleration);
             movingLeftArm = false;
             leftHand.velocity = Vector3.zero;
         }
@@ -193,7 +178,7 @@ public class ModalRobotPlayerController : MonoBehaviour
             //if left arm audio not playing
                 //start left arm audio
                 
-            rightHand.AddForce(rightTarget.forward * grabSpeed, ForceMode.Acceleration);
+            rightHand.AddForce(rightTarget.forward * armSpeed, ForceMode.Acceleration);
             movingRightArm = false;
             rightHand.velocity = Vector3.zero;
         }
@@ -203,32 +188,29 @@ public class ModalRobotPlayerController : MonoBehaviour
         }
     }
 
+    // Note: google says FixedUpdate runs 0+ times per frame depending on how many physics frames
+    // per second are set in the time settings, and how fast/slow the framerate is. As such, it's
+    // better for physics operations as it will be executed in sync with the physics engine
     private void FixedUpdate()
     {
-        Vector3 desiredMove;
-        float speed;
-        GetInput(out speed);
+        MovePlayer(walkInput, characterController.transform.position);
+        HandleJump();        
+    }
 
-        // always move along the camera forward as it is the direction that it being aimed at
-        desiredMove = transform.forward * input.y + transform.right * input.x;
-        
+    private void MovePlayer(Vector3 movement, Vector3 position)
+    {
+        characterController.transform.position = new Vector3(position.x + (movement.x * walkSensitivity), position.y, position.z + (movement.z * walkSensitivity));
+    }
 
-        // get a normal for the surface that is being touched to move along it
-        RaycastHit hitInfo;
-        Physics.SphereCast(transform.position, characterController.radius, Vector3.down, out hitInfo,
-                            characterController.height/2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
-        desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
-
-        moveDir.x = desiredMove.x * speed;
-        moveDir.z = desiredMove.z * speed;
-
+    private void HandleJump()
+    {
         if (characterController.isGrounded)
         {
-            moveDir.y = -stickToGroundForce;
+            jumpMovement.y = -stickToGroundForce;
 
             if (jump)
             {
-                moveDir.y = jumpSpeed;
+                jumpMovement.y = jumpSpeed;
                 PlaySoundEffect(jumpSound);
                 jump = false;
                 jumping = true;
@@ -236,45 +218,11 @@ public class ModalRobotPlayerController : MonoBehaviour
         }
         else
         {
-            moveDir += Physics.gravity*gravityMultiplier*Time.fixedDeltaTime;
+            jumpMovement += Physics.gravity * gravityMultiplier * Time.fixedDeltaTime;
         }
 
-        collisionFlags = characterController.Move(moveDir*Time.fixedDeltaTime);
-        ProgressStepCycle(speed);
-        gamepadLook.UpdateCursorLock();
-    }
-
-    private void GetInput(out float speed)
-    {
-        // Read input
-        float horizontal = gameController.GetAxis("MoveHorizontal");
-        float vertical = gameController.GetAxis("MoveVertical");
-
-        bool waswalking = walking;
-
-#if !MOBILE_INPUT
-        // On standalone builds, walk/run speed is modified by a key press.
-        // keep track of whether or not the character is walking or running
-        walking = !Input.GetKey(KeyCode.LeftShift);
-#endif
-
-        // set the desired speed to be walking or running
-        speed = walking ? walkSpeed : runSpeed;
-        input = new Vector2(horizontal, vertical);
-
-        // normalize input if it exceeds 1 in combined length:
-        if (input.sqrMagnitude > 1)
-        {
-            input.Normalize();
-        }
-
-        // handle speed change to give an fov kick
-        // only if the player is going to a run, is running and the fovkick is to be used
-        if (walking != waswalking && useFovKick && characterController.velocity.sqrMagnitude > 0)
-        {
-            StopAllCoroutines();
-            StartCoroutine(!walking ? fovKick.FOVKickUp() : fovKick.FOVKickDown());
-        }
+        collisionFlags = characterController.Move(jumpMovement * Time.fixedDeltaTime);
+        ProgressStepCycle(walkSpeed, walkInput);
     }
 
     private void PlaySoundEffect(AudioClip sound)
@@ -283,11 +231,11 @@ public class ModalRobotPlayerController : MonoBehaviour
         audioSource.Play();
     }
 
-    private void ProgressStepCycle(float speed)
+    private void ProgressStepCycle(float speed, Vector3 movement)
     {
-        if (characterController.velocity.sqrMagnitude > 0 && (input.x != 0 || input.y != 0))
+        if (characterController.velocity.sqrMagnitude > 0 && (movement.x != 0 || movement.z != 0))
         {
-            stepCycle += (characterController.velocity.magnitude + (speed*(walking ? 1f : runStepLengthen)))*Time.fixedDeltaTime;
+            stepCycle += (characterController.velocity.magnitude + speed) * Time.fixedDeltaTime;
         }
 
         if (!(stepCycle > nextStep))
@@ -333,7 +281,7 @@ public class ModalRobotPlayerController : MonoBehaviour
             return;
         }
 
-        body.AddForceAtPosition(characterController.velocity*0.1f, hit.point, ForceMode.Impulse);
+        body.AddForceAtPosition(characterController.velocity * 0.1f, hit.point, ForceMode.Impulse);
     }
 }
 
