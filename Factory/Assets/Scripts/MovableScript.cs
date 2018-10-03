@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class MovableScript : IdentifiableScript
 {
-    /*[SerializeField]*/ private BuildZoneScript buildZone;
-    /*[SerializeField]*/ private GameObject tempLeftParent;
-    /*[SerializeField]*/ private GameObject tempRightParent;
-    private Transform leftGuide;
-    private Transform rightGuide;
-    private PickUpScript hands;
+    private GameControllerScript gameController = null;
+    private BuildZoneScript buildZone = null;
+    private List<GameObject> tempLeftParents = new List<GameObject>();
+    private List<GameObject> tempRightParents = new List<GameObject>();
+    private List<Transform> leftGuides = new List<Transform>();
+    private List<Transform> rightGuides = new List<Transform>();
+    private List<PickUpScript> hands = new List<PickUpScript>();
     private Rigidbody body;
 
     // Use this for initialization
@@ -20,46 +21,48 @@ public class MovableScript : IdentifiableScript
 
     protected virtual void HandleStart()
     {
-        GameControllerScript gameController = GameObject.Find("GameController").GetComponent<GameControllerScript>();
+        int playerCount = 0;
         body = this.gameObject.GetComponent<Rigidbody>();
         body.useGravity = true;
+        gameController = GameObject.Find("GameController").GetComponent<GameControllerScript>();
 
-        if (tempLeftParent == null)
+        if (gameController != null)
         {
-            tempLeftParent = gameController.LeftHand;
-        }
+            playerCount = gameController.PlayerCount;
 
-        if (tempRightParent == null)
-        {
-            tempRightParent = gameController.RightHand;
-        }
+            for (int i = 0; i < playerCount; i++)
+            {
+                tempLeftParents.Add(gameController.LeftHand(i + 1));
+                leftGuides.Add(tempLeftParents[i].transform);
 
-        if (buildZone == null)
-        {
+                tempRightParents.Add(gameController.RightHand(i + 1));
+                rightGuides.Add(tempRightParents[i].transform);
+
+                hands.Add(tempLeftParents[i].GetComponentInParent<PickUpScript>());
+            }
+
             buildZone = gameController.BuildZone;
         }
 
-        leftGuide = tempLeftParent.transform;
-        rightGuide = tempRightParent.transform;
-        hands = tempLeftParent.GetComponentInParent<PickUpScript>();
+        
     }
 
-    public virtual void HandlePickUp(Hand h)
+    public virtual void HandlePickUp(int p, Hand h)
     {
         body.useGravity = false;
         body.isKinematic = true;
 
         if (h == Hand.Left)
         {
-            transform.position = leftGuide.transform.position;
-            transform.rotation = leftGuide.transform.rotation;
-            transform.parent = tempLeftParent.transform;
+            transform.position = leftGuides[p - 1].transform.position;
+            transform.rotation = leftGuides[p - 1].transform.rotation;
+            transform.parent = tempLeftParents[p - 1].transform;
         }
         else
         {
-            transform.position = rightGuide.transform.position;
-            transform.rotation = rightGuide.transform.rotation;
-            transform.parent = tempRightParent.transform;
+            transform.position = rightGuides[p - 1].transform.position;
+            transform.rotation = rightGuides[p - 1].transform.rotation;
+            transform.parent = tempRightParents[p - 1].transform;
         }
 
         AddIdentifier(Identifier.PlayerMoving);
@@ -76,7 +79,7 @@ public class MovableScript : IdentifiableScript
         buildZone.RemoveObject(this);
     }
 
-    public virtual void HandleDrop(Hand h)
+    public virtual void HandleDrop(int p, Hand h)
     {
         body.useGravity = true;
         body.isKinematic = false;
@@ -84,11 +87,11 @@ public class MovableScript : IdentifiableScript
 
         if (h == Hand.Left)
         {
-            transform.position = leftGuide.transform.position;
+            transform.position = leftGuides[1 - p].transform.position;
         }
         else
         {
-            transform.position = rightGuide.transform.position;
+            transform.position = rightGuides[1 - p].transform.position;
         }
 
         RemoveIdentifier(Identifier.PlayerMoving);

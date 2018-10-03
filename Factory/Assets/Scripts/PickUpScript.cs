@@ -5,6 +5,9 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PickUpScript: MonoBehaviour
 {
+    //Script needs to know which player it is
+    private int playerNumber = 0;
+
     [SerializeField] private GameObject leftHandGuide;
     [SerializeField] private GameObject rightHandGuide;
     private Vector3 leftHandStartPoint;
@@ -29,9 +32,6 @@ public class PickUpScript: MonoBehaviour
     [SerializeField] private Transform headDirection;
     [SerializeField] private AudioClip throwSound;
     private bool throwOn = false;
-    //[SerializeField] private AudioClip toggleThrowSound;
-
-    //private bool toggleThrow = false;
 
     private AudioSource audioSource = new AudioSource();
 
@@ -57,6 +57,10 @@ public class PickUpScript: MonoBehaviour
         {
             Debug.Log("Why is there no object in the scene named GameController? There needs to be an object with a GameControllerScript called" +
                 " 'GameController'. Fix it. NOW!!");
+        }
+        else
+        {
+            playerNumber = gameController.GetPlayerNumber(this.gameObject);
         }
     }
 
@@ -127,7 +131,7 @@ public class PickUpScript: MonoBehaviour
 
     private void Update()
     {
-        if (gameController.GetButton("LeftArm"))
+        if (gameController.GetButton(playerNumber, "LeftArm"))
         {
             if (IsEmpty(Hand.Left))
             {
@@ -140,7 +144,7 @@ public class PickUpScript: MonoBehaviour
             HandleDrop(Hand.Left, movingInLeft);
         }
 
-        if (gameController.GetButton("RightArm"))
+        if (gameController.GetButton(playerNumber, "RightArm"))
         {
             if (IsEmpty(Hand.Right))
             {
@@ -267,12 +271,12 @@ public class PickUpScript: MonoBehaviour
 
         if (item.GetComponent<AttachableScript>() != null)
         {
-            item.GetComponent<AttachableScript>().HandlePickUp(hand);
+            item.GetComponent<AttachableScript>().HandlePickUp(playerNumber, hand);
             pickedUp = true;
         }
         else if (item.GetComponent<MovableScript>() != null)
         {
-            item.GetComponent<MovableScript>().HandlePickUp(hand);
+            item.GetComponent<MovableScript>().HandlePickUp(playerNumber, hand);
             pickedUp = true;
         }
 
@@ -310,12 +314,12 @@ public class PickUpScript: MonoBehaviour
 
         if (attachable != null)
         {
-            attachable.HandleDrop(hand);
+            attachable.HandleDrop(playerNumber, hand);
             handledClick = true;
         }
         else if (movable != null)
         {
-            movable.HandleDrop(hand);
+            movable.HandleDrop(playerNumber, hand);
             handledClick = true;
         }
 

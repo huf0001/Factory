@@ -83,14 +83,14 @@ public class AttachableScript : MovableScript
         }
     }
 
-    public override void HandlePickUp(Hand h)
+    public override void HandlePickUp(int p, Hand h)
     {
         if (HasIdentifier(Identifier.Attached))
         {
             //pass to the object this one is attached to
             try
             {
-                transform.parent.GetComponent<MovableScript>().HandlePickUp(h);
+                transform.parent.GetComponent<MovableScript>().HandlePickUp(p, h);
             }
 
             catch
@@ -100,16 +100,16 @@ public class AttachableScript : MovableScript
                 //so the use of ReAttach() "re-tightens" the attachment so that it isn't "loose"
 
                 AttachedTo.ReAttach(this.gameObject);
-                AttachedTo.gameObject.GetComponent<MovableScript>().HandlePickUp(h);
+                AttachedTo.gameObject.GetComponent<MovableScript>().HandlePickUp(p, h);
             }
         }
         else
         {
-            base.HandlePickUp(h);
+            base.HandlePickUp(p, h);
         }
     }
 
-    public override void HandleDrop(Hand h)
+    public override void HandleDrop(int p, Hand h)
     {
         if (HasIdentifier(Identifier.Attached))
         {
@@ -118,12 +118,12 @@ public class AttachableScript : MovableScript
             transform.parent = AttachedTo.GetGuide(this.gameObject).transform;
             transform.position = AttachedTo.GetGuide(this.gameObject).transform.position;
             RemoveIdentifier(Identifier.PlayerMoving);
-            AttachedTo.gameObject.GetComponent<MovableScript>().HandlePickUp(h);
-            AttachedTo.gameObject.GetComponent<MovableScript>().HandleDrop(h);
+            AttachedTo.gameObject.GetComponent<MovableScript>().HandlePickUp(p, h);
+            AttachedTo.gameObject.GetComponent<MovableScript>().HandleDrop(p, h);
         }
         else
         {
-            base.HandleDrop(h);
+            base.HandleDrop(p, h);
         }
     }
 

@@ -5,22 +5,65 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class GameControllerScript : MonoBehaviour
 {
+    [System.Serializable]
+    public class PlayerAndHands
+    {
+        [SerializeField] private GameObject player;
+        [SerializeField] private GameObject leftHand;
+        [SerializeField] private GameObject rightHand;
+
+        public GameObject Player
+        {
+            get
+            {
+                return player;
+            }
+        }
+
+        public GameObject LeftHand
+        {
+            get
+            {
+                return leftHand;
+            }
+        }
+
+        public GameObject RightHand
+        {
+            get
+            {
+                return rightHand;
+            }
+        }
+    }
+
     [SerializeField] private Gamepad gamepad = Gamepad.MouseAndKeyboard;
     [SerializeField] private BuildZoneScript buildZone = null;
-    [SerializeField] private GameObject playerLeftHand = null;
-    [SerializeField] private GameObject playerRightHand = null;
+    [SerializeField] private PlayerAndHands[] players;
 
     // Use this for initialization
     void Start()
     {
-        if (playerLeftHand == null)
-        {
-            Debug.Log("The game controller is missing the player's left hand");
-        }
+        int playerNumber = 0;
 
-        if (playerRightHand == null)
+        for(int i = 0; i < players.Length; i++)
         {
-            Debug.Log("The game controller is missing the player's right hand");
+            playerNumber = i + 1;
+
+            if (players[i].Player == null)
+            {
+                Debug.Log("The game controller is missing player " + playerNumber);
+            }
+
+            if (players[i].LeftHand == null)
+            {
+                Debug.Log("The game controller is missing player " + playerNumber + "'s left hand");
+            }
+
+            if (players[i].RightHand == null)
+            {
+                Debug.Log("The game controller is missing player " + playerNumber + "'s right hand");
+            }
         }
 
         if (buildZone == null)
@@ -29,20 +72,16 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
-    public GameObject LeftHand
+    public GameObject LeftHand(int player)
     {
-        get
-        {
-            return playerLeftHand;
-        }
+        return players[player - 1].LeftHand;
     }
 
-    public GameObject RightHand
+
+    public GameObject RightHand(int player)
     {
-        get
-        {
-            return playerRightHand;
-        }
+
+        return players[player - 1].RightHand;
     }
 
     public BuildZoneScript BuildZone
@@ -61,27 +100,53 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
+    public int PlayerCount
+    {
+        get
+        {
+            return players.Length;
+        }
+    }
+
+    public int GetPlayerNumber(GameObject player)
+    {
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i].Player == player)
+            {
+                return i + 1;
+            }
+        }
+
+        return 0;
+    }
+
     //Checks if the player clicked the specified button
-    public bool GetButtonDown(string s)
+    public bool GetButtonDown(int p, string s)
     {
         bool result = false;
+        string button = "";
 
         switch (s)
         {
             //check which action the player wants
-            case "ToggleThrow":
             case "Jump":
-            case "ToggleHorizontal":
-            case "ChangeCamera":
-                result = CrossPlatformInputManager.GetButtonDown(GetGamepadPrefix() + s);
+                button = "P" + p + GetGamepadPrefix() + s;
+                result = CrossPlatformInputManager.GetButtonDown(button);
+
+                if (result)
+                {
+                    Debug.Log("Getting jump input. Player: " + p + "; String: " + s + "; Input name: " + button + ".");
+                }
+
                 break;
             case "LeftArm":
             case "RightArm":
                 if (gamepad == Gamepad.MouseAndKeyboard)
                 {
-                    result = CrossPlatformInputManager.GetButtonDown(GetGamepadPrefix() + s);
+                    result = CrossPlatformInputManager.GetButtonDown("P" + p + GetGamepadPrefix() + s);
                 }
-                else if (GetAxis(s) != 0)
+                else if (GetAxis(p, s) != 0)
                 {
                     result = true;
                 }
@@ -93,26 +158,23 @@ public class GameControllerScript : MonoBehaviour
     }
 
     //Checks if the player is holding the specified button down
-    public bool GetButton(string s)
+    public bool GetButton(int p, string s)
     {
         bool result = false;
 
         switch (s)
         {
             //check which action the player wants
-            case "ToggleThrow":
             case "Jump":
-            case "ToggleHorizontal":
-            case "ChangeCamera":
-                result = CrossPlatformInputManager.GetButton(GetGamepadPrefix() + s);
+                result = CrossPlatformInputManager.GetButton("P" + p + GetGamepadPrefix() + s);
                 break;
             case "LeftArm":
             case "RightArm":
                 if (gamepad == Gamepad.MouseAndKeyboard)
                 {
-                    result = CrossPlatformInputManager.GetButton(GetGamepadPrefix() + s);
+                    result = CrossPlatformInputManager.GetButton("P" + p + GetGamepadPrefix() + s);
                 }
-                else if (GetAxis(s) != 0)
+                else if (GetAxis(p, s) != 0)
                 {
                     result = true;
                 }
@@ -123,7 +185,7 @@ public class GameControllerScript : MonoBehaviour
         return result;
     }
 
-    public float GetAxis(string s)
+    public float GetAxis(int p, string s)
     {
         float result = 0f;
 
@@ -133,10 +195,10 @@ public class GameControllerScript : MonoBehaviour
             case "MoveHorizontal":
             case "MoveVertical":
             case "LookHorizontal":
-            case "LookVertical":
+            //case "LookVertical":
             case "LeftArm":
             case "RightArm":
-                result = CrossPlatformInputManager.GetAxis(GetGamepadPrefix() + s);
+                result = CrossPlatformInputManager.GetAxis("P" + p + GetGamepadPrefix() + s);
                 break;
         }
 
