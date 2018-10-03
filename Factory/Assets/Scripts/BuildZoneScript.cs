@@ -48,26 +48,6 @@ public class BuildZoneScript : MonoBehaviour
         }
     }
 
-    public void RemoveObject(IdentifiableScript ids)
-    {
-        GameObject item = ids.gameObject;
-
-        if (ids.HasIdentifier(Identifier.PlayerMoving) && ids.HasIdentifier(Identifier.InBuildZone))
-        {
-            foreach (BuildSchemaScript b in schemas)
-            {
-                if (b.BelongsToSchema(ids))
-                {
-                    ids.RemoveIdentifier(Identifier.InBuildZone);
-                    b.RemoveObject(item);
-
-                    return;
-                }
-            }
-        }
-        
-    }
-
     public void PlayLoadedSound()
     {
         PlaySoundEffect(loadedSound);

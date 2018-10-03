@@ -5,31 +5,33 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PickUpScript: MonoBehaviour
 {
+    //Script needs to know which player it is
+    private int playerNumber = 0;
+
     [SerializeField] private GameObject leftHandGuide;
     [SerializeField] private GameObject rightHandGuide;
-    [SerializeField] private Camera myCamera;
-    [SerializeField] private bool throwOn = false;
-
+    private Vector3 leftHandStartPoint;
+    private Vector3 rightHandStartPoint;
+    
     private IdentifiableScript leftIDs;
     private IdentifiableScript rightIDs;
 
     private GameObject movingInLeft = null;
     private GameObject movingInRight = null;
 
-    private bool leftHandInput = false;
-    private bool rightHandInput = false;
-    private bool toggleThrow = false;
-
-    [SerializeField] private float throwForce = 5f;
-    [SerializeField] private Vector3 throwOffset;
-    [SerializeField] private Transform headDirection;
+    //private bool leftHandInput = false;
+    //private bool rightHandInput = false;
 
     private GameControllerScript gameController = null;
 
     [SerializeField] private AudioClip pickUpSound;
-    [SerializeField] private AudioClip throwSound;
     [SerializeField] private AudioClip dropSound;
-    [SerializeField] private AudioClip toggleThrowSound;
+
+    [SerializeField] private float throwForce = 5f;
+    [SerializeField] private Vector3 throwOffset;
+    [SerializeField] private Transform headDirection;
+    [SerializeField] private AudioClip throwSound;
+    private bool throwOn = false;
 
     private AudioSource audioSource = new AudioSource();
 
@@ -38,11 +40,16 @@ public class PickUpScript: MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
+        leftHandStartPoint = leftHandGuide.transform.localPosition;
+        rightHandStartPoint = rightHandGuide.transform.localPosition;
+
         leftIDs = leftHandGuide.GetComponent<IdentifiableScript>();
         rightIDs = rightHandGuide.GetComponent<IdentifiableScript>();
 
         leftIDs.AddIdentifier(Identifier.HandEmpty);
+        leftIDs.AddIdentifier(Identifier.Hand);
         rightIDs.AddIdentifier(Identifier.HandEmpty);
+        rightIDs.AddIdentifier(Identifier.Hand);
 
         gameController = GameObject.Find("GameController").GetComponent<GameControllerScript>();
 
@@ -50,6 +57,23 @@ public class PickUpScript: MonoBehaviour
         {
             Debug.Log("Why is there no object in the scene named GameController? There needs to be an object with a GameControllerScript called" +
                 " 'GameController'. Fix it. NOW!!");
+        }
+        else
+        {
+            playerNumber = gameController.GetPlayerNumber(this.gameObject);
+        }
+    }
+
+    public bool ThrowOn
+    {
+        get
+        {
+            return throwOn;
+        }
+
+        set
+        {
+            throwOn = value;
         }
     }
 
@@ -107,27 +131,35 @@ public class PickUpScript: MonoBehaviour
 
     private void Update()
     {
-        if (leftHandInput)
+        if (gameController.GetButton(playerNumber, "LeftArm"))
         {
-            HandleHandInput(Hand.Left);            
-            leftHandInput = false;
+            if (IsEmpty(Hand.Left))
+            {
+                //HandlePickUp(Hand.Left);
+                DetectObjectsForPickUp(Hand.Left);
+            }
         }
-        else
+        else if (IsHolding(Hand.Left))
         {
-            leftHandInput = gameController.GetButtonDown("LeftHand");
-        }
-
-        if (rightHandInput)
-        {
-            HandleHandInput(Hand.Right);
-            rightHandInput = false;
-        }
-        else
-        {
-            rightHandInput = gameController.GetButtonDown("RightHand");
+            HandleDrop(Hand.Left, movingInLeft);
         }
 
-        if (toggleThrow)
+        if (gameController.GetButton(playerNumber, "RightArm"))
+        {
+            if (IsEmpty(Hand.Right))
+            {
+                //HandlePickUp(Hand.Right);
+                DetectObjectsForPickUp(Hand.Right);
+            }
+        }
+        else if (IsHolding(Hand.Right))
+        {
+            HandleDrop(Hand.Right, movingInRight);
+        }
+
+        UpdateHandGuidePosition();
+
+        /*if (toggleThrow)
         {
             throwOn = !throwOn;
             toggleThrow = false;
@@ -136,111 +168,175 @@ public class PickUpScript: MonoBehaviour
         else
         {
             toggleThrow = gameController.GetButtonDown("ToggleThrow");
-        }
+        }*/
     }
 
-    private void HandleHandInput(Hand hand)
+    private void UpdateHandGuidePosition()
     {
-        if (IsEmpty(hand))
+        if (leftHandGuide.transform.localPosition != leftHandStartPoint)
         {
-            HandlePickUp(hand);
+            leftHandGuide.transform.localPosition = leftHandStartPoint;
         }
-        else if (IsHolding(hand))
+
+        if (rightHandGuide.transform.localPosition != rightHandStartPoint)
         {
-            HandleDrop(hand);
+            rightHandGuide.transform.localPosition = rightHandStartPoint;
         }
     }
 
-    private void HandlePickUp(Hand hand)
+    private Vector3 GetHandColliderPosition(Hand hand)
     {
-        Ray ray = myCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
+        if (hand == Hand.Left)
         {
-            GameObject item = hit.transform.gameObject;
-            bool handledClick = false;
+            return leftHandGuide.transform.position;
+        }
+        else
+        {
+            return rightHandGuide.transform.position;
+        }
+    }
 
-            if (item.GetComponent<AttachableScript>() != null)
-            {
-                item.GetComponent<AttachableScript>().HandlePickUp(hand);
-                handledClick = true;
-            }
-            else if (item.GetComponent<MovableScript>() != null)
-            {
-                item.GetComponent<MovableScript>().HandlePickUp(hand);
-                handledClick = true;
-            }
+    private float GetHandColliderRadius(Hand hand)
+    {
+        if (hand == Hand.Left)
+        {
+            return leftHandGuide.GetComponent<SphereCollider>().radius;
+        }
+        else
+        {
+            return rightHandGuide.GetComponent<SphereCollider>().radius;
+        }
+    }
 
-            if (handledClick)
-            {
-                PlaySoundEffect(pickUpSound);
+    private void DetectObjectsForPickUp(Hand hand)
+    {
+        Vector3 center;
+        float radius = 0f;
 
-                if (hand == Hand.Left)
+        center = GetHandColliderPosition(hand);
+        radius = GetHandColliderRadius(hand);
+
+        Collider[] colliders = Physics.OverlapSphere(center, radius);
+
+        if (colliders.Length > 0)
+        {
+            GetMovableObjectsForPickUp(hand, colliders);
+        }
+    }
+
+    private void GetMovableObjectsForPickUp(Hand hand, Collider[] colliders)
+    {
+        List<GameObject> movableItems = new List<GameObject>();
+
+        foreach (Collider c in colliders)
+        {
+            if (c.gameObject.GetComponent<MovableScript>() != null)
+            {
+                if (!c.gameObject.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.Built))
                 {
-                    movingInLeft = item;
+                    movableItems.Add(c.gameObject);
                 }
-                else
-                {
-                    movingInRight = item;
-                }
+            }
+        }
 
-                ChangeIDsFromPickUp(hand);
+        if (movableItems.Count > 0)
+        {
+            SelectObjectForPickUp(hand, movableItems);
+        }
+    }
+
+    private void SelectObjectForPickUp(Hand hand, List<GameObject> items)
+    {
+        GameObject item = null;
+        float distance = GetHandColliderRadius(hand) + 1f;
+        float tempDistance = 0f;
+
+        foreach (GameObject i in items)
+        {
+            tempDistance = Vector3.Distance(i.transform.position, GetHandColliderPosition(hand));
+
+            if (tempDistance < distance)
+            {
+                distance = tempDistance;
+                item = i;
+            }
+        }
+        
+        if (item != null)
+        {
+            HandlePickUp(hand, item);
+        }
+    }
+
+    private void HandlePickUp(Hand hand, GameObject item)
+    {
+        bool pickedUp = false;
+
+        if (item.GetComponent<AttachableScript>() != null)
+        {
+            item.GetComponent<AttachableScript>().HandlePickUp(playerNumber, hand);
+            pickedUp = true;
+        }
+        else if (item.GetComponent<MovableScript>() != null)
+        {
+            item.GetComponent<MovableScript>().HandlePickUp(playerNumber, hand);
+            pickedUp = true;
+        }
+
+        if (pickedUp)
+        {
+            PlaySoundEffect(pickUpSound);
+            ChangeIDsFromPickUp(hand);
+
+            if (hand == Hand.Left)
+            {
+                movingInLeft = item;
+            }
+            else
+            {
+                movingInRight = item;
             }
         }
     }
 
-    private void HandleDrop(Hand hand)
+    private void HandleDrop(Hand hand, GameObject movingInHand)
     {
         bool handledClick = false;
         AttachableScript attachable = null;
         MovableScript movable = null;
         GameObject item = null;
 
-        if (hand == Hand.Left)
+        if (movingInHand.GetComponent<AttachableScript>() != null)
         {
-            if (movingInLeft.GetComponent<AttachableScript>() != null)
-            {
-                attachable = movingInLeft.GetComponent<AttachableScript>();
-            }
-            else if (movingInLeft.GetComponent<MovableScript>() != null)
-            {
-                movable = movingInLeft.GetComponent<MovableScript>();
-            }
+            attachable = movingInHand.GetComponent<AttachableScript>();
         }
-        else
+        else if (movingInHand.GetComponent<MovableScript>() != null)
         {
-            if (movingInRight.GetComponent<AttachableScript>() != null)
-            {
-                attachable = movingInRight.GetComponent<AttachableScript>();
-            }
-            else if (movingInRight.GetComponent<MovableScript>() != null)
-            {
-                movable = movingInRight.GetComponent<MovableScript>();
-            }
+            movable = movingInHand.GetComponent<MovableScript>();
         }
 
         if (attachable != null)
         {
-            attachable.HandleDrop(hand);
+            attachable.HandleDrop(playerNumber, hand);
             handledClick = true;
         }
         else if (movable != null)
         {
-            movable.HandleDrop(hand);
+            movable.HandleDrop(playerNumber, hand);
             handledClick = true;
         }
 
         if (handledClick)
         {
+            item = movingInHand;
+            ChangeIDsFromDrop(hand);
+
             if (hand == Hand.Left)
             {
-                item = movingInLeft;
                 movingInLeft = null;
             }
             else
             {
-                item = movingInRight;
                 movingInRight = null;
             }
 
@@ -253,8 +349,6 @@ public class PickUpScript: MonoBehaviour
             {
                 PlaySoundEffect(dropSound);
             }
-
-            ChangeIDsFromDrop(hand);
         }
     }
 
@@ -288,22 +382,4 @@ public class PickUpScript: MonoBehaviour
         audioSource.clip = sound;
         audioSource.Play();
     }
-
-    /*private void PlayDropSound()
-    {
-        audioSource.clip = dropSound;
-        audioSource.Play();
-    }
-
-    private void PlayThrowSound()
-    {
-        audioSource.clip = throwSound;
-        audioSource.Play();
-    }
-
-    private void PlayToggleThrowSound()
-    {
-        audioSource.clip = toggleThrowSound;
-        audioSource.Play();
-    }*/
 }

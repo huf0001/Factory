@@ -124,6 +124,11 @@ public class BuildSchemaScript : MonoBehaviour
             {
                 if (itemIds.HasIdentifier(orp.Component))
                 {
+                    if (item.GetComponent<MovableScript>() != null)
+                    {
+                        item.GetComponent<MovableScript>().Schema = this;
+                    }
+
                     pendingComponents.Remove(orp.Component);
                     loadedComponents.Add(orp.Component, item);
                     itemIds.RemoveIdentifier(Identifier.HasNotBeenLoadedInBuildZoneYet);
@@ -158,9 +163,9 @@ public class BuildSchemaScript : MonoBehaviour
 
         do
         {
-            distance = Vector3.Distance(item.transform.position, buildPoint.position);
             item.transform.position = Vector3.MoveTowards(item.transform.position, buildPoint.transform.position, increment);
-        } while (Vector3.Distance(item.transform.position, buildPoint.position) > distanceLimit);
+            distance = Vector3.Distance(item.transform.position, buildPoint.position);
+        } while (distance > distanceLimit);
     }
 
     private void LoadAttachedObject(GameObject item)
@@ -207,6 +212,7 @@ public class BuildSchemaScript : MonoBehaviour
             {
                 pendingComponents.Add(p.Key);
                 loadedComponents.Remove(p.Key);
+                p.Value.GetComponent<IdentifiableScript>().RemoveIdentifier(Identifier.InBuildZone);
 
                 if (item.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.Attached))
                 {
@@ -245,6 +251,7 @@ public class BuildSchemaScript : MonoBehaviour
             {
                 pendingComponents.Add(p.Key);
                 loadedComponents.Remove(p.Key);
+                p.Value.GetComponent<IdentifiableScript>().RemoveIdentifier(Identifier.InBuildZone);
 
                 if (item.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.AttachBase))
                 {
@@ -274,6 +281,7 @@ public class BuildSchemaScript : MonoBehaviour
                 {
                     pendingComponents.Add(p.Key);
                     loadedComponents.Remove(p.Key);
+                    p.Value.GetComponent<IdentifiableScript>().RemoveIdentifier(Identifier.InBuildZone);
 
                     return;
                 }
@@ -303,6 +311,7 @@ public class BuildSchemaScript : MonoBehaviour
                         if (baseAttacher.CheckCanAttach(p.Value.GetComponent<IdentifiableScript>()))
                         {
                             baseAttacher.Attach(p.Value);
+                            p.Value.GetComponent<IdentifiableScript>().AddIdentifier(Identifier.Built);
                         }
                     }
 

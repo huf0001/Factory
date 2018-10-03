@@ -39,15 +39,15 @@ public class GamepadLook
         return result;
     }
 
-    public void LookRotation(Transform character, Transform camera)
+    public void LookRotation(int player, Transform character, Transform camera)
     {
         if (gameController == null)
         {
             gameController = GetGameController();
         }
 
-        float yRot = gameController.GetAxis("LookHorizontal") * XSensitivity;
-        float xRot = gameController.GetAxis("LookVertical") * YSensitivity;
+        float yRot = gameController.GetAxis(player, "LookHorizontal") * XSensitivity;
+        float xRot = gameController.GetAxis(player, "LookVertical") * YSensitivity;
 
         m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
         m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
