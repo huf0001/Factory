@@ -87,11 +87,11 @@ public class MovableScript : IdentifiableScript
 
         if (h == Hand.Left)
         {
-            transform.position = leftGuides[1 - p].transform.position;
+            transform.position = leftGuides[p - 1].transform.position;
         }
         else
         {
-            transform.position = rightGuides[1 - p].transform.position;
+            transform.position = rightGuides[p - 1].transform.position;
         }
 
         RemoveIdentifier(Identifier.PlayerMoving);

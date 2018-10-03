@@ -134,6 +134,7 @@ public class GameControllerScript : MonoBehaviour
                 break;
             case "LeftArm":
             case "RightArm":
+            case "LookHorizontal":
                 if (gamepad == Gamepad.MouseAndKeyboard)
                 {
                     result = CrossPlatformInputManager.GetButtonDown("P" + p + GetGamepadPrefix() + s);
@@ -162,6 +163,7 @@ public class GameControllerScript : MonoBehaviour
                 break;
             case "LeftArm":
             case "RightArm":
+            case "LookHorizontal":
                 if (gamepad == Gamepad.MouseAndKeyboard)
                 {
                     result = CrossPlatformInputManager.GetButton("P" + p + GetGamepadPrefix() + s);
@@ -187,7 +189,6 @@ public class GameControllerScript : MonoBehaviour
             case "MoveHorizontal":
             case "MoveVertical":
             case "LookHorizontal":
-            //case "LookVertical":
             case "LeftArm":
             case "RightArm":
                 result = CrossPlatformInputManager.GetAxis("P" + p + GetGamepadPrefix() + s);

@@ -81,10 +81,6 @@ public class ModalRobotPlayerController : MonoBehaviour
         if (!jump)
         {
             jump = gameController.GetButtonDown(playerNumber, "Jump");
-            if (jump)
-            {
-                Debug.Log("Input for player " + playerNumber + " jumping is true");
-            }
         }
 
         if (!previouslyGrounded && characterController.isGrounded)
