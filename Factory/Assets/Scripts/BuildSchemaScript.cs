@@ -158,9 +158,9 @@ public class BuildSchemaScript : MonoBehaviour
 
         do
         {
-            distance = Vector3.Distance(item.transform.position, buildPoint.position);
             item.transform.position = Vector3.MoveTowards(item.transform.position, buildPoint.transform.position, increment);
-        } while (Vector3.Distance(item.transform.position, buildPoint.position) > distanceLimit);
+            distance = Vector3.Distance(item.transform.position, buildPoint.position);
+        } while (distance > distanceLimit);
     }
 
     private void LoadAttachedObject(GameObject item)

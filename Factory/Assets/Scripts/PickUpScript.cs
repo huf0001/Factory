@@ -19,8 +19,8 @@ public class PickUpScript: MonoBehaviour
     private GameObject movingInLeft = null;
     private GameObject movingInRight = null;
 
-    private bool leftHandInput = false;
-    private bool rightHandInput = false;
+    //private bool leftHandInput = false;
+    //private bool rightHandInput = false;
 
     private GameControllerScript gameController = null;
 

@@ -20,10 +20,6 @@ public class CameraController : MonoBehaviour
         {
             Debug.Log("CameraController needs the player objects");
         }
-        else if (players.Length == 2)
-        {
-            //boundaryZAxis = Vector3.Distance(players[0].position, players[1].position);
-        }
         else if (players.Length > 2)
         {
             Debug.Log("Why are there more than two players attached to the Camera Controller?");
@@ -71,8 +67,6 @@ public class CameraController : MonoBehaviour
             {
                 heightMultiplier = 1;
             }
-
-            Debug.Log("xRatio: " + xRatio + ". zRatio: " + zRatio + ". heightMultiplier: " + heightMultiplier + ".");
 
             gameCamera.position = new Vector3(midpoint.x, startHeight * heightMultiplier, midpoint.z);
         }

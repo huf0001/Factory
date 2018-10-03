@@ -125,20 +125,12 @@ public class GameControllerScript : MonoBehaviour
     public bool GetButtonDown(int p, string s)
     {
         bool result = false;
-        string button = "";
 
         switch (s)
         {
             //check which action the player wants
             case "Jump":
-                button = "P" + p + GetGamepadPrefix() + s;
-                result = CrossPlatformInputManager.GetButtonDown(button);
-
-                if (result)
-                {
-                    Debug.Log("Getting jump input. Player: " + p + "; String: " + s + "; Input name: " + button + ".");
-                }
-
+                result = CrossPlatformInputManager.GetButtonDown("P" + p + GetGamepadPrefix() + s);
                 break;
             case "LeftArm":
             case "RightArm":

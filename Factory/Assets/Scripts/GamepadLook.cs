@@ -5,8 +5,6 @@ using UnityStandardAssets.CrossPlatformInput;
 [Serializable]
 public class GamepadLook
 {
-    private int playerNumber = 0;
-
     public float XSensitivity = 2f;
     public float YSensitivity = 2f;
     public bool clampVerticalRotation = true;
