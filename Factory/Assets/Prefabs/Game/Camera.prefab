@@ -9,19 +9,19 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1764145983910954}
+  m_RootGameObject: {fileID: 1242967411116418}
   m_IsPrefabAsset: 1
---- !u!1 &1764145983910954
+--- !u!1 &1242967411116418
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4225456221586840}
-  - component: {fileID: 20714392995414906}
-  - component: {fileID: 114996076106110236}
-  - component: {fileID: 81067312116350976}
+  - component: {fileID: 4940093557389330}
+  - component: {fileID: 20148586767061424}
+  - component: {fileID: 114919063480032982}
+  - component: {fileID: 81692376041052052}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -29,12 +29,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4225456221586840
+--- !u!4 &4940093557389330
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1764145983910954}
+  m_GameObject: {fileID: 1242967411116418}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -24, y: 7, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -42,12 +42,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!20 &20714392995414906
+--- !u!20 &20148586767061424
 Camera:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1764145983910954}
+  m_GameObject: {fileID: 1242967411116418}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
@@ -82,19 +82,19 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &81067312116350976
+--- !u!81 &81692376041052052
 AudioListener:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1764145983910954}
+  m_GameObject: {fileID: 1242967411116418}
   m_Enabled: 1
---- !u!114 &114996076106110236
+--- !u!114 &114919063480032982
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1764145983910954}
+  m_GameObject: {fileID: 1242967411116418}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69586cc4c763b89429be697f3a3f5bbc, type: 3}

@@ -11,7 +11,6 @@ public class GameControllerScript : MonoBehaviour
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject leftHand;
         [SerializeField] private GameObject rightHand;
-        //[SerializeField] private BuildZoneScript buildZone;
 
         public GameObject Player
         {
@@ -36,14 +35,6 @@ public class GameControllerScript : MonoBehaviour
                 return rightHand;
             }
         }
-
-        /*public BuildZoneScript BuildZone
-        {
-            get
-            {
-                return buildZone;
-            }
-        }*/
     }
 
     [SerializeField] private Gamepad gamepad = Gamepad.MouseAndKeyboard;
@@ -91,11 +82,6 @@ public class GameControllerScript : MonoBehaviour
 
         return players[player - 1].RightHand;
     }
-
-    /*public BuildZoneScript BuildZone(int player)
-    {
-        return players[player - 1].BuildZone;
-    }*/
 
     public Gamepad Gamepad
     {

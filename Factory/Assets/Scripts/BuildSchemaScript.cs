@@ -312,12 +312,10 @@ public class BuildSchemaScript : MonoBehaviour
                         {
                             baseAttacher.Attach(p.Value);
                             p.Value.GetComponent<IdentifiableScript>().AddIdentifier(Identifier.Built);
-                            //Debug.Log(p.Value + " HasIdentifier(Identifier.Built) returns " + p.Value.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.Built));
                         }
                     }
 
                     baseIds.AddIdentifier(Identifier.Built);
-                    //Debug.Log(baseIds.gameObject + " HasIdentifier(Identifier.Built) returns " + baseIds.HasIdentifier(Identifier.Built));
                     this.transform.parent.gameObject.GetComponent<BuildZoneScript>().PlayBuiltSound();
                 }
                 else
