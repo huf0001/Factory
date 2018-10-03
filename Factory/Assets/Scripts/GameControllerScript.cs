@@ -11,6 +11,7 @@ public class GameControllerScript : MonoBehaviour
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject leftHand;
         [SerializeField] private GameObject rightHand;
+        //[SerializeField] private BuildZoneScript buildZone;
 
         public GameObject Player
         {
@@ -35,10 +36,17 @@ public class GameControllerScript : MonoBehaviour
                 return rightHand;
             }
         }
+
+        /*public BuildZoneScript BuildZone
+        {
+            get
+            {
+                return buildZone;
+            }
+        }*/
     }
 
     [SerializeField] private Gamepad gamepad = Gamepad.MouseAndKeyboard;
-    [SerializeField] private BuildZoneScript buildZone = null;
     [SerializeField] private PlayerAndHands[] players;
 
     // Use this for initialization
@@ -64,11 +72,11 @@ public class GameControllerScript : MonoBehaviour
             {
                 Debug.Log("The game controller is missing player " + playerNumber + "'s right hand");
             }
-        }
 
-        if (buildZone == null)
-        {
-            Debug.Log("The game controller is missing the build zone");
+            /*if (players[i].BuildZone == null)
+            {
+                Debug.Log("The game controller is missing player " + playerNumber + "'s build zone");
+            }*/
         }
     }
 
@@ -84,13 +92,10 @@ public class GameControllerScript : MonoBehaviour
         return players[player - 1].RightHand;
     }
 
-    public BuildZoneScript BuildZone
+    /*public BuildZoneScript BuildZone(int player)
     {
-        get
-        {
-            return buildZone;
-        }
-    }
+        return players[player - 1].BuildZone;
+    }*/
 
     public Gamepad Gamepad
     {

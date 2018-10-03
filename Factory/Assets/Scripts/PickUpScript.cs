@@ -232,7 +232,10 @@ public class PickUpScript: MonoBehaviour
         {
             if (c.gameObject.GetComponent<MovableScript>() != null)
             {
-                movableItems.Add(c.gameObject);
+                if (!c.gameObject.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.Built))
+                {
+                    movableItems.Add(c.gameObject);
+                }
             }
         }
 

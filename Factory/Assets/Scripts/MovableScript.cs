@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovableScript : IdentifiableScript
 {
     private GameControllerScript gameController = null;
-    private BuildZoneScript buildZone = null;
+    private BuildSchemaScript schema = null;
     private List<GameObject> tempLeftParents = new List<GameObject>();
     private List<GameObject> tempRightParents = new List<GameObject>();
     private List<Transform> leftGuides = new List<Transform>();
@@ -40,11 +40,20 @@ public class MovableScript : IdentifiableScript
 
                 hands.Add(tempLeftParents[i].GetComponentInParent<PickUpScript>());
             }
+        }
+    }
 
-            buildZone = gameController.BuildZone;
+    public BuildSchemaScript Schema
+    {
+        get
+        {
+            return schema;
         }
 
-        
+        set
+        {
+            schema = value;
+        }
     }
 
     public virtual void HandlePickUp(int p, Hand h)
@@ -75,8 +84,12 @@ public class MovableScript : IdentifiableScript
         {
             this.gameObject.layer = 2;
         }
-        
-        buildZone.RemoveObject(this);
+
+        if (schema != null)
+        {
+            schema.RemoveObject(this.gameObject);
+            schema = null;
+        }
     }
 
     public virtual void HandleDrop(int p, Hand h)

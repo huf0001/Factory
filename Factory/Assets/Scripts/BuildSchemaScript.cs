@@ -124,6 +124,11 @@ public class BuildSchemaScript : MonoBehaviour
             {
                 if (itemIds.HasIdentifier(orp.Component))
                 {
+                    if (item.GetComponent<MovableScript>() != null)
+                    {
+                        item.GetComponent<MovableScript>().Schema = this;
+                    }
+
                     pendingComponents.Remove(orp.Component);
                     loadedComponents.Add(orp.Component, item);
                     itemIds.RemoveIdentifier(Identifier.HasNotBeenLoadedInBuildZoneYet);
@@ -207,6 +212,7 @@ public class BuildSchemaScript : MonoBehaviour
             {
                 pendingComponents.Add(p.Key);
                 loadedComponents.Remove(p.Key);
+                p.Value.GetComponent<IdentifiableScript>().RemoveIdentifier(Identifier.InBuildZone);
 
                 if (item.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.Attached))
                 {
@@ -245,6 +251,7 @@ public class BuildSchemaScript : MonoBehaviour
             {
                 pendingComponents.Add(p.Key);
                 loadedComponents.Remove(p.Key);
+                p.Value.GetComponent<IdentifiableScript>().RemoveIdentifier(Identifier.InBuildZone);
 
                 if (item.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.AttachBase))
                 {
@@ -274,6 +281,7 @@ public class BuildSchemaScript : MonoBehaviour
                 {
                     pendingComponents.Add(p.Key);
                     loadedComponents.Remove(p.Key);
+                    p.Value.GetComponent<IdentifiableScript>().RemoveIdentifier(Identifier.InBuildZone);
 
                     return;
                 }
@@ -303,10 +311,13 @@ public class BuildSchemaScript : MonoBehaviour
                         if (baseAttacher.CheckCanAttach(p.Value.GetComponent<IdentifiableScript>()))
                         {
                             baseAttacher.Attach(p.Value);
+                            p.Value.GetComponent<IdentifiableScript>().AddIdentifier(Identifier.Built);
+                            //Debug.Log(p.Value + " HasIdentifier(Identifier.Built) returns " + p.Value.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.Built));
                         }
                     }
 
                     baseIds.AddIdentifier(Identifier.Built);
+                    //Debug.Log(baseIds.gameObject + " HasIdentifier(Identifier.Built) returns " + baseIds.HasIdentifier(Identifier.Built));
                     this.transform.parent.gameObject.GetComponent<BuildZoneScript>().PlayBuiltSound();
                 }
                 else
