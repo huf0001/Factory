@@ -272,12 +272,12 @@ public class PickUpScript: MonoBehaviour
     {
         bool pickedUp = false;
 
-        if (item.GetComponent<AttachableScript>() != null)
+        /*if (item.GetComponent<AttachableScript>() != null)
         {
             item.GetComponent<AttachableScript>().HandlePickUp(playerNumber, hand);
             pickedUp = true;
         }
-        else if (item.GetComponent<MovableScript>() != null)
+        else*/ if (item.GetComponent<MovableScript>() != null)
         {
             item.GetComponent<MovableScript>().HandlePickUp(playerNumber, hand);
             pickedUp = true;
@@ -302,25 +302,25 @@ public class PickUpScript: MonoBehaviour
     private void HandleDrop(Hand hand, GameObject movingInHand)
     {
         bool handledClick = false;
-        AttachableScript attachable = null;
+        //AttachableScript attachable = null;
         MovableScript movable = null;
         GameObject item = null;
 
-        if (movingInHand.GetComponent<AttachableScript>() != null)
+        /*if (movingInHand.GetComponent<AttachableScript>() != null)
         {
             attachable = movingInHand.GetComponent<AttachableScript>();
         }
-        else if (movingInHand.GetComponent<MovableScript>() != null)
+        else*/ if (movingInHand.GetComponent<MovableScript>() != null)
         {
             movable = movingInHand.GetComponent<MovableScript>();
         }
 
-        if (attachable != null)
+        /*if (attachable != null)
         {
             attachable.HandleDrop(playerNumber, hand);
             handledClick = true;
         }
-        else if (movable != null)
+        else*/ if (movable != null)
         {
             movable.HandleDrop(playerNumber, hand);
             handledClick = true;

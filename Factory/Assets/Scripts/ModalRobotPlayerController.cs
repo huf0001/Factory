@@ -67,10 +67,10 @@ public class ModalRobotPlayerController : MonoBehaviour
         {
             playerNumber = gameController.GetPlayerNumber(this.gameObject);
 
-            if (gameController.Gamepad != Gamepad.MouseAndKeyboard)
-            {
+            //if (gameController.Gamepad != Gamepad.MouseAndKeyboard)
+            //{
                 walkSensitivity = walkSensitivity * consoleWalkSensitivityMultiplier;
-            }
+            //}
         }
     }
 

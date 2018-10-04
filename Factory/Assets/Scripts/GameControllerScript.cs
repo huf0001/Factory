@@ -37,7 +37,7 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
-    [SerializeField] private Gamepad gamepad = Gamepad.MouseAndKeyboard;
+    [SerializeField] private Gamepad gamepad = Gamepad.XboxController;
     [SerializeField] private PlayerAndHands[] players;
 
     // Use this for initialization
@@ -126,11 +126,11 @@ public class GameControllerScript : MonoBehaviour
             case "LeftArm":
             case "RightArm":
             case "LookHorizontal":
-                if (gamepad == Gamepad.MouseAndKeyboard)
+                /*if (gamepad == Gamepad.MouseAndKeyboard)
                 {
                     result = CrossPlatformInputManager.GetButtonDown("P" + p + GetGamepadPrefix() + s);
                 }
-                else if (GetAxis(p, s) != 0)
+                else*/ if (GetAxis(p, s) != 0)
                 {
                     result = true;
                 }
@@ -155,11 +155,11 @@ public class GameControllerScript : MonoBehaviour
             case "LeftArm":
             case "RightArm":
             case "LookHorizontal":
-                if (gamepad == Gamepad.MouseAndKeyboard)
+                /*if (gamepad == Gamepad.MouseAndKeyboard)
                 {
                     result = CrossPlatformInputManager.GetButton("P" + p + GetGamepadPrefix() + s);
                 }
-                else if (GetAxis(p, s) != 0)
+                else*/ if (GetAxis(p, s) != 0)
                 {
                     result = true;
                 }

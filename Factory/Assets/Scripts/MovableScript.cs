@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MovableScript : IdentifiableScript
 {
+    [SerializeField] private Identifier uniqueID = Identifier.Attachable;
+    //[SerializeField] private Identifier compatibleBase = Identifier.AttachBase;
+    //private AttachScript attachedTo;
+
     private GameControllerScript gameController = null;
     private BuildSchemaScript schema = null;
     private List<GameObject> tempLeftParents = new List<GameObject>();
@@ -21,6 +25,8 @@ public class MovableScript : IdentifiableScript
 
     protected virtual void HandleStart()
     {
+        //AddIdentifier(Identifier.Attachable);
+        AddIdentifier(uniqueID);
         int playerCount = 0;
         body = this.gameObject.GetComponent<Rigidbody>();
         body.useGravity = true;
@@ -76,14 +82,14 @@ public class MovableScript : IdentifiableScript
 
         AddIdentifier(Identifier.PlayerMoving);
 
-        if (HasIdentifier(Identifier.AttachBase))
-        {
-            this.gameObject.GetComponent<AttachScript>().LayerChange(2);
-        }
-        else
-        {
+        //if (HasIdentifier(Identifier.AttachBase))
+        //{
+        //    this.gameObject.GetComponent<AttachScript>().LayerChange(2);
+        //}
+        //else
+        //{
             this.gameObject.layer = 2;
-        }
+        //}
 
         if (schema != null)
         {
@@ -110,14 +116,14 @@ public class MovableScript : IdentifiableScript
         RemoveIdentifier(Identifier.PlayerMoving);
         AddIdentifier(Identifier.Dropped);
 
-        if (HasIdentifier(Identifier.AttachBase))
-        {
-            this.gameObject.GetComponent<AttachScript>().LayerChange(0);
-        }
-        else
-        {
+        //if (HasIdentifier(Identifier.AttachBase))
+        //{
+            //this.gameObject.GetComponent<AttachScript>().LayerChange(0);
+        //}
+        //else
+        //{
             this.gameObject.layer = 0;
-        }
+        //}
     }
 
     void OnTriggerStay(Collider other)

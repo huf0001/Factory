@@ -36,6 +36,7 @@ public class BuildSchemaScript : MonoBehaviour
     [SerializeField] private string buildPointName = "BuildPoint";
     [SerializeField] private float distanceLimit;
     [SerializeField] private ObjectRolePair[] components;
+    [SerializeField] private GameObject finalObject;
 
     private List<Identifier> pendingComponents = new List<Identifier>();
     private Dictionary<Identifier, GameObject> loadedComponents = new Dictionary<Identifier, GameObject>();
@@ -116,7 +117,7 @@ public class BuildSchemaScript : MonoBehaviour
     private void LoadObject(GameObject item)
     {
         IdentifiableScript itemIds = item.GetComponent<IdentifiableScript>();
-        AttachScript attachBase = null;
+        //AttachScript attachBase = null;
 
         if (!itemIds.HasIdentifier(Identifier.Attached))
         {
@@ -137,7 +138,7 @@ public class BuildSchemaScript : MonoBehaviour
 
                     MoveTowardsBuildPoint(item);
 
-                    if (itemIds.HasIdentifier(Identifier.AttachBase))
+                    /*if (itemIds.HasIdentifier(Identifier.AttachBase))
                     {
                         attachBase = itemIds.gameObject.GetComponent<AttachScript>();
 
@@ -148,7 +149,7 @@ public class BuildSchemaScript : MonoBehaviour
                                 LoadAttachedObject(kvp.Value);
                             }
                         }
-                    }
+                    }*/
 
                     return;
                 }
@@ -168,7 +169,7 @@ public class BuildSchemaScript : MonoBehaviour
         } while (distance > distanceLimit);
     }
 
-    private void LoadAttachedObject(GameObject item)
+    /*private void LoadAttachedObject(GameObject item)
     {
         IdentifiableScript itemIds = item.GetComponent<IdentifiableScript>();
 
@@ -186,7 +187,7 @@ public class BuildSchemaScript : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
     private bool CheckIsLoaded(GameObject item)
     {
@@ -203,8 +204,8 @@ public class BuildSchemaScript : MonoBehaviour
 
     public void RemoveObject(GameObject item)
     {
-        AttachableScript attached = null;
-        AttachScript attachBase = null;
+        //AttachableScript attached = null;
+        //AttachScript attachBase = null;
 
         foreach (KeyValuePair<Identifier, GameObject> p in loadedComponents)
         {
@@ -214,7 +215,7 @@ public class BuildSchemaScript : MonoBehaviour
                 loadedComponents.Remove(p.Key);
                 p.Value.GetComponent<IdentifiableScript>().RemoveIdentifier(Identifier.InBuildZone);
 
-                if (item.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.Attached))
+                /*if (item.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.Attached))
                 {
                     attached = item.GetComponent<AttachableScript>();
 
@@ -234,14 +235,14 @@ public class BuildSchemaScript : MonoBehaviour
                             RemoveAttachedObject(kvp.Value);
                         }
                     }
-                }
+                }*/
                 
                 return;
             }
         }
     }
 
-    private void RemoveAttachBaseObject(GameObject item)
+    /*private void RemoveAttachBaseObject(GameObject item)
     {
         AttachScript attachBase = null;
 
@@ -287,69 +288,50 @@ public class BuildSchemaScript : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
     private void Build()
     {
-        GameObject baseComponent = GetBaseComponentAsObjectForBuilding();
-        IdentifiableScript baseIds = null;
-        AttachScript baseAttacher = null;
-
-        if (baseComponent != null)
-        {
-            CentreInBuildZone(baseComponent);
-            baseIds = baseComponent.GetComponent<IdentifiableScript>();
-
-            if (baseIds != null && !baseIds.HasIdentifier(Identifier.Built))
-            {
-                baseAttacher = baseComponent.GetComponent<AttachScript>();
-
-                if (baseAttacher != null)
-                {
-                    foreach (KeyValuePair<Identifier, GameObject> p in loadedComponents)
-                    {
-                        if (baseAttacher.CheckCanAttach(p.Value.GetComponent<IdentifiableScript>()))
-                        {
-                            baseAttacher.Attach(p.Value);
-                            p.Value.GetComponent<IdentifiableScript>().AddIdentifier(Identifier.Built);
-                        }
-                    }
-
-                    baseIds.AddIdentifier(Identifier.Built);
-                    this.transform.parent.gameObject.GetComponent<BuildZoneScript>().PlayBuiltSound();
-                }
-                else
-                {
-                    Debug.Log("Error: Base object in schema does not have an AttachScript component");
-                }
-            }
-        }
+        DestroyComponentObjects();
+        SpawnBuiltObject();
     }
 
-    private GameObject GetBaseComponentAsObjectForBuilding()
+    private void DestroyComponentObjects()
     {
-        ObjectRolePair orp = GetBaseComponentAsObjectRolePair();
+        List<GameObject> items = new List<GameObject>();
+        List<Identifier> keys = new List<Identifier>();
 
-        if (orp != null)
+        foreach (KeyValuePair<Identifier, GameObject> p in loadedComponents)
         {
-            GameObject result = loadedComponents[orp.Component];
-            return result;
+            items.Add(p.Value);
+            keys.Add(p.Key);
         }
 
-        return null;
+        Debug.Log("Loaded objects to destroy.");
+
+        do
+        {
+            Debug.Log("Destroying " + items[0]);
+
+            loadedComponents.Remove(keys[0]);
+
+            //Destroy(items[0].GetComponent<AttachScript>());
+            //Destroy(items[0].GetComponent<AttachableScript>());
+            Destroy(items[0].GetComponent<MovableScript>());
+            Destroy(items[0].GetComponent<IdentifiableScript>());
+            Destroy(items[0]);
+
+            items.Remove(items[0]);
+            keys.Remove(keys[0]);
+
+            Debug.Log("Item destroyed");
+        } while (items.Count > 0);
     }
 
-    private ObjectRolePair GetBaseComponentAsObjectRolePair()
+    private void SpawnBuiltObject()
     {
-        foreach (ObjectRolePair orp in components)
-        {
-            if (orp.Role == BuildRole.BaseComponent)
-            {
-                return orp;
-            }
-        }
-
-        return null;
+        GameObject spawning = Instantiate(finalObject);
+        CentreInBuildZone(spawning);
     }
 
     private void CentreInBuildZone(GameObject item)

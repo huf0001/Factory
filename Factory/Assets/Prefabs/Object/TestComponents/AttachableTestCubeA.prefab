@@ -22,9 +22,8 @@ GameObject:
   - component: {fileID: 33004881089934204}
   - component: {fileID: 65385041137102332}
   - component: {fileID: 23438587210965400}
-  - component: {fileID: 114158901708785394}
   - component: {fileID: 54452916759596698}
-  - component: {fileID: 65552864890699272}
+  - component: {fileID: 114459829432419752}
   m_Layer: 0
   m_Name: AttachableTestCubeA
   m_TagString: Untagged
@@ -114,19 +113,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65552864890699272
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1121794005861356}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0.0000009536743, y: 0.0000014305115, z: 0}
---- !u!114 &114158901708785394
+--- !u!114 &114459829432419752
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,8 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1121794005861356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105741da50f69724ba411ea427679db6, type: 3}
+  m_Script: {fileID: 11500000, guid: a338dec0b90618e4d9c66d5faf0b1823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 12
-  compatibleBase: 11
+  uniqueID: 13
