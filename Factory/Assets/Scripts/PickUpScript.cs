@@ -19,9 +19,6 @@ public class PickUpScript: MonoBehaviour
     private GameObject movingInLeft = null;
     private GameObject movingInRight = null;
 
-    //private bool leftHandInput = false;
-    //private bool rightHandInput = false;
-
     private GameControllerScript gameController = null;
 
     [SerializeField] private AudioClip pickUpSound;
@@ -135,7 +132,6 @@ public class PickUpScript: MonoBehaviour
         {
             if (IsEmpty(Hand.Left))
             {
-                //HandlePickUp(Hand.Left);
                 DetectObjectsForPickUp(Hand.Left);
             }
         }
@@ -148,7 +144,6 @@ public class PickUpScript: MonoBehaviour
         {
             if (IsEmpty(Hand.Right))
             {
-                //HandlePickUp(Hand.Right);
                 DetectObjectsForPickUp(Hand.Right);
             }
         }
@@ -270,21 +265,9 @@ public class PickUpScript: MonoBehaviour
 
     private void HandlePickUp(Hand hand, GameObject item)
     {
-        bool pickedUp = false;
-
-        /*if (item.GetComponent<AttachableScript>() != null)
-        {
-            item.GetComponent<AttachableScript>().HandlePickUp(playerNumber, hand);
-            pickedUp = true;
-        }
-        else*/ if (item.GetComponent<MovableScript>() != null)
+        if (item.GetComponent<MovableScript>() != null)
         {
             item.GetComponent<MovableScript>().HandlePickUp(playerNumber, hand);
-            pickedUp = true;
-        }
-
-        if (pickedUp)
-        {
             PlaySoundEffect(pickUpSound);
             ChangeIDsFromPickUp(hand);
 
@@ -301,33 +284,13 @@ public class PickUpScript: MonoBehaviour
 
     private void HandleDrop(Hand hand, GameObject movingInHand)
     {
-        bool handledClick = false;
-        //AttachableScript attachable = null;
         MovableScript movable = null;
         GameObject item = null;
 
-        /*if (movingInHand.GetComponent<AttachableScript>() != null)
-        {
-            attachable = movingInHand.GetComponent<AttachableScript>();
-        }
-        else*/ if (movingInHand.GetComponent<MovableScript>() != null)
+        if (movingInHand.GetComponent<MovableScript>() != null)
         {
             movable = movingInHand.GetComponent<MovableScript>();
-        }
-
-        /*if (attachable != null)
-        {
-            attachable.HandleDrop(playerNumber, hand);
-            handledClick = true;
-        }
-        else*/ if (movable != null)
-        {
             movable.HandleDrop(playerNumber, hand);
-            handledClick = true;
-        }
-
-        if (handledClick)
-        {
             item = movingInHand;
             ChangeIDsFromDrop(hand);
 

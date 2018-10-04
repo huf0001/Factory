@@ -117,7 +117,6 @@ public class BuildSchemaScript : MonoBehaviour
     private void LoadObject(GameObject item)
     {
         IdentifiableScript itemIds = item.GetComponent<IdentifiableScript>();
-        //AttachScript attachBase = null;
 
         if (!itemIds.HasIdentifier(Identifier.Attached))
         {
@@ -138,19 +137,6 @@ public class BuildSchemaScript : MonoBehaviour
 
                     MoveTowardsBuildPoint(item);
 
-                    /*if (itemIds.HasIdentifier(Identifier.AttachBase))
-                    {
-                        attachBase = itemIds.gameObject.GetComponent<AttachScript>();
-
-                        if (attachBase != null)
-                        {
-                            foreach (KeyValuePair<Transform, GameObject> kvp in attachBase.Attached)
-                            {
-                                LoadAttachedObject(kvp.Value);
-                            }
-                        }
-                    }*/
-
                     return;
                 }
             }
@@ -169,26 +155,6 @@ public class BuildSchemaScript : MonoBehaviour
         } while (distance > distanceLimit);
     }
 
-    /*private void LoadAttachedObject(GameObject item)
-    {
-        IdentifiableScript itemIds = item.GetComponent<IdentifiableScript>();
-
-        if (!CheckIsLoaded(item))
-        {
-            foreach (ObjectRolePair orp in components)
-            {
-                if (itemIds.HasIdentifier(orp.Component))
-                {
-                    pendingComponents.Remove(orp.Component);
-                    loadedComponents.Add(orp.Component, item);
-                    itemIds.RemoveIdentifier(Identifier.HasNotBeenLoadedInBuildZoneYet);
-
-                    return;
-                }
-            }
-        }
-    }*/
-
     private bool CheckIsLoaded(GameObject item)
     {
         foreach (KeyValuePair<Identifier, GameObject> p in loadedComponents)
@@ -204,91 +170,17 @@ public class BuildSchemaScript : MonoBehaviour
 
     public void RemoveObject(GameObject item)
     {
-        //AttachableScript attached = null;
-        //AttachScript attachBase = null;
-
         foreach (KeyValuePair<Identifier, GameObject> p in loadedComponents)
         {
             if (p.Value == item)
             {
                 pendingComponents.Add(p.Key);
                 loadedComponents.Remove(p.Key);
-                p.Value.GetComponent<IdentifiableScript>().RemoveIdentifier(Identifier.InBuildZone);
-
-                /*if (item.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.Attached))
-                {
-                    attached = item.GetComponent<AttachableScript>();
-
-                    if (attached != null)
-                    {
-                        RemoveAttachBaseObject(attached.AttachedTo.gameObject);
-                    }
-                }
-                else if (item.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.AttachBase))
-                {
-                    attachBase = item.GetComponent<AttachScript>();
-
-                    if (attachBase != null)
-                    {
-                        foreach (KeyValuePair<Transform, GameObject> kvp in attachBase.Attached)
-                        {
-                            RemoveAttachedObject(kvp.Value);
-                        }
-                    }
-                }*/
-                
+                p.Value.GetComponent<IdentifiableScript>().RemoveIdentifier(Identifier.InBuildZone);                
                 return;
             }
         }
     }
-
-    /*private void RemoveAttachBaseObject(GameObject item)
-    {
-        AttachScript attachBase = null;
-
-        foreach (KeyValuePair<Identifier, GameObject> p in loadedComponents)
-        {
-            if (p.Value == item)
-            {
-                pendingComponents.Add(p.Key);
-                loadedComponents.Remove(p.Key);
-                p.Value.GetComponent<IdentifiableScript>().RemoveIdentifier(Identifier.InBuildZone);
-
-                if (item.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.AttachBase))
-                {
-                    attachBase = item.GetComponent<AttachScript>();
-
-                    if (attachBase != null)
-                    {
-                        foreach (KeyValuePair<Transform, GameObject> kvp in attachBase.Attached)
-                        {
-                            RemoveAttachedObject(kvp.Value);
-                        }
-                    }
-                }
-
-                return;
-            }
-        }
-    }
-
-    private void RemoveAttachedObject(GameObject item)
-    {
-        if (CheckIsLoaded(item))
-        {
-            foreach (KeyValuePair<Identifier, GameObject> p in loadedComponents)
-            {
-                if (p.Value == item)
-                {
-                    pendingComponents.Add(p.Key);
-                    loadedComponents.Remove(p.Key);
-                    p.Value.GetComponent<IdentifiableScript>().RemoveIdentifier(Identifier.InBuildZone);
-
-                    return;
-                }
-            }
-        }
-    }*/
 
     private void Build()
     {
@@ -307,24 +199,14 @@ public class BuildSchemaScript : MonoBehaviour
             keys.Add(p.Key);
         }
 
-        Debug.Log("Loaded objects to destroy.");
-
         do
         {
-            Debug.Log("Destroying " + items[0]);
-
             loadedComponents.Remove(keys[0]);
-
-            //Destroy(items[0].GetComponent<AttachScript>());
-            //Destroy(items[0].GetComponent<AttachableScript>());
             Destroy(items[0].GetComponent<MovableScript>());
             Destroy(items[0].GetComponent<IdentifiableScript>());
             Destroy(items[0]);
-
             items.Remove(items[0]);
             keys.Remove(keys[0]);
-
-            Debug.Log("Item destroyed");
         } while (items.Count > 0);
     }
 
