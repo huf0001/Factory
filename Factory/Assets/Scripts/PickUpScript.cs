@@ -5,6 +5,9 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PickUpScript: MonoBehaviour
 {
+    //Script needs to know which player it is
+    private int playerNumber = 0;
+
     [SerializeField] private GameObject leftHandGuide;
     [SerializeField] private GameObject rightHandGuide;
     private Vector3 leftHandStartPoint;
@@ -16,9 +19,6 @@ public class PickUpScript: MonoBehaviour
     private GameObject movingInLeft = null;
     private GameObject movingInRight = null;
 
-    private bool leftHandInput = false;
-    private bool rightHandInput = false;
-
     private GameControllerScript gameController = null;
 
     [SerializeField] private AudioClip pickUpSound;
@@ -29,9 +29,6 @@ public class PickUpScript: MonoBehaviour
     [SerializeField] private Transform headDirection;
     [SerializeField] private AudioClip throwSound;
     private bool throwOn = false;
-    //[SerializeField] private AudioClip toggleThrowSound;
-
-    //private bool toggleThrow = false;
 
     private AudioSource audioSource = new AudioSource();
 
@@ -57,6 +54,10 @@ public class PickUpScript: MonoBehaviour
         {
             Debug.Log("Why is there no object in the scene named GameController? There needs to be an object with a GameControllerScript called" +
                 " 'GameController'. Fix it. NOW!!");
+        }
+        else
+        {
+            playerNumber = gameController.GetPlayerNumber(this.gameObject);
         }
     }
 
@@ -127,11 +128,10 @@ public class PickUpScript: MonoBehaviour
 
     private void Update()
     {
-        if (gameController.GetButton("LeftArm"))
+        if (gameController.GetButton(playerNumber, "LeftArm"))
         {
             if (IsEmpty(Hand.Left))
             {
-                //HandlePickUp(Hand.Left);
                 DetectObjectsForPickUp(Hand.Left);
             }
         }
@@ -140,11 +140,10 @@ public class PickUpScript: MonoBehaviour
             HandleDrop(Hand.Left, movingInLeft);
         }
 
-        if (gameController.GetButton("RightArm"))
+        if (gameController.GetButton(playerNumber, "RightArm"))
         {
             if (IsEmpty(Hand.Right))
             {
-                //HandlePickUp(Hand.Right);
                 DetectObjectsForPickUp(Hand.Right);
             }
         }
@@ -228,7 +227,11 @@ public class PickUpScript: MonoBehaviour
         {
             if (c.gameObject.GetComponent<MovableScript>() != null)
             {
-                movableItems.Add(c.gameObject);
+                if (!c.gameObject.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.PlayerMoving) 
+                    && !c.gameObject.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.InBuildZone))
+                {
+                    movableItems.Add(c.gameObject);
+                }
             }
         }
 
@@ -263,21 +266,9 @@ public class PickUpScript: MonoBehaviour
 
     private void HandlePickUp(Hand hand, GameObject item)
     {
-        bool pickedUp = false;
-
-        if (item.GetComponent<AttachableScript>() != null)
+        if (item.GetComponent<MovableScript>() != null)
         {
-            item.GetComponent<AttachableScript>().HandlePickUp(hand);
-            pickedUp = true;
-        }
-        else if (item.GetComponent<MovableScript>() != null)
-        {
-            item.GetComponent<MovableScript>().HandlePickUp(hand);
-            pickedUp = true;
-        }
-
-        if (pickedUp)
-        {
+            item.GetComponent<MovableScript>().HandlePickUp(playerNumber, hand);
             PlaySoundEffect(pickUpSound);
             ChangeIDsFromPickUp(hand);
 
@@ -294,33 +285,13 @@ public class PickUpScript: MonoBehaviour
 
     private void HandleDrop(Hand hand, GameObject movingInHand)
     {
-        bool handledClick = false;
-        AttachableScript attachable = null;
         MovableScript movable = null;
         GameObject item = null;
 
-        if (movingInHand.GetComponent<AttachableScript>() != null)
-        {
-            attachable = movingInHand.GetComponent<AttachableScript>();
-        }
-        else if (movingInHand.GetComponent<MovableScript>() != null)
+        if (movingInHand.GetComponent<MovableScript>() != null)
         {
             movable = movingInHand.GetComponent<MovableScript>();
-        }
-
-        if (attachable != null)
-        {
-            attachable.HandleDrop(hand);
-            handledClick = true;
-        }
-        else if (movable != null)
-        {
-            movable.HandleDrop(hand);
-            handledClick = true;
-        }
-
-        if (handledClick)
-        {
+            movable.HandleDrop(playerNumber, hand);
             item = movingInHand;
             ChangeIDsFromDrop(hand);
 

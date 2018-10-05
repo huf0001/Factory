@@ -9,6 +9,9 @@ using Random = UnityEngine.Random;
 
 public class ModalRobotPlayerController : MonoBehaviour
 {
+    //Script needs to know which player it is
+    private int playerNumber = 0;
+
     //Variables for the cool looking shit
     [SerializeField] private Animator anim;
     [SerializeField] private Rigidbody leftHand, rightHand;
@@ -62,10 +65,8 @@ public class ModalRobotPlayerController : MonoBehaviour
         }
         else
         {
-            if (gameController.Gamepad != Gamepad.MouseAndKeyboard)
-            {
-                walkSensitivity = walkSensitivity * consoleWalkSensitivityMultiplier;
-            }
+            playerNumber = gameController.GetPlayerNumber(this.gameObject);
+            walkSensitivity = walkSensitivity * consoleWalkSensitivityMultiplier;
         }
     }
 
@@ -75,7 +76,7 @@ public class ModalRobotPlayerController : MonoBehaviour
         // the jump state needs to read here to make sure it is not missed
         if (!jump)
         {
-            jump = gameController.GetButtonDown("Jump");
+            jump = gameController.GetButtonDown(playerNumber, "Jump");
         }
 
         if (!previouslyGrounded && characterController.isGrounded)
@@ -94,12 +95,12 @@ public class ModalRobotPlayerController : MonoBehaviour
         previouslyGrounded = characterController.isGrounded;
 
         //Gathering input for hand animation
-        if (gameController.GetButton("LeftArm"))
+        if (gameController.GetButton(playerNumber, "LeftArm"))
         {
             movingLeftArm = true;
         }
 
-        if (gameController.GetButton("RightArm"))
+        if (gameController.GetButton(playerNumber, "RightArm"))
         {
             movingRightArm = true;
         }
@@ -114,7 +115,7 @@ public class ModalRobotPlayerController : MonoBehaviour
 
     private Vector3 GetWalkInput()
     {
-        Vector3 input = new Vector3(gameController.GetAxis("MoveHorizontal"), 0f, gameController.GetAxis("MoveVertical"));
+        Vector3 input = new Vector3(gameController.GetAxis(playerNumber, "MoveHorizontal"), 0f, gameController.GetAxis(playerNumber, "MoveVertical"));
 
         // normalize input if it exceeds 1 in combined length:
         if (input.sqrMagnitude > 1)
@@ -131,9 +132,9 @@ public class ModalRobotPlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), speed);
         }
-        else if (movement.x == 0 && movement.z == 0 && gameController.GetAxis("LookHorizontal") != 0)
+        else if (movement.x == 0 && movement.z == 0 && gameController.GetAxis(playerNumber, "LookHorizontal") != 0)
         {
-            transform.Rotate(new Vector3(0f, gameController.GetAxis("LookHorizontal"), 0f), Space.World);
+            transform.Rotate(new Vector3(0f, gameController.GetAxis(playerNumber, "LookHorizontal"), 0f), Space.World);
         }
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public enum Gamepad
 {
-    MouseAndKeyboard,
     XboxController,
     DualshockController
 }
