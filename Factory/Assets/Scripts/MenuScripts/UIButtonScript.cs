@@ -28,6 +28,7 @@ public class UIButtonScript : MonoBehaviour {
         {
             musicButton.GetComponent<Image>().sprite = musicOff;
         }
+
     }
 
     // Update is called once per frame
