@@ -327,9 +327,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuAudio: {fileID: 1373181829}
-  musicOn: {fileID: 0}
-  musicOff: {fileID: 0}
-  musicButton: {fileID: 0}
+  musicOn: {fileID: 21300000, guid: eaccb511cb0fd4b4896312dca42d21e3, type: 3}
+  musicOff: {fileID: 21300000, guid: 375bc75c77af11844804db2b300cac3c, type: 3}
+  musicButton: {fileID: 1034334240}
 --- !u!82 &1373181829
 AudioSource:
   m_ObjectHideFlags: 0
@@ -453,10 +453,10 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: MKLookHorizontal
-  m_VerticalAxis: MKLookVertical
-  m_SubmitButton: MKSubmit
-  m_CancelButton: MKCancel
+  m_HorizontalAxis: P1MKMoveHorizontal
+  m_VerticalAxis: P1MKMoveVertical
+  m_SubmitButton: P1DSSubmit
+  m_CancelButton: P1DSCancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0

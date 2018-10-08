@@ -37,7 +37,7 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
-    [SerializeField] private Gamepad gamepad = Gamepad.MouseAndKeyboard;
+    [SerializeField] private Gamepad gamepad = Gamepad.XboxController;
     [SerializeField] private PlayerAndHands[] players;
 
     // Use this for initialization
@@ -63,11 +63,6 @@ public class GameControllerScript : MonoBehaviour
             {
                 Debug.Log("The game controller is missing player " + playerNumber + "'s right hand");
             }
-
-            /*if (players[i].BuildZone == null)
-            {
-                Debug.Log("The game controller is missing player " + playerNumber + "'s build zone");
-            }*/
         }
     }
 
@@ -126,11 +121,7 @@ public class GameControllerScript : MonoBehaviour
             case "LeftArm":
             case "RightArm":
             case "LookHorizontal":
-                if (gamepad == Gamepad.MouseAndKeyboard)
-                {
-                    result = CrossPlatformInputManager.GetButtonDown("P" + p + GetGamepadPrefix() + s);
-                }
-                else if (GetAxis(p, s) != 0)
+                if (GetAxis(p, s) != 0)
                 {
                     result = true;
                 }
@@ -155,11 +146,7 @@ public class GameControllerScript : MonoBehaviour
             case "LeftArm":
             case "RightArm":
             case "LookHorizontal":
-                if (gamepad == Gamepad.MouseAndKeyboard)
-                {
-                    result = CrossPlatformInputManager.GetButton("P" + p + GetGamepadPrefix() + s);
-                }
-                else if (GetAxis(p, s) != 0)
+                if (GetAxis(p, s) != 0)
                 {
                     result = true;
                 }
