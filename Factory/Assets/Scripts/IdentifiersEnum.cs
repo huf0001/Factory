@@ -37,6 +37,11 @@ public enum Identifier
     // Values for the test objects used while refining the code
     TestBase,
     TestAttachableA,
-    TestAttachableB
+    TestAttachableB,
+
+    // Values for car components
+    CarBody,
+    CarSeats,
+    CarWheels
 }
 

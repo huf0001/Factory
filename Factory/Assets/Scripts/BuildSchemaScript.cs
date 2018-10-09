@@ -4,38 +4,9 @@ using UnityEngine;
 
 public class BuildSchemaScript : MonoBehaviour
 {
-    public enum BuildRole
-    {
-        BaseComponent,
-        AttachableComponent
-    }
-
-    [System.Serializable]
-    public class ObjectRolePair
-    {
-        [SerializeField] private Identifier component;
-        [SerializeField] private BuildRole role;
-
-        public Identifier Component
-        {
-            get
-            {
-                return component;
-            }
-        }
-
-        public BuildRole Role
-        {
-            get
-            {
-                return role;
-            }
-        }
-    }
-
     [SerializeField] private string buildPointName = "BuildPoint";
     [SerializeField] private float distanceLimit;
-    [SerializeField] private ObjectRolePair[] components;
+    [SerializeField] private List<Identifier> components = new List<Identifier>();
     [SerializeField] private GameObject finalObject;
 
     private List<Identifier> pendingComponents = new List<Identifier>();
@@ -53,9 +24,9 @@ public class BuildSchemaScript : MonoBehaviour
                 "zone that this schema is attached to.");
         }
 
-        foreach (ObjectRolePair p in components)
+        foreach (Identifier i in components)
         {
-            pendingComponents.Add(p.Component);
+            pendingComponents.Add(i);
         }
     }
 
@@ -74,9 +45,9 @@ public class BuildSchemaScript : MonoBehaviour
 
     public bool BelongsToSchema(IdentifiableScript ids)
     {
-        foreach (ObjectRolePair p in components)
+        foreach (Identifier i in components)
         {
-            if (ids.HasIdentifier(p.Component))
+            if (ids.HasIdentifier(i))
             {
                 return true;
             }
@@ -87,13 +58,13 @@ public class BuildSchemaScript : MonoBehaviour
 
     public bool IsLoaded(IdentifiableScript ids)
     {
-        foreach (ObjectRolePair orp in components)
+        foreach (Identifier i in components)
         {
-            if (ids.HasIdentifier(orp.Component))
+            if (ids.HasIdentifier(i))
             {
                 foreach (KeyValuePair<Identifier, GameObject> kvp in loadedComponents)
                 {
-                    if (kvp.Key == orp.Component)
+                    if (kvp.Key == i)
                     {
                         return true;
                     }
@@ -122,17 +93,17 @@ public class BuildSchemaScript : MonoBehaviour
 
         if (!itemIds.HasIdentifier(Identifier.Attached))
         {
-            foreach (ObjectRolePair orp in components)
+            foreach (Identifier i in components)
             {
-                if (itemIds.HasIdentifier(orp.Component))
+                if (itemIds.HasIdentifier(i))
                 {
                     if (item.GetComponent<MovableScript>() != null)
                     {
                         item.GetComponent<MovableScript>().Schema = this;
                     }
 
-                    pendingComponents.Remove(orp.Component);
-                    loadedComponents.Add(orp.Component, item);
+                    pendingComponents.Remove(i);
+                    loadedComponents.Add(i, item);
                     itemIds.RemoveIdentifier(Identifier.HasNotBeenLoadedInBuildZoneYet);
 
                     this.transform.parent.gameObject.GetComponent<BuildZoneScript>().PlayLoadedSound();
@@ -186,8 +157,27 @@ public class BuildSchemaScript : MonoBehaviour
 
     private void Build()
     {
+        GameObject spawned;
         DestroyComponentObjects();
-        SpawnBuiltObject();
+        spawned = SpawnBuiltObject();
+        //Particle effect
+        Delay(3f);
+        Debug.Log("Delay finished");
+        Destroy(spawned);
+    }
+
+    private void Delay(float time)
+    {
+        float delay = 0f;
+        time = time * 10000;
+
+        while (delay < time)
+        {
+            delay += Time.deltaTime;
+            Debug.Log("delay is " + delay);
+        }
+
+        return;
     }
 
     private void DestroyComponentObjects()
@@ -212,10 +202,11 @@ public class BuildSchemaScript : MonoBehaviour
         } while (items.Count > 0);
     }
 
-    private void SpawnBuiltObject()
+    private GameObject SpawnBuiltObject()
     {
         GameObject spawning = Instantiate(finalObject);
         CentreInBuildZone(spawning);
+        return spawning;
     }
 
     private void CentreInBuildZone(GameObject item)
