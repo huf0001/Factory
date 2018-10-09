@@ -112,8 +112,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1726047386393722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -40, y: 0.13, z: -2}
-  m_LocalScale: {x: 1.75, y: 0.4, z: 1.75}
+  m_LocalPosition: {x: -1.25, y: 0.1, z: 0}
+  m_LocalScale: {x: 1.25, y: 0.3, z: 1.25}
   m_Children:
   - {fileID: 4113336983857970}
   - {fileID: 4583175116218158}
@@ -299,12 +299,13 @@ MonoBehaviour:
   buildPointName: BuildPoint
   distanceLimit: 1.25
   components:
-  - component: 11
-    role: 0
   - component: 12
-    role: 1
+    role: 0
   - component: 13
     role: 1
+  - component: 14
+    role: 1
+  finalObject: {fileID: 0}
 --- !u!114 &114100000212778456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -319,6 +320,7 @@ MonoBehaviour:
   buildPointName: BuildPoint
   distanceLimit: 1.25
   components: []
+  finalObject: {fileID: 0}
 --- !u!114 &114373713065824510
 MonoBehaviour:
   m_ObjectHideFlags: 1

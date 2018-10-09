@@ -28,12 +28,12 @@ public class GamepadLook
 
     private GameControllerScript GetGameController()
     {
-        GameControllerScript result = GameObject.Find("GameController").GetComponent<GameControllerScript>();
+        GameControllerScript result = GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>();
 
         if (result == null)
         {
-            Debug.Log("Why is there no object in the scene named GameController? There needs to be an object with a GameControllerScript called" +
-                " 'GameController'. Fix it. NOW!!");
+            Debug.Log("Why is there no object in the scene named GameControllerCamera? There needs to be an object with a GameControllerScript called" +
+                " 'GameControllerCamera'. Fix it. NOW!!");
         }
 
         return result;

@@ -48,6 +48,11 @@ public class BuildZoneScript : MonoBehaviour
         }
     }
 
+    public void DeleteSchema(BuildSchemaScript schema)
+    {
+        schemas.Remove(schema);
+    }
+
     public void PlayLoadedSound()
     {
         PlaySoundEffect(loadedSound);

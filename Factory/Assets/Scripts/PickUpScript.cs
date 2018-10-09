@@ -215,6 +215,7 @@ public class PickUpScript: MonoBehaviour
 
         if (colliders.Length > 0)
         {
+            Debug.Log("Dectected " + colliders.Length + " objects");
             GetMovableObjectsForPickUp(hand, colliders);
         }
     }
@@ -237,6 +238,7 @@ public class PickUpScript: MonoBehaviour
 
         if (movableItems.Count > 0)
         {
+            Debug.Log("Detected " + movableItems.Count + " movable objects");
             SelectObjectForPickUp(hand, movableItems);
         }
     }
@@ -260,6 +262,7 @@ public class PickUpScript: MonoBehaviour
         
         if (item != null)
         {
+            Debug.Log("Selected " + item + " for pick up");
             HandlePickUp(hand, item);
         }
     }
@@ -268,6 +271,7 @@ public class PickUpScript: MonoBehaviour
     {
         if (item.GetComponent<MovableScript>() != null)
         {
+            Debug.Log("Picking up " + item);
             item.GetComponent<MovableScript>().HandlePickUp(playerNumber, hand);
             PlaySoundEffect(pickUpSound);
             ChangeIDsFromPickUp(hand);

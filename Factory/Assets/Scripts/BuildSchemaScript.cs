@@ -111,6 +111,8 @@ public class BuildSchemaScript : MonoBehaviour
         if (pendingComponents.Count == 0)
         {
             Build();
+            this.transform.parent.GetComponent<BuildZoneScript>().DeleteSchema(this);
+            Destroy(this);
         }
     }
 

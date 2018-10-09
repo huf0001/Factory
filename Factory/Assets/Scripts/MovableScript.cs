@@ -27,7 +27,7 @@ public class MovableScript : IdentifiableScript
         int playerCount = 0;
         body = this.gameObject.GetComponent<Rigidbody>();
         body.useGravity = true;
-        gameController = GameObject.Find("GameController").GetComponent<GameControllerScript>();
+        gameController = GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>();
 
         if (gameController != null)
         {
