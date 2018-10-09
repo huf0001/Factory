@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class BuildSchemaScript : MonoBehaviour
 {
-    [SerializeField] private string buildPointName = "BuildPoint";
+    [SerializeField] private BuildZoneScript buildZone;
+    [SerializeField] private Transform buildPoint;
     [SerializeField] private float distanceLimit;
     [SerializeField] private List<Identifier> components = new List<Identifier>();
     [SerializeField] private GameObject finalObject;
 
     private List<Identifier> pendingComponents = new List<Identifier>();
     private Dictionary<Identifier, GameObject> loadedComponents = new Dictionary<Identifier, GameObject>();
-    private Transform buildPoint = null;
+    //private Transform buildPoint = null;
 
     // Use this for initialization
     void Start()
     {
-        buildPoint = this.transform.parent.Find(buildPointName);
+        ///buildPoint = this.transform.parent.Find(buildPointName);
 
         if (buildPoint == null)
         {
-            Debug.Log("Warning: Couldn't find the game object '" + buildPointName + "'. " + buildPointName + " should be childed to the build" +
+            Debug.Log("Warning: Couldn't find the build point. It should be childed to the build" +
                 "zone that this schema is attached to.");
+        }
+
+        if (buildZone == null)
+        {
+            Debug.Log("Warning: Couldn't find the build zone. Schemas need build zones.");
         }
 
         foreach (Identifier i in components)
@@ -82,8 +88,6 @@ public class BuildSchemaScript : MonoBehaviour
         if (pendingComponents.Count == 0)
         {
             Build();
-            this.transform.parent.GetComponent<BuildZoneScript>().DeleteSchema(this);
-            Destroy(this);
         }
     }
 
@@ -159,9 +163,8 @@ public class BuildSchemaScript : MonoBehaviour
     {
         DestroyComponentObjects();
         SpawnBuiltObject();
-        //Particle effect
+        buildZone.SchemaComplete(this);
     }
-
 
     private void DestroyComponentObjects()
     {

@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 65775890971813118}
   - component: {fileID: 114125904739335434}
   m_Layer: 0
-  m_Name: ConveyorBeltPrototype
+  m_Name: ConveyorBeltBasicPrototype
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,3 +152,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endpoint: {fileID: 4847150083557244}
   speed: 2
+  audioClip: {fileID: 0}

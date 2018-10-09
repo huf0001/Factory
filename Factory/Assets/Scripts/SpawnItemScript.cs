@@ -30,7 +30,9 @@ public class SpawnItemScript : MonoBehaviour
     }
 
     [SerializeField] private float secBetweenSpawns = 2f;
-    [SerializeField] ItemWeightPair[] itemWeightPairs;
+    [SerializeField] ItemWeightPair[] easyItems;
+    [SerializeField] ItemWeightPair[] mediumItems;
+    [SerializeField] ItemWeightPair[] hardItems;
 
     private List<GameObject> weightedObjects = new List<GameObject>();
     private float time = 0f;
@@ -38,16 +40,42 @@ public class SpawnItemScript : MonoBehaviour
     // Use this for initialization
 	void Start ()
     {
-        foreach (ItemWeightPair p in itemWeightPairs)
-        {
-            for (int i = 0; i < p.ItemWeighting; i++)
+        int difficulty = GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>().Difficulty;
+
+        if (difficulty > 0 && easyItems.Length > 0)
+        { foreach (ItemWeightPair p in easyItems)
             {
-                weightedObjects.Add(p.Item);
+                for (int i = 0; i < p.ItemWeighting; i++)
+                {
+                    weightedObjects.Add(p.Item);
+                }
+            }
+        }
+
+        if (difficulty > 1 && mediumItems.Length > 0)
+        {
+            foreach (ItemWeightPair p in mediumItems)
+            {
+                for (int i = 0; i < p.ItemWeighting; i++)
+                {
+                    weightedObjects.Add(p.Item);
+                }
+            }
+        }
+
+        if (difficulty > 2 && hardItems.Length > 0)
+        {
+            foreach (ItemWeightPair p in hardItems)
+            {
+                for (int i = 0; i < p.ItemWeighting; i++)
+                {
+                    weightedObjects.Add(p.Item);
+                }
             }
         }
 
         // Debug.Log("weightedObjects.Count is :" + weightedObjects.Count);
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()

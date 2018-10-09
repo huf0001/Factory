@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 65097018103479006}
   - component: {fileID: 114809244507447776}
   m_Layer: 0
-  m_Name: ConveyorBelt
+  m_Name: ConveyorBeltTestPrototype
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -628,17 +628,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secBetweenSpawns: 2
-  itemWeightPairs:
-  - item: {fileID: 1050865191083338, guid: 7b036e917387bf5498b5efdef98de4fe, type: 2}
-    itemWeighting: 1
-  - item: {fileID: 1644340072949216, guid: 7ed6f88aa8591c24b82bb2e3649e65e9, type: 2}
-    itemWeighting: 1
-  - item: {fileID: 1121794005861356, guid: b1cd4eaa9abf9b94389ae75d05607fdd, type: 2}
-    itemWeighting: 1
-  - item: {fileID: 1293913417209356, guid: 33c34f30022afb34f93d892541452b6c, type: 2}
-    itemWeighting: 1
-  - item: {fileID: 1583549338766754, guid: a88a557904f50b6479ab75f5e2d60823, type: 2}
-    itemWeighting: 1
+  easyItems: []
+  mediumItems: []
+  hardItems: []
 --- !u!114 &114809244507447776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -652,6 +644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endpoint: {fileID: 4362556230258030}
   speed: 2
+  audioClip: {fileID: 0}
 --- !u!114 &114902658349662134
 MonoBehaviour:
   m_ObjectHideFlags: 1

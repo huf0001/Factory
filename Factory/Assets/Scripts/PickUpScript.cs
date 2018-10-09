@@ -61,17 +61,9 @@ public class PickUpScript: MonoBehaviour
         }
     }
 
-    public bool ThrowOn
+    public void TriggerThrow()
     {
-        get
-        {
-            return throwOn;
-        }
-
-        set
-        {
-            throwOn = value;
-        }
+        throwOn = true;
     }
 
     private void ChangeIDsFromPickUp(Hand h)
@@ -153,17 +145,6 @@ public class PickUpScript: MonoBehaviour
         }
 
         UpdateHandGuidePosition();
-
-        /*if (toggleThrow)
-        {
-            throwOn = !throwOn;
-            toggleThrow = false;
-            PlaySoundEffect(toggleThrowSound);
-        }
-        else
-        {
-            toggleThrow = gameController.GetButtonDown("ToggleThrow");
-        }*/
     }
 
     private void UpdateHandGuidePosition()
@@ -215,7 +196,7 @@ public class PickUpScript: MonoBehaviour
 
         if (colliders.Length > 0)
         {
-            Debug.Log("Dectected " + colliders.Length + " objects");
+            //Debug.Log("Dectected " + colliders.Length + " objects");
             GetMovableObjectsForPickUp(hand, colliders);
         }
     }
@@ -238,7 +219,7 @@ public class PickUpScript: MonoBehaviour
 
         if (movableItems.Count > 0)
         {
-            Debug.Log("Detected " + movableItems.Count + " movable objects");
+            //Debug.Log("Detected " + movableItems.Count + " movable objects");
             SelectObjectForPickUp(hand, movableItems);
         }
     }
@@ -262,7 +243,7 @@ public class PickUpScript: MonoBehaviour
         
         if (item != null)
         {
-            Debug.Log("Selected " + item + " for pick up");
+            //Debug.Log("Selected " + item + " for pick up");
             HandlePickUp(hand, item);
         }
     }
@@ -271,7 +252,7 @@ public class PickUpScript: MonoBehaviour
     {
         if (item.GetComponent<MovableScript>() != null)
         {
-            Debug.Log("Picking up " + item);
+            //Debug.Log("Picking up " + item);
             item.GetComponent<MovableScript>().HandlePickUp(playerNumber, hand);
             PlaySoundEffect(pickUpSound);
             ChangeIDsFromPickUp(hand);
@@ -331,7 +312,7 @@ public class PickUpScript: MonoBehaviour
         {
             throwOffset.x = -1f;
         }
-        
+
         //transforms the instantiate position into world space based on the head rotation
         Vector3 origin = headDirection.TransformDirection(throwOffset);
 

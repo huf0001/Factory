@@ -37,8 +37,15 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
+    [SerializeField] AudioController audioController;
     [SerializeField] private Gamepad gamepad = Gamepad.XboxController;
     [SerializeField] private PlayerAndHands[] players;
+    [SerializeField] int difficulty = 1;
+    [SerializeField] float timer = 60;
+    private int player1BuildCount = 0;
+    private int player2BuildCount = 0;
+    private bool finished = false;
+    private bool triggeredThrow = false;
 
     // Use this for initialization
     void Start()
@@ -86,6 +93,14 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
+    public int Difficulty
+    {
+        get
+        {
+            return difficulty;
+        }
+    }
+
     public int PlayerCount
     {
         get
@@ -105,6 +120,52 @@ public class GameControllerScript : MonoBehaviour
         }
 
         return 0;
+    }
+
+    public void IncrementPlayer1BuildCount()
+    {
+        player1BuildCount += 1;
+    }
+
+    public void IncrementPlayer2BuildCount()
+    {
+        player2BuildCount += 1;
+    }
+
+    private void Update()
+    {
+        if (!finished)
+        {
+            if (player1BuildCount >= difficulty)
+            {
+                finished = true;
+                Debug.Log("Player 1 wins");
+                audioController.EndRound();
+            }
+            else if (player2BuildCount >= difficulty)
+            {
+                finished = true;
+                Debug.Log("Player 2 wins");
+                audioController.EndRound();
+            }
+            else if (timer <= 10 && !triggeredThrow)
+            {
+                triggeredThrow = true;
+                players[0].Player.GetComponent<PickUpScript>().TriggerThrow();
+                players[1].Player.GetComponent<PickUpScript>().TriggerThrow();
+                audioController.StartCountdown();
+            }
+            else if (timer <= 0)
+            {
+                finished = true;
+                Debug.Log("Time's up!");
+                audioController.EndRound();
+            }
+            else
+            {
+                timer -= Time.deltaTime;
+            }
+        }
     }
 
     //Checks if the player clicked the specified button

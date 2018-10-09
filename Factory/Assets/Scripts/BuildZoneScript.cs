@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuildZoneScript : MonoBehaviour
 {
+    [SerializeField] private int buildZoneNumber;
     [SerializeField] private GameObject[] buildSchemaObjects;
 
     private List<BuildSchemaScript> schemas = new List<BuildSchemaScript>();
@@ -48,9 +49,27 @@ public class BuildZoneScript : MonoBehaviour
         }
     }
 
-    public void DeleteSchema(BuildSchemaScript schema)
+    public void SchemaComplete(BuildSchemaScript schema)
     {
         schemas.Remove(schema);
+        Destroy(schema.gameObject);
+        Destroy(schema);
+
+        if (buildZoneNumber == 1)
+        {
+            GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>().IncrementPlayer1BuildCount();
+        }
+        else if (buildZoneNumber == 2)
+        {
+            GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>().IncrementPlayer2BuildCount();
+        }
+        else
+        {
+            Debug.Log("Invalid build zone number");
+        }
+        
+        PlayBuiltSound();
+        //Particle effect
     }
 
     public void DestroyBuiltObject(GameObject builtObject, BuiltScript script)
