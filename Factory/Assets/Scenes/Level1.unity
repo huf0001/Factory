@@ -3543,13 +3543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildPointName: BuildPoint
   distanceLimit: 1.25
-  components:
-  - component: 12
-    role: 0
-  - component: 13
-    role: 1
-  - component: 14
-    role: 1
+  components: 0c0000000c0000000e000000
   finalObject: {fileID: 1076283397853320, guid: aacecad729b6def43a852e45a7fca403,
     type: 2}
 --- !u!4 &374231643
@@ -4430,11 +4424,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secBetweenSpawns: 2
   itemWeightPairs:
-  - item: {fileID: 1121794005861356, guid: b1cd4eaa9abf9b94389ae75d05607fdd, type: 2}
+  - item: {fileID: 1005724530429834, guid: 7e5d3fa2e1aca2a4b9993c666f22ba76, type: 2}
     itemWeighting: 1
-  - item: {fileID: 1293913417209356, guid: 33c34f30022afb34f93d892541452b6c, type: 2}
+  - item: {fileID: 1924769399083324, guid: fb0fd40c1ebc710428f6215e905232f8, type: 2}
     itemWeighting: 1
-  - item: {fileID: 1644340072949216, guid: 7ed6f88aa8591c24b82bb2e3649e65e9, type: 2}
+  - item: {fileID: 1744815049482128, guid: 19a7efb6865f8aa4182ab9576bffccd3, type: 2}
     itemWeighting: 1
 --- !u!1 &512143065
 GameObject:
@@ -9510,6 +9504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildSchemaObjects:
   - {fileID: 374231641}
+  - {fileID: 1202816173}
   loadedSound: {fileID: 8300000, guid: b5295e3a292b2ca48bceae7a0c506829, type: 3}
   builtSound: {fileID: 8300000, guid: b5295e3a292b2ca48bceae7a0c506829, type: 3}
 --- !u!136 &802100310
@@ -9583,6 +9578,7 @@ Transform:
   m_Children:
   - {fileID: 500333136}
   - {fileID: 374231643}
+  - {fileID: 1202816174}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13297,6 +13293,54 @@ Transform:
   m_Father: {fileID: 1728746696}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1202816173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1158095799592778, guid: bcff4ed4e621fbc4b867c38c600610a9,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1202816174}
+  - component: {fileID: 1202816175}
+  m_Layer: 2
+  m_Name: CarSchema
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1202816174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4583175116218158, guid: bcff4ed4e621fbc4b867c38c600610a9,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1202816173}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.37, z: 0}
+  m_LocalScale: {x: 1, y: 0.9999998, z: 1}
+  m_Children: []
+  m_Father: {fileID: 802100313}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1202816175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114049368971584516, guid: bcff4ed4e621fbc4b867c38c600610a9,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1202816173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e42a1c114ec15b4e870f91282ba9fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildPointName: BuildPoint
+  distanceLimit: 1.25
+  components: 0f0000001000000011000000
+  finalObject: {fileID: 1156836347612014, guid: 5ffe0911f39e6134591598e4d3e5ebc9,
+    type: 2}
 --- !u!1 &1202848324
 GameObject:
   m_ObjectHideFlags: 0
@@ -19160,13 +19204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildPointName: BuildPoint
   distanceLimit: 1.25
-  components:
-  - component: 12
-    role: 0
-  - component: 13
-    role: 1
-  - component: 14
-    role: 1
+  components: 0c0000000d0000000e000000
   finalObject: {fileID: 1076283397853320, guid: aacecad729b6def43a852e45a7fca403,
     type: 2}
 --- !u!4 &1862053220

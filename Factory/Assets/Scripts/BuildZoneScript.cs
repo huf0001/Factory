@@ -53,6 +53,12 @@ public class BuildZoneScript : MonoBehaviour
         schemas.Remove(schema);
     }
 
+    public void DestroyBuiltObject(GameObject builtObject, BuiltScript script)
+    {
+        Destroy(script);
+        Destroy(builtObject);
+    }
+
     public void PlayLoadedSound()
     {
         PlaySoundEffect(loadedSound);

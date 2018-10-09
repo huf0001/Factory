@@ -157,28 +157,11 @@ public class BuildSchemaScript : MonoBehaviour
 
     private void Build()
     {
-        GameObject spawned;
         DestroyComponentObjects();
-        spawned = SpawnBuiltObject();
+        SpawnBuiltObject();
         //Particle effect
-        Delay(3f);
-        Debug.Log("Delay finished");
-        Destroy(spawned);
     }
 
-    private void Delay(float time)
-    {
-        float delay = 0f;
-        time = time * 10000;
-
-        while (delay < time)
-        {
-            delay += Time.deltaTime;
-            Debug.Log("delay is " + delay);
-        }
-
-        return;
-    }
 
     private void DestroyComponentObjects()
     {
@@ -202,11 +185,11 @@ public class BuildSchemaScript : MonoBehaviour
         } while (items.Count > 0);
     }
 
-    private GameObject SpawnBuiltObject()
+    private void SpawnBuiltObject()
     {
         GameObject spawning = Instantiate(finalObject);
         CentreInBuildZone(spawning);
-        return spawning;
+        spawning.GetComponent<BuiltScript>().BuildZone = this.transform.parent.GetComponent<BuildZoneScript>();
     }
 
     private void CentreInBuildZone(GameObject item)
