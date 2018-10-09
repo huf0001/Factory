@@ -56,12 +56,12 @@ public class ModalRobotPlayerController : MonoBehaviour
         nextStep = stepCycle/2f;
         jumping = false;
 
-        gameController = GameObject.Find("GameController").GetComponent<GameControllerScript>();
+        gameController = GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>();
 
         if (gameController == null)
         {
-            Debug.Log("Why is there no object in the scene named GameController? There needs to be an object with a GameControllerScript called" +
-                " 'GameController'. Fix it. NOW!!");
+            Debug.Log("Why is there no object in the scene named GameControllerCamera? There needs to be an object with a GameControllerScript called" +
+                " 'GameControllerCamera'. Fix it. NOW!!");
         }
         else
         {
