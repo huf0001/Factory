@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class BinScript : MonoBehaviour
 {
+    [SerializeField] private AudioClip destroySound;
+    [SerializeField] private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource.clip = destroySound;
+    }
+
     // Should be physically impossible for anything to enter the bin except via falling in, so it can't be triggered from the sides.
     // Will check that the item in question is not the player though.
     private void OnTriggerStay(Collider other)
@@ -23,6 +31,7 @@ public class BinScript : MonoBehaviour
         {
             Destroy(other.gameObject.GetComponent<MovableScript>());
             Destroy(other.gameObject);
+            audioSource.Play();
         }
     }
 }
