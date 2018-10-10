@@ -192,7 +192,7 @@ public class BuildSchemaScript : MonoBehaviour
     {
         GameObject spawning = Instantiate(finalObject);
         CentreInBuildZone(spawning);
-        spawning.GetComponent<BuiltScript>().BuildZone = this.transform.parent.GetComponent<BuildZoneScript>();
+        spawning.GetComponent<BuiltScript>().BuildZone = buildZone;
     }
 
     private void CentreInBuildZone(GameObject item)

@@ -23,25 +23,34 @@ public enum Identifier
     // Value denoting that an object hasn't yet been loaded into the build zone
     HasNotBeenLoadedInBuildZoneYet,
 
-    // Generic values for movable and attachable objects
+    // Generic values for objects
     Attachable,
+    AttachBase,
     Attached,
     PlayerMoving,
     Dropped,
 
-    // Generic values for attachment base objects
-    AttachBase,
-
     // Values denoting specific objects
-
-    // Values for the test objects used while refining the code
-    TestBase,
-    TestAttachableA,
-    TestAttachableB,
 
     // Values for car components
     CarBody,
     CarSeats,
-    CarWheels
+    CarWheels,
+
+    // Values for dishwasher components
+    DishBody1,
+    DishBody2,
+    DishButtons,
+
+    // Values for female robot components
+    RobotBody,
+    RobotEyes,
+    RobotHead,
+    RobotParts,
+
+    // Values for the test objects used while refining the code
+    TestBase,
+    TestAttachableA,
+    TestAttachableB
 }
 

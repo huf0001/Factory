@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 4041870169530914}
   - component: {fileID: 114261782388859348}
   m_Layer: 0
-  m_Name: Startpoint
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -848,8 +848,22 @@ MonoBehaviour:
     itemWeighting: 1
   - item: {fileID: 1744815049482128, guid: 19a7efb6865f8aa4182ab9576bffccd3, type: 2}
     itemWeighting: 1
-  mediumItems: []
-  hardItems: []
+  mediumItems:
+  - item: {fileID: 1814952882862766, guid: 7fe5fd237c909204b803f92afb9e9105, type: 2}
+    itemWeighting: 1
+  - item: {fileID: 1504489098393056, guid: f16c3c4b4b2f924498d7d18796f4d247, type: 2}
+    itemWeighting: 1
+  - item: {fileID: 1213853075716060, guid: a5038dd13c7cc59408419dae630f294c, type: 2}
+    itemWeighting: 1
+  hardItems:
+  - item: {fileID: 1599153163990026, guid: 8bfa31f8a4fd80d459ec20fa68c399de, type: 2}
+    itemWeighting: 1
+  - item: {fileID: 1591656237454582, guid: 8bb074166d1bc2e4a8a5cf6b667f74fe, type: 2}
+    itemWeighting: 1
+  - item: {fileID: 1623160115035582, guid: 9d7db4bcc5eae264f9ec526abe58b8de, type: 2}
+    itemWeighting: 1
+  - item: {fileID: 1587037291497218, guid: eb9baef7e457d7f4e8ab22ff26685f60, type: 2}
+    itemWeighting: 1
 --- !u!114 &114497958531936758
 MonoBehaviour:
   m_ObjectHideFlags: 1
