@@ -23,6 +23,7 @@ ModelImporter:
     100034: transform7
     100036: transform8
     100038: transform9
+    100040: pCube4
     400000: //RootNode
     400002: pCube1
     400004: pCube2
@@ -43,10 +44,14 @@ ModelImporter:
     400034: transform7
     400036: transform8
     400038: transform9
+    400040: pCube4
     2100000: lambert7
     2300000: pPlane3
+    2300002: pCube4
     3300000: pPlane3
+    3300002: pCube4
     4300000: pPlane3
+    4300002: pCube4
   externalObjects: {}
   materials:
     importMaterials: 1
