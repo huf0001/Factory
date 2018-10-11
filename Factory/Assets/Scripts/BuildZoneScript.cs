@@ -12,6 +12,8 @@ public class BuildZoneScript : MonoBehaviour
     [SerializeField] private AudioClip loadedSound;
     [SerializeField] private AudioClip builtSound;
 
+    private BuildSchemaScript currentSchema;
+
     private AudioSource audioSource;
 
     // Use this for initialization
@@ -23,35 +25,36 @@ public class BuildZoneScript : MonoBehaviour
         {
             schemas.Add(o.GetComponent<BuildSchemaScript>());
         }
+
+        currentSchema = schemas[0];
 	}
 
     private void OnTriggerStay(Collider other)
-    {
+    {                
         if (other.gameObject.GetComponent<IdentifiableScript>() != null)
         {
             IdentifiableScript ids = other.gameObject.GetComponent<IdentifiableScript>();
 
-            foreach (BuildSchemaScript b in schemas)
+            if (currentSchema.BelongsToSchema(ids) && !currentSchema.IsLoaded(ids))
             {
-                if (b.BelongsToSchema(ids) && !b.IsLoaded(ids))
+                if (!ids.HasIdentifier(Identifier.PlayerMoving) && !ids.HasIdentifier(Identifier.InBuildZone))
                 {
-                    if (!ids.HasIdentifier(Identifier.PlayerMoving) && !ids.HasIdentifier(Identifier.InBuildZone))
-                    {
-                        other.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                        other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                        ids.AddIdentifier(Identifier.InBuildZone);
-                        b.HandleValidObject(other.gameObject);
+                    other.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                    other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    ids.AddIdentifier(Identifier.InBuildZone);
+                    currentSchema.HandleValidObject(other.gameObject);
 
-                        return;
-                    }
+                    return;
                 }
             }
+            
         }
     }
 
     public void SchemaComplete(BuildSchemaScript schema)
     {
         schemas.Remove(schema);
+        currentSchema = schemas[0];
         Destroy(schema.gameObject);
         Destroy(schema);
 
