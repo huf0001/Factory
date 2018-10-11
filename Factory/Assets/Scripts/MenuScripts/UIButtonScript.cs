@@ -58,6 +58,16 @@ public class UIButtonScript : MonoBehaviour {
     }
 
     public void LoadScene(string sceneName) {
-        SceneManager.LoadScene(sceneName);
+        currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "LevelSelect") { CheckDropdownValue(sceneName); }
+        else { SceneManager.LoadScene(sceneName); }
+    }
+
+    void CheckDropdownValue(string sceneNameCheck) {
+        GameObject levelSelectUI = GameObject.FindWithTag("LevelSelectUI");
+        Dropdown dropDownBar = levelSelectUI.GetComponent<Dropdown>();//need to find child not component note for me for later 
+
+        if (dropDownBar.value == 0) {}
+        else { SceneManager.LoadScene(sceneNameCheck); } 
     }
 }
