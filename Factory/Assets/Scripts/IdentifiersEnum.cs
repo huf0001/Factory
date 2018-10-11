@@ -38,9 +38,9 @@ public enum Identifier
     CarWheels,
 
     // Values for dishwasher components
+    DishBase,
     DishBody1,
     DishBody2,
-    DishButtons,
 
     // Values for female robot components
     RobotBody,
