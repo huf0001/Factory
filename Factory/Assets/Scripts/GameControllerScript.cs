@@ -46,6 +46,7 @@ public class GameControllerScript : MonoBehaviour
     private int player2BuildCount = 0;
     private bool finished = false;
     private bool triggeredThrow = false;
+    [SerializeField] private GameObject endGameUi;
 
     // Use this for initialization
     void Start()
@@ -141,12 +142,14 @@ public class GameControllerScript : MonoBehaviour
                 finished = true;
                 Debug.Log("Player 1 wins");
                 audioController.EndRound();
+                SetScoresForEnd();
             }
             else if (player2BuildCount >= difficulty)
             {
                 finished = true;
                 Debug.Log("Player 2 wins");
                 audioController.EndRound();
+                SetScoresForEnd();
             }
             else if (timer <= 10 && !triggeredThrow)
             {
@@ -160,6 +163,7 @@ public class GameControllerScript : MonoBehaviour
                 finished = true;
                 Debug.Log("Time's up!");
                 audioController.EndRound();
+                SetScoresForEnd();
             }
             else
             {
@@ -168,6 +172,21 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
+    private void SetScoresForEnd()
+    {
+        //sets scores to display when end game screen is enabled
+        PlayerPrefs.SetInt("player1score", player1BuildCount);
+        PlayerPrefs.SetInt("player2score", player2BuildCount);
+
+        if (player1BuildCount > player2BuildCount)
+        {
+            PlayerPrefs.SetString("winner", "player1");
+        }
+        else { PlayerPrefs.SetString("winner", "player1"); }
+
+        //enables end game ui
+        endGameUi.SetActive(true);
+    }
     //Checks if the player clicked the specified button
     public bool GetButtonDown(int p, string s)
     {
