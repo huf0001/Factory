@@ -984,10 +984,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnUp: {fileID: 1270785494}
+    m_SelectOnDown: {fileID: 965602249}
+    m_SelectOnLeft: {fileID: 1807059359}
+    m_SelectOnRight: {fileID: 690627445}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1158,9 +1158,9 @@ MonoBehaviour:
   m_VerticalAxis: P1DSMoveVertical
   m_SubmitButton: P1DSSubmit
   m_CancelButton: P1DSCancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_InputActionsPerSecond: 2
+  m_RepeatDelay: 0.3
+  m_ForceModuleActive: 1
 --- !u!114 &1685430135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1172,7 +1172,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1270785492}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &1685430136

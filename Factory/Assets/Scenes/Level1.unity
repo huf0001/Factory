@@ -318,7 +318,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 886490655}
         m_MethodName: QuitButton
         m_Mode: 1
         m_Arguments:
@@ -8126,9 +8126,20 @@ Prefab:
       propertyPath: gamepad
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114171924575855388, guid: 090a91634eaf5974b851dea9c1223d6e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 090a91634eaf5974b851dea9c1223d6e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &886490655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114171924575855388, guid: 090a91634eaf5974b851dea9c1223d6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 886490654}
+  m_Script: {fileID: 11500000, guid: 634f16c98d324524788568ab69f3b64c, type: 3}
 --- !u!1 &895265020
 GameObject:
   m_ObjectHideFlags: 0
@@ -8866,7 +8877,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 886490655}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -8874,7 +8885,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LevelSelect
+          m_StringArgument: Level
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -11187,7 +11198,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 886490655}
         m_MethodName: ToggleMusic
         m_Mode: 1
         m_Arguments:
@@ -14864,7 +14875,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 886490655}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -15664,7 +15675,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2063616481
 MonoBehaviour:
   m_ObjectHideFlags: 0
