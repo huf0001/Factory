@@ -65,9 +65,13 @@ public class UIButtonScript : MonoBehaviour {
 
     void CheckDropdownValue(string sceneNameCheck) {
         GameObject levelSelectUI = GameObject.FindWithTag("LevelSelectUI");
-        Dropdown dropDownBar = levelSelectUI.GetComponent<Dropdown>();//need to find child not component note for me for later 
-
-        if (dropDownBar.value == 0) {}
+        Dropdown dropDownBar = levelSelectUI.transform.Find("Dropdown").GetComponent<Dropdown>(); //need to find child not component note for me for later 
+        
+        //changes the drop downs label to red if no difficult chosen 
+        if (dropDownBar.value == 0) {
+            Text chooseDifficultyPls = levelSelectUI.transform.Find("NeedtoChoose").GetComponent<Text>();
+            chooseDifficultyPls.enabled = true;
+        }
         else { SceneManager.LoadScene(sceneNameCheck); } 
     }
 }
