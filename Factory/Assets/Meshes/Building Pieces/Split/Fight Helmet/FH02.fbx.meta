@@ -32,6 +32,23 @@ ModelImporter:
     100052: transform7
     100054: transform8
     100056: transform9
+    100058: polySurface1
+    100060: polySurface13
+    100062: polySurface15
+    100064: polySurface15 1
+    100066: polySurface19
+    100068: polySurface6
+    100070: pSphere1
+    100072: pSphere13
+    100074: transform14
+    100076: transform15
+    100078: transform16
+    100080: transform17
+    100082: transform18
+    100084: transform19
+    100086: transform20
+    100088: transform21
+    100090: transform22
     400000: //RootNode
     400002: pCylinder1
     400004: pCylinder2
@@ -61,14 +78,34 @@ ModelImporter:
     400052: transform7
     400054: transform8
     400056: transform9
+    400058: polySurface1
+    400060: polySurface13
+    400062: polySurface15
+    400064: polySurface15 1
+    400066: polySurface19
+    400068: polySurface6
+    400070: pSphere1
+    400072: pSphere13
+    400074: transform14
+    400076: transform15
+    400078: transform16
+    400080: transform17
+    400082: transform18
+    400084: transform19
+    400086: transform20
+    400088: transform21
+    400090: transform22
     2100000: Split_Material_lambert2
     2100002: Green_Split_Material_Green_Split_Material
     2300000: pCylinder3
     2300002: pSphere12
+    2300004: polySurface19
     3300000: pCylinder3
     3300002: pSphere12
+    3300004: polySurface19
     4300000: pCylinder3
     4300002: pSphere12
+    4300004: polySurface19
   externalObjects: {}
   materials:
     importMaterials: 1
