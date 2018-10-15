@@ -7,18 +7,17 @@ public class BuildSchemaScript : MonoBehaviour
     [SerializeField] private BuildZoneScript buildZone;
     [SerializeField] private Transform buildPoint;
     [SerializeField] private float distanceLimit;
-    [SerializeField] private List<Identifier> components = new List<Identifier>();
+    [SerializeField] private GameObject ghostObject;
+    private GhostScript ghostScript = null;
+    [SerializeField] Identifier[] components;
     [SerializeField] private GameObject finalObject;
 
     private List<Identifier> pendingComponents = new List<Identifier>();
-    private Dictionary<Identifier, GameObject> loadedComponents = new Dictionary<Identifier, GameObject>();
-    //private Transform buildPoint = null;
+    private List<Identifier> loadedComponents = new List<Identifier>();
 
     // Use this for initialization
     void Start()
     {
-        ///buildPoint = this.transform.parent.Find(buildPointName);
-
         if (buildPoint == null)
         {
             Debug.Log("Warning: Couldn't find the build point. It should be childed to the build" +
@@ -30,23 +29,28 @@ public class BuildSchemaScript : MonoBehaviour
             Debug.Log("Warning: Couldn't find the build zone. Schemas need build zones.");
         }
 
+        ghostScript = ghostObject.GetComponent<GhostScript>();
+
         foreach (Identifier i in components)
         {
             pendingComponents.Add(i);
         }
     }
 
-    public bool BelongsToSchema(GameObject item)
+    public void ActivateGhost()
     {
-        IdentifiableScript ids = null;
-        ids = item.GetComponent<IdentifiableScript>();
+        ghostObject = Instantiate(ghostObject);
+        CentreInBuildZone(ghostObject);
+        ghostScript = ghostObject.GetComponent<GhostScript>();
+    }
 
-        if (ids != null)
+    private void CentreInBuildZone(GameObject item)
+    {
+        if (buildPoint != null)
         {
-            return BelongsToSchema(ids);
+            item.transform.position = buildPoint.position;
+            item.transform.rotation = buildPoint.rotation;
         }
-
-        return false;
     }
 
     public bool BelongsToSchema(IdentifiableScript ids)
@@ -64,13 +68,13 @@ public class BuildSchemaScript : MonoBehaviour
 
     public bool IsLoaded(IdentifiableScript ids)
     {
-        foreach (Identifier i in components)
+        foreach (Identifier id in components)
         {
-            if (ids.HasIdentifier(i))
+            if (ids.HasIdentifier(id))
             {
-                foreach (KeyValuePair<Identifier, GameObject> kvp in loadedComponents)
+                foreach (Identifier i in loadedComponents)
                 {
-                    if (kvp.Key == i)
+                    if (i == id)
                     {
                         return true;
                     }
@@ -97,22 +101,15 @@ public class BuildSchemaScript : MonoBehaviour
 
         if (!itemIds.HasIdentifier(Identifier.Attached))
         {
-            foreach (Identifier i in components)
+            foreach (Identifier i in pendingComponents)
             {
                 if (itemIds.HasIdentifier(i))
                 {
-                    if (item.GetComponent<MovableScript>() != null)
-                    {
-                        item.GetComponent<MovableScript>().Schema = this;
-                    }
-
+                    DestroyComponentObject(item);
+                    ghostScript.Reveal(i);
                     pendingComponents.Remove(i);
-                    loadedComponents.Add(i, item);
-                    itemIds.RemoveIdentifier(Identifier.HasNotBeenLoadedInBuildZoneYet);
-
+                    loadedComponents.Add(i);
                     this.transform.parent.gameObject.GetComponent<BuildZoneScript>().PlayLoadedSound();
-
-                    MoveTowardsBuildPoint(item);
 
                     return;
                 }
@@ -120,72 +117,24 @@ public class BuildSchemaScript : MonoBehaviour
         }
     }
 
-    private void MoveTowardsBuildPoint(GameObject item)
+    private void DestroyComponentObject(GameObject item)
     {
-        float increment = 0.1f;
-        float distance = 0f;
-
-        do
-        {
-            item.transform.position = Vector3.MoveTowards(item.transform.position, buildPoint.transform.position, increment);
-            distance = Vector3.Distance(item.transform.position, buildPoint.position);
-        } while (distance > distanceLimit);
-    }
-
-    private bool CheckIsLoaded(GameObject item)
-    {
-        foreach (KeyValuePair<Identifier, GameObject> p in loadedComponents)
-        {
-            if (p.Value == item)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public void RemoveObject(GameObject item)
-    {
-        foreach (KeyValuePair<Identifier, GameObject> p in loadedComponents)
-        {
-            if (p.Value == item)
-            {
-                pendingComponents.Add(p.Key);
-                loadedComponents.Remove(p.Key);
-                p.Value.GetComponent<IdentifiableScript>().RemoveIdentifier(Identifier.InBuildZone);                
-                return;
-            }
-        }
+        Destroy(item.GetComponent<MovableScript>());
+        Destroy(item.GetComponent<IdentifiableScript>());
+        Destroy(item);
     }
 
     private void Build()
     {
-        DestroyComponentObjects();
+        DestroyGhost();
         SpawnBuiltObject();
         buildZone.SchemaComplete(this);
     }
 
-    private void DestroyComponentObjects()
+    private void DestroyGhost()
     {
-        List<GameObject> items = new List<GameObject>();
-        List<Identifier> keys = new List<Identifier>();
-
-        foreach (KeyValuePair<Identifier, GameObject> p in loadedComponents)
-        {
-            items.Add(p.Value);
-            keys.Add(p.Key);
-        }
-
-        do
-        {
-            loadedComponents.Remove(keys[0]);
-            Destroy(items[0].GetComponent<MovableScript>());
-            Destroy(items[0].GetComponent<IdentifiableScript>());
-            Destroy(items[0]);
-            items.Remove(items[0]);
-            keys.Remove(keys[0]);
-        } while (items.Count > 0);
+        Destroy(ghostScript);
+        Destroy(ghostObject);
     }
 
     private void SpawnBuiltObject()
@@ -193,14 +142,5 @@ public class BuildSchemaScript : MonoBehaviour
         GameObject spawning = Instantiate(finalObject);
         CentreInBuildZone(spawning);
         spawning.GetComponent<BuiltScript>().BuildZone = buildZone;
-    }
-
-    private void CentreInBuildZone(GameObject item)
-    {
-        if (buildPoint != null)
-        {
-            item.transform.position = buildPoint.position;
-            item.transform.rotation = buildPoint.rotation;
-        }
     }
 }

@@ -31,7 +31,7 @@ public class BuiltScript : MonoBehaviour
         }
         else
         {
-            buildZone.DestroyBuiltObject(this.gameObject, this);
+            buildZone.ChangeCurrentSchema(this.gameObject, this);
         }
     }
 }

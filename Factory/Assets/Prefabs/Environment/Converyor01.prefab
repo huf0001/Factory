@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 65225207741928390}
   - component: {fileID: 114117862021249508}
   - component: {fileID: 82156265499609766}
+  - component: {fileID: 65057473574195820}
   m_Layer: 0
   m_Name: Bin
   m_TagString: Untagged
@@ -568,6 +569,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300008, guid: 7a4cff45c3a464f40ad005c10f1bee52, type: 3}
+--- !u!65 &65057473574195820
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1278816272294534}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.025, y: 0.02, z: 0.03}
+  m_Center: {x: 0.0000000105758255, y: 0.0013364529, z: 0.004}
 --- !u!65 &65225207741928390
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -578,7 +591,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01890011, y: 1, z: 0.016123103}
+  m_Size: {x: 0.01890011, y: 0.05, z: 0.016123103}
   m_Center: {x: 0.0000000064630044, y: -0.007493427, z: -0.0000000067055224}
 --- !u!65 &65251550893992898
 BoxCollider:
