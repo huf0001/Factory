@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 65225207741928390}
   - component: {fileID: 114117862021249508}
   - component: {fileID: 82156265499609766}
+  - component: {fileID: 65057473574195820}
   m_Layer: 0
   m_Name: Bin
   m_TagString: Untagged
@@ -237,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 1278816272294534}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.0002543486, y: 0.029201195, z: -0.12981743}
-  m_LocalScale: {x: 2, y: 1.5771816, z: 1.5771816}
+  m_LocalScale: {x: 2, y: 2, z: 1.5771816}
   m_Children: []
   m_Father: {fileID: 4800991539697396}
   m_RootOrder: 4
@@ -568,6 +569,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300008, guid: 7a4cff45c3a464f40ad005c10f1bee52, type: 3}
+--- !u!65 &65057473574195820
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1278816272294534}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.025, y: 0.02, z: 0.03}
+  m_Center: {x: 0.0000000105758255, y: 0.0013364529, z: 0.004}
 --- !u!65 &65225207741928390
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -578,7 +591,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01890011, y: 0.0026313348, z: 0.016123103}
+  m_Size: {x: 0.01890011, y: 0.05, z: 0.016123103}
   m_Center: {x: 0.0000000064630044, y: -0.007493427, z: -0.0000000067055224}
 --- !u!65 &65251550893992898
 BoxCollider:
@@ -940,27 +953,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secBetweenSpawns: 2
   easyItems:
-  - item: {fileID: 1005724530429834, guid: 7e5d3fa2e1aca2a4b9993c666f22ba76, type: 2}
+  - item: {fileID: 1821258930924162, guid: c9bd2cb0daf8e7f43a92b9a873f5bef6, type: 2}
     itemWeighting: 1
-  - item: {fileID: 1924769399083324, guid: fb0fd40c1ebc710428f6215e905232f8, type: 2}
+  - item: {fileID: 1495769850073192, guid: 539dac05433834c4ab5167639afcaf81, type: 2}
     itemWeighting: 1
-  - item: {fileID: 1744815049482128, guid: 19a7efb6865f8aa4182ab9576bffccd3, type: 2}
+  - item: {fileID: 1006785438670164, guid: dab5da1bd890b25468f697277d076b65, type: 2}
     itemWeighting: 1
   mediumItems:
-  - item: {fileID: 1814952882862766, guid: 7fe5fd237c909204b803f92afb9e9105, type: 2}
+  - item: {fileID: 1261161453979990, guid: 7e5d3fa2e1aca2a4b9993c666f22ba76, type: 2}
     itemWeighting: 1
-  - item: {fileID: 1504489098393056, guid: f16c3c4b4b2f924498d7d18796f4d247, type: 2}
+  - item: {fileID: 1813596524701800, guid: 06cf1404749016d47b637eb70fad477d, type: 2}
     itemWeighting: 1
-  - item: {fileID: 1213853075716060, guid: a5038dd13c7cc59408419dae630f294c, type: 2}
+  - item: {fileID: 1341517175351790, guid: 7a89966dfa6d7514cb96710f5910b677, type: 2}
     itemWeighting: 1
   hardItems:
-  - item: {fileID: 1599153163990026, guid: 8bfa31f8a4fd80d459ec20fa68c399de, type: 2}
+  - item: {fileID: 1472041093814584, guid: 33ce7da75edba954e8ed0809a1c51abc, type: 2}
     itemWeighting: 1
-  - item: {fileID: 1591656237454582, guid: 8bb074166d1bc2e4a8a5cf6b667f74fe, type: 2}
+  - item: {fileID: 1155540778061472, guid: 458895c8dddcaa24aa2efe2a88d1e874, type: 2}
     itemWeighting: 1
-  - item: {fileID: 1623160115035582, guid: 9d7db4bcc5eae264f9ec526abe58b8de, type: 2}
+  - item: {fileID: 1219507498680110, guid: 4ba5a75e6e4315a43bfc84e5dae36a4c, type: 2}
     itemWeighting: 1
-  - item: {fileID: 1587037291497218, guid: eb9baef7e457d7f4e8ab22ff26685f60, type: 2}
+  - item: {fileID: 1209669250495376, guid: 198e6b7198949f54b874ebdaa47a9758, type: 2}
     itemWeighting: 1
 --- !u!114 &114497958531936758
 MonoBehaviour:

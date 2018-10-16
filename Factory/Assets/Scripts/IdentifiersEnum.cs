@@ -34,8 +34,8 @@ public enum Identifier
 
     // Values for car components
     CarBody,
-    CarSeats,
-    CarWheels,
+    CarSeats1,
+    CarSeats2,
 
     // Values for dishwasher components
     DishBase,

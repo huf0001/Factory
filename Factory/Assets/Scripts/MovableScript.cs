@@ -7,7 +7,7 @@ public class MovableScript : IdentifiableScript
     [SerializeField] private Identifier uniqueID = Identifier.Attachable;
 
     private GameControllerScript gameController = null;
-    private BuildSchemaScript schema = null;
+    //private BuildSchemaScript schema = null;
     private List<GameObject> tempLeftParents = new List<GameObject>();
     private List<GameObject> tempRightParents = new List<GameObject>();
     private List<Transform> leftGuides = new List<Transform>();
@@ -46,7 +46,7 @@ public class MovableScript : IdentifiableScript
         }
     }
 
-    public BuildSchemaScript Schema
+    /*public BuildSchemaScript Schema
     {
         get
         {
@@ -57,7 +57,7 @@ public class MovableScript : IdentifiableScript
         {
             schema = value;
         }
-    }
+    }*/
 
     public virtual void HandlePickUp(int p, Hand h)
     {
@@ -80,11 +80,11 @@ public class MovableScript : IdentifiableScript
         AddIdentifier(Identifier.PlayerMoving);
         this.gameObject.layer = 2;
 
-        if (schema != null)
-        {
-            schema.RemoveObject(this.gameObject);
-            schema = null;
-        }
+        //if (schema != null)
+        //{
+            //schema.RemoveObject(this.gameObject);
+            //schema = null;
+        //}
     }
 
     public virtual void HandleDrop(int p, Hand h)

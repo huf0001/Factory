@@ -32,6 +32,59 @@ ModelImporter:
     100052: pCylinder3
     100054: transform1
     100056: transform2
+    100058: polySurface1
+    100060: polySurface10
+    100062: polySurface11
+    100064: polySurface12
+    100066: polySurface13
+    100068: polySurface14
+    100070: polySurface14 1
+    100072: polySurface15
+    100074: polySurface15 1
+    100076: polySurface16
+    100078: polySurface16 1
+    100080: polySurface17
+    100082: polySurface18
+    100084: polySurface2
+    100086: polySurface20
+    100088: polySurface22
+    100090: polySurface24
+    100092: polySurface3
+    100094: polySurface4
+    100096: polySurface5
+    100098: polySurface6
+    100100: polySurface7
+    100102: polySurface8
+    100104: polySurface9
+    100106: pSphere1
+    100108: pSphere13
+    100110: transform14
+    100112: transform15
+    100114: transform16
+    100116: transform17
+    100118: transform18
+    100120: transform19
+    100122: transform20
+    100124: transform21
+    100126: transform22
+    100128: transform23
+    100130: transform24
+    100132: transform25
+    100134: transform26
+    100136: transform27
+    100138: transform28
+    100140: transform29
+    100142: transform30
+    100144: transform31
+    100146: transform32
+    100148: transform33
+    100150: transform34
+    100152: transform35
+    100154: transform36
+    100156: transform37
+    100158: transform38
+    100160: transform39
+    100162: transform40
     400000: //RootNode
     400002: pCube1
     400004: pSphere10
@@ -61,14 +114,70 @@ ModelImporter:
     400052: pCylinder3
     400054: transform1
     400056: transform2
+    400058: polySurface1
+    400060: polySurface10
+    400062: polySurface11
+    400064: polySurface12
+    400066: polySurface13
+    400068: polySurface14
+    400070: polySurface14 1
+    400072: polySurface15
+    400074: polySurface15 1
+    400076: polySurface16
+    400078: polySurface16 1
+    400080: polySurface17
+    400082: polySurface18
+    400084: polySurface2
+    400086: polySurface20
+    400088: polySurface22
+    400090: polySurface24
+    400092: polySurface3
+    400094: polySurface4
+    400096: polySurface5
+    400098: polySurface6
+    400100: polySurface7
+    400102: polySurface8
+    400104: polySurface9
+    400106: pSphere1
+    400108: pSphere13
+    400110: transform14
+    400112: transform15
+    400114: transform16
+    400116: transform17
+    400118: transform18
+    400120: transform19
+    400122: transform20
+    400124: transform21
+    400126: transform22
+    400128: transform23
+    400130: transform24
+    400132: transform25
+    400134: transform26
+    400136: transform27
+    400138: transform28
+    400140: transform29
+    400142: transform30
+    400144: transform31
+    400146: transform32
+    400148: transform33
+    400150: transform34
+    400152: transform35
+    400154: transform36
+    400156: transform37
+    400158: transform38
+    400160: transform39
+    400162: transform40
     2100000: Split_Material_lambert2
     2100002: Red_Split_Material_Red_Split_Material
     2300000: pSphere12
     2300002: pCylinder3
+    2300004: polySurface24
     3300000: pSphere12
     3300002: pCylinder3
+    3300004: polySurface24
     4300000: pSphere12
     4300002: pCylinder3
+    4300004: polySurface24
   externalObjects: {}
   materials:
     importMaterials: 1

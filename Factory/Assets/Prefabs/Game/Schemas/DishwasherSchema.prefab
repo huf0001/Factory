@@ -54,6 +54,8 @@ MonoBehaviour:
   buildZone: {fileID: 0}
   buildPoint: {fileID: 0}
   distanceLimit: 1.25
-  components: 0f0000001000000011000000
+  ghostObject: {fileID: 1185429461418376, guid: d8ed95735d2cbff44bc5363e632e3ad6,
+    type: 2}
+  components: 10000000110000000f000000
   finalObject: {fileID: 1444990395280352, guid: 77236eae4e6d3464ca83759ef249e93a,
     type: 2}
