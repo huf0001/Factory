@@ -51,6 +51,8 @@ public class GameControllerScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //ensures endgameUI doesn't popup on startup
+        endGameUi.SetActive(false);
         int playerNumber = 0;
 
         for(int i = 0; i < players.Length; i++)

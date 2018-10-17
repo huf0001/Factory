@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7557185b49a531c48bf9f85507ae4826
+guid: c001f01c3409154479ab876ddce18d68
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -142,22 +142,21 @@ ModelImporter:
     2300022: L_EYE
     2300024: L_Iris1
     2300026: L_spike
-    2300028: Left_Arm
-    2300030: Neck 1
-    2300032: pasted__L_Foot1
-    2300034: pasted__L_Shin1
-    2300036: pasted__L_Thigh1
-    2300038: pasted__R_Foot 1
-    2300040: pasted__R_Shin
-    2300042: R_Ear
-    2300044: R_EYE
-    2300046: R_Iris
-    2300048: R_spike
-    2300050: R_Thigh
-    2300052: Tooth_1
-    2300054: Tooth_2
-    2300056: Tooth_3
-    2300058: Tooth_4
+    2300028: Neck 1
+    2300030: pasted__L_Foot1
+    2300032: pasted__L_Shin1
+    2300034: pasted__L_Thigh1
+    2300036: pasted__R_Foot 1
+    2300038: pasted__R_Shin
+    2300040: R_Ear
+    2300042: R_EYE
+    2300044: R_Iris
+    2300046: R_spike
+    2300048: R_Thigh
+    2300050: Tooth_1
+    2300052: Tooth_2
+    2300054: Tooth_3
+    2300056: Tooth_4
     3300000: Body
     3300002: Chest_button
     3300004: Chest_button1
@@ -172,22 +171,21 @@ ModelImporter:
     3300022: L_EYE
     3300024: L_Iris1
     3300026: L_spike
-    3300028: Left_Arm
-    3300030: Neck 1
-    3300032: pasted__L_Foot1
-    3300034: pasted__L_Shin1
-    3300036: pasted__L_Thigh1
-    3300038: pasted__R_Foot 1
-    3300040: pasted__R_Shin
-    3300042: R_Ear
-    3300044: R_EYE
-    3300046: R_Iris
-    3300048: R_spike
-    3300050: R_Thigh
-    3300052: Tooth_1
-    3300054: Tooth_2
-    3300056: Tooth_3
-    3300058: Tooth_4
+    3300028: Neck 1
+    3300030: pasted__L_Foot1
+    3300032: pasted__L_Shin1
+    3300034: pasted__L_Thigh1
+    3300036: pasted__R_Foot 1
+    3300038: pasted__R_Shin
+    3300040: R_Ear
+    3300042: R_EYE
+    3300044: R_Iris
+    3300046: R_spike
+    3300048: R_Thigh
+    3300050: Tooth_1
+    3300052: Tooth_2
+    3300054: Tooth_3
+    3300056: Tooth_4
     4300000: pasted__L_Thigh1
     4300002: pasted__L_Shin1
     4300004: pasted__L_Foot1
@@ -221,7 +219,8 @@ ModelImporter:
     4300060: Left_Arm
     7400000: Take 001
     9500000: //RootNode
-    13700000: Right_Arm
+    13700000: Left_Arm
+    13700002: Right_Arm
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
