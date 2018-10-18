@@ -1745,7 +1745,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114788169823900594, guid: 1c955d35534cdbb4cac2c733d29ec2f7,
+        type: 2}
+      propertyPath: destroySound
+      value: 
+      objectReference: {fileID: 8300000, guid: b5295e3a292b2ca48bceae7a0c506829, type: 3}
+    - target: {fileID: 82164445186220988, guid: 1c955d35534cdbb4cac2c733d29ec2f7,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 82358390068212326, guid: 1c955d35534cdbb4cac2c733d29ec2f7, type: 2}
+    - {fileID: 82213410291248326, guid: 1c955d35534cdbb4cac2c733d29ec2f7, type: 2}
+    - {fileID: 82312591246102750, guid: 1c955d35534cdbb4cac2c733d29ec2f7, type: 2}
+    - {fileID: 82920138654810688, guid: 1c955d35534cdbb4cac2c733d29ec2f7, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 1c955d35534cdbb4cac2c733d29ec2f7, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &252979555

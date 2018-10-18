@@ -6,17 +6,6 @@ public class ConveyerBeltScript : MonoBehaviour
 {
     [SerializeField] private Transform endpoint;
     [SerializeField] private float speed;
-    [SerializeField] private AudioClip audioClip;
-    private AudioSource audioSource;
-
-    private void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = audioClip;
-        audioSource.loop = true;
-        audioSource.volume = 0.5f;
-        audioSource.Play();
-    }
 
     private void OnTriggerStay(Collider other)
     {
