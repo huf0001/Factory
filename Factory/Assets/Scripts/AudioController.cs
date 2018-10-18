@@ -8,19 +8,14 @@ public class AudioController : MonoBehaviour
     [SerializeField] private AudioSourceController countdown;
     [SerializeField] private AudioSourceController roundOver;
     [SerializeField] bool playAudio;
-    [SerializeField] private bool overridePlayerPrefs = true;
 
     private void Update()
     {
-        if (!overridePlayerPrefs)
-        {
-            CheckMusicPlayerPrefs();
-        }
+        CheckMusicPlayerPrefs();
 
         if (!gameMusic.isPlaying && playAudio)
         {
             gameMusic.LoopAndPlay = true;
-            Debug.Log("Now playing music");
         }
     }
 
