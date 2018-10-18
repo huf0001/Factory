@@ -157,14 +157,12 @@ public class GameControllerScript : MonoBehaviour
             if (player1BuildCount >= difficulty)
             {
                 finished = true;
-                Debug.Log("Player 1 wins");
                 audioController.EndRound();
                 SetScoresForEnd();
             }
             else if (player2BuildCount >= difficulty)
             {
                 finished = true;
-                Debug.Log("Player 2 wins");
                 audioController.EndRound();
                 SetScoresForEnd();
             }

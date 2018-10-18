@@ -57,6 +57,11 @@ public class UIButtonScript : MonoBehaviour {
         Application.Quit();
     }
 
+    public void ReloadCurrentScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void LoadScene(string sceneName) {
         currentScene = SceneManager.GetActiveScene();
         if ((currentScene.name == "LevelSelect")&&(sceneName != "MainMenu")) { CheckDropdownValue(sceneName); }
