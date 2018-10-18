@@ -6,7 +6,6 @@ public class BuildSchemaScript : MonoBehaviour
 {
     [SerializeField] private BuildZoneScript buildZone;
     [SerializeField] private Transform buildPoint;
-    [SerializeField] private float distanceLimit;
     [SerializeField] private GameObject ghostObject;
     private GhostScript ghostScript = null;
     [SerializeField] Identifier[] components;

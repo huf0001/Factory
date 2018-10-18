@@ -40,7 +40,7 @@ public class GameControllerScript : MonoBehaviour
     [SerializeField] AudioController audioController;
     [SerializeField] private Gamepad gamepad = Gamepad.XboxController;
     [SerializeField] private PlayerAndHands[] players;
-    [SerializeField] int difficulty = 1;
+    /*[SerializeField]*/ int difficulty;
     [SerializeField] float timer = 60;
     private int player1BuildCount = 0;
     private int player2BuildCount = 0;
@@ -53,6 +53,21 @@ public class GameControllerScript : MonoBehaviour
     {
         //ensures endgameUI doesn't popup on startup
         endGameUi.SetActive(false);
+
+        switch (PlayerPrefs.GetString("difficulty"))
+        {
+            case "hard":
+                difficulty = 3;
+                break;
+            case "medium":
+                difficulty = 2;
+                break;
+            default:
+                difficulty = 1;
+                break;
+        }
+
+
         int playerNumber = 0;
 
         for(int i = 0; i < players.Length; i++)
@@ -96,13 +111,13 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
-    public int Difficulty
+    /*public int Difficulty
     {
         get
         {
             return difficulty;
         }
-    }
+    }*/
 
     public int PlayerCount
     {

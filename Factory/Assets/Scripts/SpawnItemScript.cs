@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class SpawnItemScript : MonoBehaviour
 {
     [System.Serializable]
@@ -40,7 +38,22 @@ public class SpawnItemScript : MonoBehaviour
     // Use this for initialization
 	void Start ()
     {
-        int difficulty = GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>().Difficulty;
+        int difficulty;
+
+        switch (PlayerPrefs.GetString("difficulty"))
+        {
+            case "hard":
+                difficulty = 1;
+                break;
+            case "medium":
+                difficulty = 2;
+                break;
+            default:
+                difficulty = 1;
+                break;
+        }
+
+        //int difficulty = GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>().Difficulty;
 
         if (difficulty > 0 && easyItems.Length > 0)
         { foreach (ItemWeightPair p in easyItems)
