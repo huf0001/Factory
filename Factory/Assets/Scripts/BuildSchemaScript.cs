@@ -90,7 +90,7 @@ public class BuildSchemaScript : MonoBehaviour
 
         if (pendingComponents.Count == 0)
         {
-            Build();
+            ShrinkGhost();
         }
     }
 
@@ -123,7 +123,12 @@ public class BuildSchemaScript : MonoBehaviour
         Destroy(item);
     }
 
-    private void Build()
+    private void ShrinkGhost()
+    {
+        ghostScript.ToggleShrinking(this);
+    }
+
+    public void SchemaComplete()
     {
         DestroyGhost();
         SpawnBuiltObject();

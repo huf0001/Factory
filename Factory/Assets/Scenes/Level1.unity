@@ -1703,6 +1703,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114488696889481572, guid: 6f1058e3c2a8ce94bba4600833e16af6,
+        type: 2}
+      propertyPath: loadedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c2e2613e891b15140bcc2d65a44bc43e, type: 3}
+    - target: {fileID: 114594179130400366, guid: 6f1058e3c2a8ce94bba4600833e16af6,
+        type: 2}
+      propertyPath: loadedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c2e2613e891b15140bcc2d65a44bc43e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f1058e3c2a8ce94bba4600833e16af6, type: 2}
   m_IsPrefabAsset: 0
@@ -6286,6 +6296,11 @@ Prefab:
       propertyPath: players.Array.data[2].rightHand
       value: 
       objectReference: {fileID: 1335322843}
+    - target: {fileID: 114409402392440828, guid: 090a91634eaf5974b851dea9c1223d6e,
+        type: 2}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f0498120196d2c4fa984385124ea524, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 090a91634eaf5974b851dea9c1223d6e, type: 2}
   m_IsPrefabAsset: 0

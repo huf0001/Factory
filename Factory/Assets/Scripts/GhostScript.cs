@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostScript : MonoBehaviour
+public class GhostScript : ScalableScript
 {
     [System.Serializable]
     public class GhostIdentifierPair
@@ -28,12 +28,26 @@ public class GhostScript : MonoBehaviour
     }
 
     [SerializeField] GhostIdentifierPair[] ghostComponents;
+    private BuildSchemaScript schema = null;
 
     private void Start()
     {
         foreach (GhostIdentifierPair p in ghostComponents)
         {
             p.Ghost.SetActive(false);
+        }
+
+        Initialise();
+    }
+
+    private void Update()
+    {
+        Rotate();
+        CheckScaling();
+
+        if (FinishedShrinking())
+        {
+            schema.SchemaComplete();
         }
     }
 
@@ -46,5 +60,11 @@ public class GhostScript : MonoBehaviour
                 p.Ghost.SetActive(true);
             }
         }
+    }
+
+    public void ToggleShrinking(BuildSchemaScript s)
+    {
+        Shrinking = true;
+        schema = s;
     }
 }
