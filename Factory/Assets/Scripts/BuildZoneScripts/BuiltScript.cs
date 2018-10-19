@@ -7,7 +7,7 @@ public class BuiltScript : ScalableScript
     [SerializeField] private float lifespan = 2f;
     private float time = 0f;
     private BuildZoneScript buildZone = null;
-    private
+    private BuildSchemaScript schema = null;
 
     // Use this for initialization
     void Start()
@@ -15,12 +15,10 @@ public class BuiltScript : ScalableScript
         Initialise();
     }
 
-    public BuildZoneScript BuildZone
+    public void SetSchemaAndZone(BuildSchemaScript s, BuildZoneScript b)
     {
-        set
-        {
-            buildZone = value;
-        }
+        schema = s;
+        buildZone = b;
     }
 	
 	// Update is called once per frame
@@ -40,7 +38,7 @@ public class BuiltScript : ScalableScript
 
         if (FinishedShrinking())
         {
-            buildZone.ChangeCurrentSchema(this.gameObject, this);
+            buildZone.ChangeCurrentSchema(schema, this.gameObject, this);
         }
     }
 }

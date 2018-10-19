@@ -90,6 +90,7 @@ public class BuildSchemaScript : MonoBehaviour
 
         if (pendingComponents.Count == 0)
         {
+            buildZone.PlayBuiltSound();
             ShrinkGhost();
         }
     }
@@ -132,7 +133,6 @@ public class BuildSchemaScript : MonoBehaviour
     {
         DestroyGhost();
         SpawnBuiltObject();
-        buildZone.SchemaComplete(this);
     }
 
     private void DestroyGhost()
@@ -145,6 +145,6 @@ public class BuildSchemaScript : MonoBehaviour
     {
         GameObject spawning = Instantiate(finalObject);
         CentreInBuildZone(spawning);
-        spawning.GetComponent<BuiltScript>().BuildZone = buildZone;
+        spawning.GetComponent<BuiltScript>().SetSchemaAndZone(this, buildZone);
     }
 }

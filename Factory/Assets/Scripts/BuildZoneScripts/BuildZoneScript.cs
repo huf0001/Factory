@@ -54,10 +54,7 @@ public class BuildZoneScript : MonoBehaviour
 
                 EjectFromBuildPoint(other.gameObject);
             }
-
         }
-
-        
     }
 
     private void EjectFromBuildPoint(GameObject item)
@@ -67,12 +64,25 @@ public class BuildZoneScript : MonoBehaviour
         item.transform.position = Vector3.MoveTowards(item.transform.position, buildPoint.transform.position, increment);
     }
 
-    public void SchemaComplete(BuildSchemaScript schema)
+    public void ChangeCurrentSchema(BuildSchemaScript schema, GameObject builtObject, BuiltScript script)
+    {
+        DeleteSchema(schema);
+        IncrementBuildCount();
+        DestroyBuiltObject(builtObject, script);
+        //PlayBuiltSound();
+        //Particle effect
+        NextSchema();
+    }
+
+    private void DeleteSchema(BuildSchemaScript schema)
     {
         schemas.Remove(schema);
         Destroy(schema.gameObject);
         Destroy(schema);
+    }
 
+    private void IncrementBuildCount()
+    {
         if (buildZoneNumber == 1)
         {
             GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>().IncrementPlayer1BuildCount();
@@ -85,15 +95,16 @@ public class BuildZoneScript : MonoBehaviour
         {
             Debug.Log("Invalid build zone number");
         }
-        
-        PlayBuiltSound();
-        //Particle effect
     }
 
-    public void ChangeCurrentSchema(GameObject builtObject, BuiltScript script)
+    private void DestroyBuiltObject(GameObject builtObject, BuiltScript script)
     {
-        DestroyBuiltObject(builtObject, script);
+        Destroy(script);
+        Destroy(builtObject);
+    }
 
+    private void NextSchema()
+    {
         if (schemas.Count > 0)
         {
             currentSchema = schemas[0];
@@ -103,12 +114,6 @@ public class BuildZoneScript : MonoBehaviour
         {
             currentSchema = null;
         }
-    }
-
-    public void DestroyBuiltObject(GameObject builtObject, BuiltScript script)
-    {
-        Destroy(script);
-        Destroy(builtObject);
     }
 
     public void PlayLoadedSound()
