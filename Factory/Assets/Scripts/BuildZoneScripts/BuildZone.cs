@@ -28,7 +28,7 @@ public class BuildZone : MonoBehaviour
         switch (PlayerPrefs.GetString("difficulty"))
         {
             case "hard":
-                difficulty = 1;
+                difficulty = 3;
                 break;
             case "medium":
                 difficulty = 2;

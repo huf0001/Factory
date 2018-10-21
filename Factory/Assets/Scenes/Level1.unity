@@ -216,7 +216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -784.7, y: -433}
+  m_AnchoredPosition: {x: -781, y: -433}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &26621067
@@ -7041,6 +7041,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0017743483, y: 0.01169084, z: 0.0017743491}
   m_Center: {x: 0.04923254, y: 0.0000000030267984, z: 0.0000000016298145}
+--- !u!1 &960085855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1817225044454948, guid: 1c955d35534cdbb4cac2c733d29ec2f7,
+    type: 2}
+  m_PrefabInternal: {fileID: 244681357}
+--- !u!65 &960085866
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 960085855}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.018900108, y: 0.005226547, z: 0.016123105}
+  m_Center: {x: 0.000000014101101, y: 0.008875896, z: 7.450579e-10}
 --- !u!1 &974403257
 GameObject:
   m_ObjectHideFlags: 0
@@ -8829,6 +8846,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 1.5, z: 0.4}
   m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!65 &1568657489
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1568657481}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 2, z: 0.4}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1601448394
 GameObject:
   m_ObjectHideFlags: 0
@@ -10467,6 +10496,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.5, z: 0.15}
   m_Center: {x: 0, y: 0.01, z: 0}
+--- !u!65 &2044489253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2044489245}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.52, z: 0.15}
+  m_Center: {x: -0, y: 0.02, z: 0}
 --- !u!1 &2061231630
 GameObject:
   m_ObjectHideFlags: 0

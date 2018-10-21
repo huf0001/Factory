@@ -11,11 +11,21 @@ public class DropDownScript : MonoBehaviour {
     {
        dropdownBar = GetComponent<Dropdown>();
 
-        dropdownBar.onValueChanged.AddListener(delegate {
+        dropdownBar.onValueChanged.AddListener(delegate 
+        {
             //stores difficulty based on dropdown choice 
-            if (dropdownBar.value == 1) { PlayerPrefs.SetString("difficulty", "easy"); }
-            else if (dropdownBar.value == 2) { PlayerPrefs.SetString("difficulty", "medium"); }
-            else if (dropdownBar.value == 3) { PlayerPrefs.SetString("difficulty", "hard"); }
+            if (dropdownBar.value == 1)
+            {
+                PlayerPrefs.SetString("difficulty", "easy");
+            }
+            else if (dropdownBar.value == 2)
+            {
+                PlayerPrefs.SetString("difficulty", "medium");
+            }
+            else if (dropdownBar.value == 3)
+            {
+                PlayerPrefs.SetString("difficulty", "hard");
+            }
         });
     }
 }
