@@ -64,8 +64,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            playerNumber = inputController.GetPlayerNumber(this.gameObject);
             walkSensitivity = walkSensitivity * consoleWalkSensitivityMultiplier;
+            playerNumber = inputController.GetPlayerNumber(this.gameObject);
         }
     }
 
@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer(walkInput, characterController.transform.position);
-        HandleJump();        
+        HandleJump();
     }
 
     private void MovePlayer(Vector3 movement, Vector3 position)
@@ -250,23 +250,5 @@ public class PlayerController : MonoBehaviour
         // move picked sound to index 0 so it's not picked next time
         footStepSounds[n] = footStepSounds[0];
         footStepSounds[0] = audioSource.clip;
-    }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Rigidbody body = hit.collider.attachedRigidbody;
-
-        //dont move the rigidbody if the character is on top of it
-        if (collisionFlags == CollisionFlags.Below)
-        {
-            return;
-        }
-
-        if (body == null || body.isKinematic)
-        {
-            return;
-        }
-
-        body.AddForceAtPosition(characterController.velocity * 0.1f, hit.point, ForceMode.Impulse);
     }
 }
