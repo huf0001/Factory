@@ -418,10 +418,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostComponents:
   - ghost: {fileID: 1440768557296458}
-    identifier: 18
+    identifier: 11
   - ghost: {fileID: 1514435166729288}
-    identifier: 19
+    identifier: 12
   - ghost: {fileID: 1918900065490598}
-    identifier: 20
+    identifier: 13
   - ghost: {fileID: 1159181598140304}
-    identifier: 21
+    identifier: 14

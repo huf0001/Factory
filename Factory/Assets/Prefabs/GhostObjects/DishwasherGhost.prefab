@@ -345,8 +345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghostComponents:
   - ghost: {fileID: 1780233664076710}
-    identifier: 16
+    identifier: 9
   - ghost: {fileID: 1427270253463144}
-    identifier: 17
+    identifier: 10
   - ghost: {fileID: 1943587251770970}
-    identifier: 15
+    identifier: 8

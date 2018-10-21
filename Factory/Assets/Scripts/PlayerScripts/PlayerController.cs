@@ -7,12 +7,11 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof (CharacterController))]
 [RequireComponent(typeof (AudioSource))]
 
-public class ModalRobotPlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     //Script needs to know which player it is
     private int playerNumber = 0;
-
-    //Variables for the cool looking shit
+    
     [SerializeField] private Animator anim;
     [SerializeField] private Rigidbody leftHand, rightHand;
     [SerializeField] private Transform leftTarget, rightTarget;
@@ -162,30 +161,16 @@ public class ModalRobotPlayerController : MonoBehaviour
     {
         if (movingLeftArm)
         {
-            //if left arm audio not playing
-                //start left arm audio
-
             leftHand.AddForce(leftTarget.forward * armSpeed, ForceMode.Acceleration);
             movingLeftArm = false;
             leftHand.velocity = Vector3.zero;
         }
-        else
-        {
-            //Stop left arm audio
-        }
 
         if (movingRightArm)
         {
-            //if left arm audio not playing
-                //start left arm audio
-                
             rightHand.AddForce(rightTarget.forward * armSpeed, ForceMode.Acceleration);
             movingRightArm = false;
             rightHand.velocity = Vector3.zero;
-        }
-        else
-        {
-            //stop right arm audio
         }
     }
 
@@ -285,4 +270,3 @@ public class ModalRobotPlayerController : MonoBehaviour
         body.AddForceAtPosition(characterController.velocity * 0.1f, hit.point, ForceMode.Impulse);
     }
 }
-

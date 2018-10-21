@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildSchemaScript : MonoBehaviour
+public class Schema : MonoBehaviour
 {
-    [SerializeField] private BuildZoneScript buildZone;
+    [SerializeField] private BuildZone buildZone;
     [SerializeField] private Transform buildPoint;
     [SerializeField] private GameObject ghostObject;
-    private GhostScript ghostScript = null;
+    private Ghost ghost = null;
     [SerializeField] Identifier[] components;
     [SerializeField] private GameObject finalObject;
+    private Built built = null;
 
     private List<Identifier> pendingComponents = new List<Identifier>();
     private List<Identifier> loadedComponents = new List<Identifier>();
@@ -28,7 +29,7 @@ public class BuildSchemaScript : MonoBehaviour
             Debug.Log("Warning: Couldn't find the build zone. Schemas need build zones.");
         }
 
-        ghostScript = ghostObject.GetComponent<GhostScript>();
+        ghost = ghostObject.GetComponent<Ghost>();
 
         foreach (Identifier i in components)
         {
@@ -36,11 +37,12 @@ public class BuildSchemaScript : MonoBehaviour
         }
     }
 
-    public void ActivateGhost()
+    public void SpawnGhost()
     {
         ghostObject = Instantiate(ghostObject);
         CentreInBuildZone(ghostObject);
-        ghostScript = ghostObject.GetComponent<GhostScript>();
+        ghost = ghostObject.GetComponent<Ghost>();
+        ghost.Schema = this;
     }
 
     private void CentreInBuildZone(GameObject item)
@@ -52,7 +54,7 @@ public class BuildSchemaScript : MonoBehaviour
         }
     }
 
-    public bool BelongsToSchema(IdentifiableScript ids)
+    public bool BelongsToSchema(Identifiable ids)
     {
         foreach (Identifier i in components)
         {
@@ -65,7 +67,7 @@ public class BuildSchemaScript : MonoBehaviour
         return false;
     }
 
-    public bool IsLoaded(IdentifiableScript ids)
+    public bool IsLoaded(Identifiable ids)
     {
         foreach (Identifier id in components)
         {
@@ -84,31 +86,35 @@ public class BuildSchemaScript : MonoBehaviour
         return false;
     }
 
-    public void HandleValidObject(GameObject item)
+    public void HandleValidObject(GameObject item, int zoneNumber)
     {
         LoadObject(item);
 
         if (pendingComponents.Count == 0)
         {
             buildZone.PlayBuiltSound();
-            IncrementBuildCount(buildZone.BuildZoneNumber);
-            ShrinkGhost();
+            IncrementBuildCount(zoneNumber);
+
+            if (ghost != null)
+            {
+                ShrinkGhost();
+            }
         }
     }
 
     private void LoadObject(GameObject item)
     {
-        IdentifiableScript itemIds = item.GetComponent<IdentifiableScript>();
+        Identifiable itemIds = item.GetComponent<Identifiable>();
 
         foreach (Identifier i in pendingComponents)
         {
             if (itemIds.HasIdentifier(i))
             {
                 DestroyComponentObject(item);
-                ghostScript.Reveal(i);
+                ghost.Reveal(i);
                 pendingComponents.Remove(i);
                 loadedComponents.Add(i);
-                this.transform.parent.gameObject.GetComponent<BuildZoneScript>().PlayLoadedSound();
+                this.transform.parent.gameObject.GetComponent<BuildZone>().PlayLoadedSound();
 
                 return;
             }
@@ -117,8 +123,8 @@ public class BuildSchemaScript : MonoBehaviour
 
     private void DestroyComponentObject(GameObject item)
     {
-        Destroy(item.GetComponent<MovableScript>());
-        Destroy(item.GetComponent<IdentifiableScript>());
+        Destroy(item.GetComponent<Movable>());
+        Destroy(item.GetComponent<Identifiable>());
         Destroy(item);
     }
 
@@ -142,25 +148,35 @@ public class BuildSchemaScript : MonoBehaviour
 
     private void ShrinkGhost()
     {
-        ghostScript.ToggleShrinking(this);
+        ghost.Shrinking = true;
     }
 
     public void SchemaComplete()
     {
-        DestroyGhost();
-        SpawnBuiltObject();
+        ghost.DestroyGhost();
+        ghost = null;
+        built = SpawnBuiltObject();
     }
 
-    private void DestroyGhost()
+    private Built SpawnBuiltObject()
     {
-        Destroy(ghostScript);
-        Destroy(ghostObject);
+        Built spawning = Instantiate(finalObject).GetComponent<Built>();
+        CentreInBuildZone(spawning.gameObject);
+        spawning.Schema = this;
+        spawning.BuildZone = buildZone;
+        return spawning;
     }
 
-    private void SpawnBuiltObject()
+    public void Failed()
     {
-        GameObject spawning = Instantiate(finalObject);
-        CentreInBuildZone(spawning);
-        spawning.GetComponent<BuiltScript>().SetSchemaAndZone(this, buildZone);
+        if (ghost != null)
+        {
+            ghost.Failed();
+        }
+
+        if (built != null)
+        {
+            built.Failed();
+        }
     }
 }

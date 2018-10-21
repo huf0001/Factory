@@ -73,8 +73,8 @@ public class InputController : MonoBehaviour
         if (gameController.Timer <= 10 && !triggeredThrow)
         {
             triggeredThrow = true;
-            players[0].Player.GetComponent<PickUpScript>().TriggerThrow();
-            players[1].Player.GetComponent<PickUpScript>().TriggerThrow();
+            players[0].Player.GetComponent<HandsController>().TriggerThrow();
+            players[1].Player.GetComponent<HandsController>().TriggerThrow();
         }
 
     }

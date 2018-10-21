@@ -78,6 +78,16 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public bool PlayerLost(int p)
+    {
+        if (((p == 1) && (p2BuildCount < difficulty)) || ((p == 2) && (p1BuildCount < difficulty)))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     private void Update()
     {
         if (timer != 0)

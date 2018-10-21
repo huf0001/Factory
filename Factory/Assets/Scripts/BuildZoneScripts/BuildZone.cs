@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildZoneScript : MonoBehaviour
+public class BuildZone : MonoBehaviour
 {
+    [SerializeField] private GameController gameController;
     [SerializeField] private GameObject buildPoint;
     [SerializeField] private int buildZoneNumber;
     [SerializeField] private GameObject[] buildSchemaObjects;
 
-    private List<BuildSchemaScript> schemas = new List<BuildSchemaScript>();
+    private List<Schema> schemas = new List<Schema>();
 
     [SerializeField] private AudioClip loadedSound;
     [SerializeField] private AudioClip builtSound;
 
-    private BuildSchemaScript currentSchema;
+    private Schema currentSchema;
 
     private AudioSource audioSource;
 
@@ -41,15 +42,15 @@ public class BuildZoneScript : MonoBehaviour
         {
             if (difficulty > i)
             {
-                schemas.Add(buildSchemaObjects[i].GetComponent<BuildSchemaScript>());
+                schemas.Add(buildSchemaObjects[i].GetComponent<Schema>());
             }
         }
 
         currentSchema = schemas[0];
-        currentSchema.ActivateGhost();
+        currentSchema.SpawnGhost();
 	}
 
-    public int BuildZoneNumber
+    public int Number
     {
         get
         {
@@ -57,11 +58,21 @@ public class BuildZoneScript : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (gameController.PlayerLost(buildZoneNumber) && currentSchema != null)
+        {
+            currentSchema.Failed();
+            DeleteSchema(currentSchema);
+            currentSchema = null;
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {                
-        if (other.gameObject.GetComponent<IdentifiableScript>() != null)
+        if (other.gameObject.GetComponent<Identifiable>() != null)
         {
-            IdentifiableScript ids = other.gameObject.GetComponent<IdentifiableScript>();
+            Identifiable ids = other.gameObject.GetComponent<Identifiable>();
 
             if (currentSchema != null && !ids.HasIdentifier(Identifier.PlayerMoving) && other.gameObject.tag != "Player")
             {
@@ -69,7 +80,7 @@ public class BuildZoneScript : MonoBehaviour
                 {
                     other.gameObject.GetComponent<Rigidbody>().useGravity = false;
                     other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                    currentSchema.HandleValidObject(other.gameObject);
+                    currentSchema.HandleValidObject(other.gameObject, buildZoneNumber);
                     return;
                 }
 
@@ -85,24 +96,24 @@ public class BuildZoneScript : MonoBehaviour
         item.transform.position = Vector3.MoveTowards(item.transform.position, buildPoint.transform.position, increment);
     }
 
-    public void ChangeCurrentSchema(BuildSchemaScript schema, GameObject builtObject, BuiltScript script)
+    public void ChangeCurrentSchema(Schema s, GameObject o, Built b)
     {
-        DeleteSchema(schema);
-        DestroyBuiltObject(builtObject, script);
+        DeleteSchema(s);
+        DestroyBuiltObject(o, b);
         NextSchema();
     }
 
-    private void DeleteSchema(BuildSchemaScript schema)
+    private void DeleteSchema(Schema s)
     {
-        schemas.Remove(schema);
-        Destroy(schema.gameObject);
-        Destroy(schema);
+        schemas.Remove(s);
+        Destroy(s.gameObject);
+        Destroy(s);
     }
 
-    private void DestroyBuiltObject(GameObject builtObject, BuiltScript script)
+    private void DestroyBuiltObject(GameObject o, Built b)
     {
-        Destroy(script);
-        Destroy(builtObject);
+        Destroy(b);
+        Destroy(o);
     }
 
     private void NextSchema()
@@ -110,7 +121,7 @@ public class BuildZoneScript : MonoBehaviour
         if (schemas.Count > 0)
         {
             currentSchema = schemas[0];
-            currentSchema.ActivateGhost();
+            currentSchema.SpawnGhost();
         }
         else
         {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovableScript : IdentifiableScript
+public class Movable : Identifiable
 {
     [SerializeField] private Identifier uniqueID = Identifier.Attachable;
 
@@ -11,16 +11,10 @@ public class MovableScript : IdentifiableScript
     private List<GameObject> tempRightParents = new List<GameObject>();
     private List<Transform> leftGuides = new List<Transform>();
     private List<Transform> rightGuides = new List<Transform>();
-    private List<PickUpScript> hands = new List<PickUpScript>();
     private Rigidbody body;
 
     // Use this for initialization
     void Start ()
-    {
-        HandleStart();   
-    }
-
-    protected virtual void HandleStart()
     {
         AddIdentifier(uniqueID);
         int playerCount = 0;
@@ -39,13 +33,11 @@ public class MovableScript : IdentifiableScript
 
                 tempRightParents.Add(inputController.RightHand(i + 1));
                 rightGuides.Add(tempRightParents[i].transform);
-
-                hands.Add(tempLeftParents[i].GetComponentInParent<PickUpScript>());
             }
         }
     }
 
-    public virtual void HandlePickUp(int p, Hand h)
+    public void HandlePickUp(int p, Hand h)
     {
         body.useGravity = false;
         body.isKinematic = true;
@@ -67,7 +59,7 @@ public class MovableScript : IdentifiableScript
         this.gameObject.layer = 2;
     }
 
-    public virtual void HandleDrop(int p, Hand h)
+    public void HandleDrop(int p, Hand h)
     {
         body.useGravity = true;
         body.isKinematic = false;

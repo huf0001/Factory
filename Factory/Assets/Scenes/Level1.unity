@@ -1705,14 +1705,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114488696889481572, guid: 6f1058e3c2a8ce94bba4600833e16af6,
         type: 2}
-      propertyPath: loadedSound
+      propertyPath: gameController
       value: 
-      objectReference: {fileID: 8300000, guid: c2e2613e891b15140bcc2d65a44bc43e, type: 3}
+      objectReference: {fileID: 1171599874}
     - target: {fileID: 114594179130400366, guid: 6f1058e3c2a8ce94bba4600833e16af6,
         type: 2}
-      propertyPath: loadedSound
+      propertyPath: gameController
       value: 
-      objectReference: {fileID: 8300000, guid: c2e2613e891b15140bcc2d65a44bc43e, type: 3}
+      objectReference: {fileID: 1171599874}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f1058e3c2a8ce94bba4600833e16af6, type: 2}
   m_IsPrefabAsset: 0
@@ -6945,6 +6945,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1107835764}
   m_Mesh: {fileID: 4300080, guid: 7a4cff45c3a464f40ad005c10f1bee52, type: 3}
+--- !u!114 &1171599874 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114256210292975226, guid: 090a91634eaf5974b851dea9c1223d6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1942348666}
+  m_Script: {fileID: 11500000, guid: a3215b60945aecf48b1cb810e16c4870, type: 3}
 --- !u!1 &1202848324
 GameObject:
   m_ObjectHideFlags: 0

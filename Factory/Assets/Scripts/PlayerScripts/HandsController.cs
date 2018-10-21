@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpScript: MonoBehaviour
+public class HandsController: MonoBehaviour
 {
     //Script needs to know which player it is
     private int playerNumber = 0;
@@ -12,8 +12,8 @@ public class PickUpScript: MonoBehaviour
     private Vector3 leftHandStartPoint;
     private Vector3 rightHandStartPoint;
     
-    private IdentifiableScript leftIDs;
-    private IdentifiableScript rightIDs;
+    private Identifiable leftIDs;
+    private Identifiable rightIDs;
 
     private GameObject movingInLeft = null;
     private GameObject movingInRight = null;
@@ -39,8 +39,8 @@ public class PickUpScript: MonoBehaviour
         leftHandStartPoint = leftHandGuide.transform.localPosition;
         rightHandStartPoint = rightHandGuide.transform.localPosition;
 
-        leftIDs = leftHandGuide.GetComponent<IdentifiableScript>();
-        rightIDs = rightHandGuide.GetComponent<IdentifiableScript>();
+        leftIDs = leftHandGuide.GetComponent<Identifiable>();
+        rightIDs = rightHandGuide.GetComponent<Identifiable>();
 
         leftIDs.AddIdentifier(Identifier.HandEmpty);
         rightIDs.AddIdentifier(Identifier.HandEmpty);
@@ -203,9 +203,9 @@ public class PickUpScript: MonoBehaviour
 
         foreach (Collider c in colliders)
         {
-            if (c.gameObject.GetComponent<MovableScript>() != null)
+            if (c.gameObject.GetComponent<Movable>() != null)
             {
-                if (!c.gameObject.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.PlayerMoving))
+                if (!c.gameObject.GetComponent<Identifiable>().HasIdentifier(Identifier.PlayerMoving))
                 {
                     movableItems.Add(c.gameObject);
                 }
@@ -243,9 +243,9 @@ public class PickUpScript: MonoBehaviour
 
     private void HandlePickUp(Hand hand, GameObject item)
     {
-        if (item.GetComponent<MovableScript>() != null)
+        if (item.GetComponent<Movable>() != null)
         {
-            item.GetComponent<MovableScript>().HandlePickUp(playerNumber, hand);
+            item.GetComponent<Movable>().HandlePickUp(playerNumber, hand);
             PlaySoundEffect(pickUpSound);
             ChangeIDsFromPickUp(hand);
 
@@ -262,12 +262,12 @@ public class PickUpScript: MonoBehaviour
 
     private void HandleDrop(Hand hand, GameObject movingInHand)
     {
-        MovableScript movable = null;
+        Movable movable = null;
         GameObject item = null;
 
-        if (movingInHand.GetComponent<MovableScript>() != null)
+        if (movingInHand.GetComponent<Movable>() != null)
         {
-            movable = movingInHand.GetComponent<MovableScript>();
+            movable = movingInHand.GetComponent<Movable>();
             movable.HandleDrop(playerNumber, hand);
             item = movingInHand;
             ChangeIDsFromDrop(hand);

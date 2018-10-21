@@ -2,16 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConveyerBeltScript : MonoBehaviour
+public class ConveyerBelt : MonoBehaviour
 {
     [SerializeField] private Transform endpoint;
     [SerializeField] private float speed;
+    private float multiplier;
 
     private void OnTriggerStay(Collider other)
     {
-        if (!CheckPlayerMoving(other.gameObject) && !CheckPlayerAvatar(other.gameObject))
+        if (!CheckPlayerMoving(other.gameObject))
         {
-            other.transform.position = Vector3.MoveTowards(other.transform.position, endpoint.position, speed * Time.deltaTime);
+            if (CheckPlayer(other.gameObject))
+            {
+                multiplier = 0.5f;
+            }
+            else
+            {
+                multiplier = 1f;
+            }
+
+            other.transform.position = Vector3.MoveTowards(other.transform.position, endpoint.position, speed * multiplier * Time.deltaTime);
         }
 
         //Note: attachment base objects seem to move extra fast;  might need to add a secondary endpoint object
@@ -21,7 +31,7 @@ public class ConveyerBeltScript : MonoBehaviour
     private bool CheckPlayerMoving(GameObject other)
     {
         bool result = false;
-        MovableScript movable = other.gameObject.GetComponent<MovableScript>();
+        Movable movable = other.gameObject.GetComponent<Movable>();
 
         if (movable != null)
         {
@@ -34,14 +44,13 @@ public class ConveyerBeltScript : MonoBehaviour
         return result;
     }
 
-    private bool CheckPlayerAvatar(GameObject other)
+    private bool CheckPlayer(GameObject other)
     {
-        bool result = false;
-        if (other.tag == "PlayerAvatar")
+        if (other.tag == "Player")
         {
-            result = true;
+            return true;
         }
 
-        return result;
+        return false;
     }
 }

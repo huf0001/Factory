@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostScript : ScalableScript
+public class Ghost : Scalable
 {
     [System.Serializable]
     public class GhostIdentifierPair
@@ -28,7 +28,7 @@ public class GhostScript : ScalableScript
     }
 
     [SerializeField] GhostIdentifierPair[] ghostComponents;
-    private BuildSchemaScript schema = null;
+    private Schema schema = null;
 
     private void Start()
     {
@@ -40,14 +40,16 @@ public class GhostScript : ScalableScript
         Initialise();
     }
 
-    private void Update()
+    public Schema Schema
     {
-        Rotate();
-        CheckScaling();
-
-        if (FinishedShrinking())
+        get
         {
-            schema.SchemaComplete();
+            return Schema;
+        }
+
+        set
+        {
+            schema = value;
         }
     }
 
@@ -62,9 +64,30 @@ public class GhostScript : ScalableScript
         }
     }
 
-    public void ToggleShrinking(BuildSchemaScript s)
+    public override void Failed()
     {
-        Shrinking = true;
-        schema = s;
+        schema = null;
+        base.Failed();
+    }
+
+    private void Update()
+    {
+        Rotate();
+        CheckScaling();
+
+        if (FinishedShrinking() && schema != null)
+        {
+            schema.SchemaComplete();
+        }
+        else if (FinishedDropping())
+        {
+            DestroyGhost();
+        }
+    }
+
+    public void DestroyGhost()
+    {
+        Destroy(this.gameObject);
+        Destroy(this);
     }
 }

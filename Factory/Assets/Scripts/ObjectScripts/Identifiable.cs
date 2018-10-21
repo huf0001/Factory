@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdentifiableScript : MonoBehaviour
+public class Identifiable : MonoBehaviour
 {
     private List<Identifier> identifiers = new List<Identifier>();
 

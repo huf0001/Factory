@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnItemScript : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     [System.Serializable]
     public class ItemWeightPair

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BinScript : MonoBehaviour
+public class Bin : MonoBehaviour
 {
     [SerializeField] private AudioClip destroySound;
     [SerializeField] private AudioSource audioSource;
@@ -16,7 +16,7 @@ public class BinScript : MonoBehaviour
     // Will check that the item in question is not the player though.
     private void OnTriggerStay(Collider other)
     {
-        IdentifiableScript ids = other.gameObject.GetComponent<IdentifiableScript>();
+        Identifiable ids = other.gameObject.GetComponent<Identifiable>();
 
         if (other.gameObject.tag == "Player")
         {
@@ -31,7 +31,7 @@ public class BinScript : MonoBehaviour
             }
         }
         
-        Destroy(other.gameObject.GetComponent<MovableScript>());
+        Destroy(other.gameObject.GetComponent<Movable>());
         Destroy(other.gameObject);
         audioSource.Play();
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScalableScript : MonoBehaviour
+public class Scalable : MonoBehaviour
 {
     private float scaleTick = 0.05f;
     private float scaleTimer = 0f;
@@ -13,6 +13,7 @@ public class ScalableScript : MonoBehaviour
     private Vector3 startScale;
     private bool expanding = true;
     private bool shrinking = false;
+    private bool dropping = false;
 
     // Use this for initialization
     protected void Initialise ()
@@ -21,7 +22,7 @@ public class ScalableScript : MonoBehaviour
         transform.localScale = Vector3.zero;
     }
 
-    protected bool Shrinking
+    public bool Shrinking
     {
         get
         {
@@ -31,6 +32,19 @@ public class ScalableScript : MonoBehaviour
         set
         {
             shrinking = value;
+        }
+    }
+
+    public bool Dropping
+    {
+        get
+        {
+            return dropping;
+        }
+
+        set
+        {
+            dropping = value;
         }
     }
 
@@ -53,6 +67,10 @@ public class ScalableScript : MonoBehaviour
         else if (shrinking)
         {
             Shrink();
+        }
+        else if (dropping)
+        {
+            Drop();
         }
     }
 
@@ -102,5 +120,30 @@ public class ScalableScript : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public virtual void Failed()
+    {
+        Dropping = true;
+    }
+
+    private void Drop()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y - scaleTick, transform.position.z);
+
+        if (FinishedDropping())
+        {
+            dropping = false;
+        }
+    }
+
+    protected bool FinishedDropping()
+    {
+        if (transform.position.y <= -2)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

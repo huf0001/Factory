@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConveyorAudioScript : MonoBehaviour
+public class ConveyorAudio : MonoBehaviour
 {
     [SerializeField] private float volume = 0.5f;
     [SerializeField] private AudioClip audioClip;

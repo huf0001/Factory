@@ -664,7 +664,7 @@ MonoBehaviour:
   buildPoint: {fileID: 4052884981131948}
   ghostObject: {fileID: 1185429461418376, guid: d8ed95735d2cbff44bc5363e632e3ad6,
     type: 2}
-  components: 0f0000001000000011000000
+  components: 08000000090000000a000000
   finalObject: {fileID: 1444990395280352, guid: 77236eae4e6d3464ca83759ef249e93a,
     type: 2}
 --- !u!114 &114132457893960756
@@ -682,7 +682,7 @@ MonoBehaviour:
   buildPoint: {fileID: 4052884981131948}
   ghostObject: {fileID: 1887546014877006, guid: fff7140fc4399644190789a2a773f2a2,
     type: 2}
-  components: 12000000130000001400000015000000
+  components: 0b0000000c0000000d0000000e000000
   finalObject: {fileID: 1833160935284806, guid: f8b910d7ad34d8241a9a47bafd4c2d2d,
     type: 2}
 --- !u!114 &114407934126692454
@@ -700,7 +700,7 @@ MonoBehaviour:
   buildPoint: {fileID: 4052884981131948}
   ghostObject: {fileID: 1942470533269668, guid: 2cee20225505ef845a4cefbb7c04d0f7,
     type: 2}
-  components: 0c0000000d0000000e000000
+  components: 050000000600000007000000
   finalObject: {fileID: 1333097366467988, guid: 638d2eeff6ff20a4295bec801a1a7467,
     type: 2}
 --- !u!114 &114485386548320368
@@ -718,7 +718,7 @@ MonoBehaviour:
   buildPoint: {fileID: 4106688626221596}
   ghostObject: {fileID: 1887546014877006, guid: fff7140fc4399644190789a2a773f2a2,
     type: 2}
-  components: 12000000130000001400000015000000
+  components: 0b0000000c0000000d0000000e000000
   finalObject: {fileID: 1833160935284806, guid: f8b910d7ad34d8241a9a47bafd4c2d2d,
     type: 2}
 --- !u!114 &114488696889481572
@@ -732,13 +732,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3034e551e4c8007419b7b49f89bb37a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   buildPoint: {fileID: 1337872968423184}
   buildZoneNumber: 1
   buildSchemaObjects:
   - {fileID: 1191488738064912}
   - {fileID: 1204956955315842}
   - {fileID: 1180502329195170}
-  loadedSound: {fileID: 8300000, guid: b5295e3a292b2ca48bceae7a0c506829, type: 3}
+  loadedSound: {fileID: 8300000, guid: c2e2613e891b15140bcc2d65a44bc43e, type: 3}
   builtSound: {fileID: 8300000, guid: 914c2521a3aedcb4c9f0b38d12a88e88, type: 3}
 --- !u!114 &114513391020870054
 MonoBehaviour:
@@ -755,7 +756,7 @@ MonoBehaviour:
   buildPoint: {fileID: 4106688626221596}
   ghostObject: {fileID: 1185429461418376, guid: d8ed95735d2cbff44bc5363e632e3ad6,
     type: 2}
-  components: 0f0000001000000011000000
+  components: 08000000090000000a000000
   finalObject: {fileID: 1444990395280352, guid: 77236eae4e6d3464ca83759ef249e93a,
     type: 2}
 --- !u!114 &114594179130400366
@@ -769,13 +770,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3034e551e4c8007419b7b49f89bb37a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   buildPoint: {fileID: 1732405453106044}
   buildZoneNumber: 2
   buildSchemaObjects:
   - {fileID: 1919904541772024}
   - {fileID: 1463792715555428}
   - {fileID: 1053698405111090}
-  loadedSound: {fileID: 8300000, guid: b5295e3a292b2ca48bceae7a0c506829, type: 3}
+  loadedSound: {fileID: 8300000, guid: c2e2613e891b15140bcc2d65a44bc43e, type: 3}
   builtSound: {fileID: 8300000, guid: 914c2521a3aedcb4c9f0b38d12a88e88, type: 3}
 --- !u!114 &114738879048857050
 MonoBehaviour:
@@ -792,7 +794,7 @@ MonoBehaviour:
   buildPoint: {fileID: 4106688626221596}
   ghostObject: {fileID: 1942470533269668, guid: 2cee20225505ef845a4cefbb7c04d0f7,
     type: 2}
-  components: 0c0000000d0000000e000000
+  components: 050000000600000007000000
   finalObject: {fileID: 1333097366467988, guid: 638d2eeff6ff20a4295bec801a1a7467,
     type: 2}
 --- !u!136 &136126283758194792
