@@ -100,20 +100,17 @@ public class BuildSchemaScript : MonoBehaviour
     {
         IdentifiableScript itemIds = item.GetComponent<IdentifiableScript>();
 
-        if (!itemIds.HasIdentifier(Identifier.Attached))
+        foreach (Identifier i in pendingComponents)
         {
-            foreach (Identifier i in pendingComponents)
+            if (itemIds.HasIdentifier(i))
             {
-                if (itemIds.HasIdentifier(i))
-                {
-                    DestroyComponentObject(item);
-                    ghostScript.Reveal(i);
-                    pendingComponents.Remove(i);
-                    loadedComponents.Add(i);
-                    this.transform.parent.gameObject.GetComponent<BuildZoneScript>().PlayLoadedSound();
+                DestroyComponentObject(item);
+                ghostScript.Reveal(i);
+                pendingComponents.Remove(i);
+                loadedComponents.Add(i);
+                this.transform.parent.gameObject.GetComponent<BuildZoneScript>().PlayLoadedSound();
 
-                    return;
-                }
+                return;
             }
         }
     }

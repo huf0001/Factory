@@ -67,15 +67,10 @@ public class BuildZoneScript : MonoBehaviour
             {
                 if (currentSchema.BelongsToSchema(ids) && !currentSchema.IsLoaded(ids))
                 {
-                    if (!ids.HasIdentifier(Identifier.InBuildZone))
-                    {
-                        other.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                        other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                        ids.AddIdentifier(Identifier.InBuildZone);
-                        currentSchema.HandleValidObject(other.gameObject);
-
-                        return;
-                    }
+                    other.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                    other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    currentSchema.HandleValidObject(other.gameObject);
+                    return;
                 }
 
                 EjectFromBuildPoint(other.gameObject);
@@ -93,7 +88,6 @@ public class BuildZoneScript : MonoBehaviour
     public void ChangeCurrentSchema(BuildSchemaScript schema, GameObject builtObject, BuiltScript script)
     {
         DeleteSchema(schema);
-        //IncrementBuildCount();
         DestroyBuiltObject(builtObject, script);
         NextSchema();
     }

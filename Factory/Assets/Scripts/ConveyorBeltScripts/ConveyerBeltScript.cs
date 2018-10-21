@@ -25,7 +25,7 @@ public class ConveyerBeltScript : MonoBehaviour
 
         if (movable != null)
         {
-            if ((movable.HasIdentifier(Identifier.PlayerMoving))||(movable.HasIdentifier(Identifier.Attached)))
+            if (movable.HasIdentifier(Identifier.PlayerMoving))
             {
                 result = true;
             }     

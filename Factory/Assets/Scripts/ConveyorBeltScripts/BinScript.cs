@@ -16,8 +16,6 @@ public class BinScript : MonoBehaviour
     // Will check that the item in question is not the player though.
     private void OnTriggerStay(Collider other)
     {
-        // bool okToDestroy = true;
-        // float increment = -1f;
         IdentifiableScript ids = other.gameObject.GetComponent<IdentifiableScript>();
 
         if (other.gameObject.tag == "Player")
@@ -27,7 +25,7 @@ public class BinScript : MonoBehaviour
 
         if (ids != null)
         {
-            if (ids.HasIdentifier(Identifier.Hand) || ids.HasIdentifier(Identifier.PlayerMoving))
+            if (ids.HasIdentifier(Identifier.PlayerMoving))
             {
                 return;
             }

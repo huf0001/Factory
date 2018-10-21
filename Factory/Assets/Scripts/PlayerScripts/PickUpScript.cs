@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 public class PickUpScript: MonoBehaviour
 {
@@ -44,9 +43,7 @@ public class PickUpScript: MonoBehaviour
         rightIDs = rightHandGuide.GetComponent<IdentifiableScript>();
 
         leftIDs.AddIdentifier(Identifier.HandEmpty);
-        leftIDs.AddIdentifier(Identifier.Hand);
         rightIDs.AddIdentifier(Identifier.HandEmpty);
-        rightIDs.AddIdentifier(Identifier.Hand);
 
         inputController = GameObject.Find("GameControllerCamera").GetComponent<InputController>();
 
@@ -196,7 +193,6 @@ public class PickUpScript: MonoBehaviour
 
         if (colliders.Length > 0)
         {
-            //Debug.Log("Dectected " + colliders.Length + " objects");
             GetMovableObjectsForPickUp(hand, colliders);
         }
     }
@@ -209,8 +205,7 @@ public class PickUpScript: MonoBehaviour
         {
             if (c.gameObject.GetComponent<MovableScript>() != null)
             {
-                if (!c.gameObject.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.PlayerMoving) 
-                    && !c.gameObject.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.InBuildZone))
+                if (!c.gameObject.GetComponent<IdentifiableScript>().HasIdentifier(Identifier.PlayerMoving))
                 {
                     movableItems.Add(c.gameObject);
                 }
@@ -219,7 +214,6 @@ public class PickUpScript: MonoBehaviour
 
         if (movableItems.Count > 0)
         {
-            //Debug.Log("Detected " + movableItems.Count + " movable objects");
             SelectObjectForPickUp(hand, movableItems);
         }
     }
@@ -243,7 +237,6 @@ public class PickUpScript: MonoBehaviour
         
         if (item != null)
         {
-            //Debug.Log("Selected " + item + " for pick up");
             HandlePickUp(hand, item);
         }
     }
@@ -252,7 +245,6 @@ public class PickUpScript: MonoBehaviour
     {
         if (item.GetComponent<MovableScript>() != null)
         {
-            //Debug.Log("Picking up " + item);
             item.GetComponent<MovableScript>().HandlePickUp(playerNumber, hand);
             PlaySoundEffect(pickUpSound);
             ChangeIDsFromPickUp(hand);

@@ -4,21 +4,7 @@ using UnityEngine;
 
 public class IdentifiableScript : MonoBehaviour
 {
-    [SerializeField] private bool isPlayer = false;
     private List<Identifier> identifiers = new List<Identifier>();
-
-    void Start()
-    {
-        AddIdentifier(Identifier.HasNotBeenLoadedInBuildZoneYet);
-    }
-
-    public bool IsPlayer
-    {
-        get
-        {
-            return isPlayer;
-        }
-    }
 
     public bool HasIdentifier(Identifier id)
     {
@@ -47,9 +33,4 @@ public class IdentifiableScript : MonoBehaviour
             identifiers.Remove(id);
         }
     }
-
-    /*private void OnDestroy()
-    {
-        Debug.Log(this + " is destroyed");   
-    }*/
 }
