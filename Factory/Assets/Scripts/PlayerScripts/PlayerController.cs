@@ -251,4 +251,12 @@ public class PlayerController : MonoBehaviour
         footStepSounds[n] = footStepSounds[0];
         footStepSounds[0] = audioSource.clip;
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.GetComponent<CharacterController>() != null)
+        {
+            transform.Translate((transform.position - other.transform.position) * 0.03f, Space.World);
+        }
+    }
 }
