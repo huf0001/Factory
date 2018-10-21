@@ -22,14 +22,40 @@ public class BuildZoneScript : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        foreach (GameObject o in buildSchemaObjects)
+        int difficulty;
+
+        switch (PlayerPrefs.GetString("difficulty"))
         {
-            schemas.Add(o.GetComponent<BuildSchemaScript>());
+            case "hard":
+                difficulty = 1;
+                break;
+            case "medium":
+                difficulty = 2;
+                break;
+            default:
+                difficulty = 1;
+                break;
+        }
+
+        for (int i = 0; i < buildSchemaObjects.Length; i++)
+        {
+            if (difficulty > i)
+            {
+                schemas.Add(buildSchemaObjects[i].GetComponent<BuildSchemaScript>());
+            }
         }
 
         currentSchema = schemas[0];
         currentSchema.ActivateGhost();
 	}
+
+    public int BuildZoneNumber
+    {
+        get
+        {
+            return buildZoneNumber;
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {                
@@ -67,10 +93,8 @@ public class BuildZoneScript : MonoBehaviour
     public void ChangeCurrentSchema(BuildSchemaScript schema, GameObject builtObject, BuiltScript script)
     {
         DeleteSchema(schema);
-        IncrementBuildCount();
+        //IncrementBuildCount();
         DestroyBuiltObject(builtObject, script);
-        //PlayBuiltSound();
-        //Particle effect
         NextSchema();
     }
 
@@ -79,22 +103,6 @@ public class BuildZoneScript : MonoBehaviour
         schemas.Remove(schema);
         Destroy(schema.gameObject);
         Destroy(schema);
-    }
-
-    private void IncrementBuildCount()
-    {
-        if (buildZoneNumber == 1)
-        {
-            GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>().IncrementPlayer1BuildCount();
-        }
-        else if (buildZoneNumber == 2)
-        {
-            GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>().IncrementPlayer2BuildCount();
-        }
-        else
-        {
-            Debug.Log("Invalid build zone number");
-        }
     }
 
     private void DestroyBuiltObject(GameObject builtObject, BuiltScript script)

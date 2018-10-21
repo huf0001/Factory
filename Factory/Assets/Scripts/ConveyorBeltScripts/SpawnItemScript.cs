@@ -53,8 +53,6 @@ public class SpawnItemScript : MonoBehaviour
                 break;
         }
 
-        //int difficulty = GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>().Difficulty;
-
         if (difficulty > 0 && easyItems.Length > 0)
         { foreach (ItemWeightPair p in easyItems)
             {

@@ -6,7 +6,7 @@ public class AudioController : MonoBehaviour
 {
     [SerializeField] private AudioSourceController gameMusic;
     [SerializeField] private AudioSourceController countdown;
-    [SerializeField] private AudioSourceController roundOver;
+    [SerializeField] private AudioSourceController victory;
     [SerializeField] bool playAudio;
 
     private void Update()
@@ -43,11 +43,16 @@ public class AudioController : MonoBehaviour
         }
     }
 
-    public void EndRound()
+    public void StopCountdown()
+    {
+        countdown.Stop();
+    }
+
+    public void Victory()
     {
         if (playAudio)
         {
-            roundOver.Play();
+            victory.Play();
         }
     }
 }

@@ -91,6 +91,7 @@ public class BuildSchemaScript : MonoBehaviour
         if (pendingComponents.Count == 0)
         {
             buildZone.PlayBuiltSound();
+            IncrementBuildCount(buildZone.BuildZoneNumber);
             ShrinkGhost();
         }
     }
@@ -122,6 +123,24 @@ public class BuildSchemaScript : MonoBehaviour
         Destroy(item.GetComponent<MovableScript>());
         Destroy(item.GetComponent<IdentifiableScript>());
         Destroy(item);
+    }
+
+    public void IncrementBuildCount(int n)
+    {
+        if (n == 1)
+        {
+            GameObject.Find("GameControllerCamera").GetComponent<GameController>().P1BuiltObjectShowing = true;
+            GameObject.Find("GameControllerCamera").GetComponent<GameController>().IncrementPlayer1BuildCount();
+        }
+        else if (n == 2)
+        {
+            GameObject.Find("GameControllerCamera").GetComponent<GameController>().P2BuiltObjectShowing = true;
+            GameObject.Find("GameControllerCamera").GetComponent<GameController>().IncrementPlayer2BuildCount();
+        }
+        else
+        {
+            Debug.Log("Invalid build zone number");
+        }
     }
 
     private void ShrinkGhost()

@@ -44,7 +44,7 @@ public class ModalRobotPlayerController : MonoBehaviour
     private float nextStep;
     private bool jumping;
     private AudioSource audioSource;
-    private GameControllerScript gameController;
+    private InputController inputController;
 
     // Use this for initialization
     private void Start()
@@ -56,16 +56,16 @@ public class ModalRobotPlayerController : MonoBehaviour
         nextStep = stepCycle/2f;
         jumping = false;
 
-        gameController = GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>();
+        inputController = GameObject.Find("GameControllerCamera").GetComponent<InputController>();
 
-        if (gameController == null)
+        if (inputController == null)
         {
-            Debug.Log("Why is there no object in the scene named GameControllerCamera? There needs to be an object with a GameControllerScript called" +
+            Debug.Log("Why is there no object in the scene named GameControllerCamera? There needs to be an object with a InputController script called" +
                 " 'GameControllerCamera'. Fix it. NOW!!");
         }
         else
         {
-            playerNumber = gameController.GetPlayerNumber(this.gameObject);
+            playerNumber = inputController.GetPlayerNumber(this.gameObject);
             walkSensitivity = walkSensitivity * consoleWalkSensitivityMultiplier;
         }
     }
@@ -76,7 +76,7 @@ public class ModalRobotPlayerController : MonoBehaviour
         // the jump state needs to read here to make sure it is not missed
         if (!jump)
         {
-            jump = gameController.GetButtonDown(playerNumber, "Jump");
+            jump = inputController.GetButtonDown(playerNumber, "Jump");
         }
 
         if (!previouslyGrounded && characterController.isGrounded)
@@ -95,12 +95,12 @@ public class ModalRobotPlayerController : MonoBehaviour
         previouslyGrounded = characterController.isGrounded;
 
         //Gathering input for hand animation
-        if (gameController.GetButton(playerNumber, "LeftArm"))
+        if (inputController.GetButton(playerNumber, "LeftArm"))
         {
             movingLeftArm = true;
         }
 
-        if (gameController.GetButton(playerNumber, "RightArm"))
+        if (inputController.GetButton(playerNumber, "RightArm"))
         {
             movingRightArm = true;
         }
@@ -115,7 +115,7 @@ public class ModalRobotPlayerController : MonoBehaviour
 
     private Vector3 GetWalkInput()
     {
-        Vector3 input = new Vector3(gameController.GetAxis(playerNumber, "MoveHorizontal"), 0f, gameController.GetAxis(playerNumber, "MoveVertical"));
+        Vector3 input = new Vector3(inputController.GetAxis(playerNumber, "MoveHorizontal"), 0f, inputController.GetAxis(playerNumber, "MoveVertical"));
 
         // normalize input if it exceeds 1 in combined length:
         if (input.sqrMagnitude > 1)
@@ -132,9 +132,9 @@ public class ModalRobotPlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), speed);
         }
-        else if (movement.x == 0 && movement.z == 0 && gameController.GetAxis(playerNumber, "LookHorizontal") != 0)
+        else if (movement.x == 0 && movement.z == 0 && inputController.GetAxis(playerNumber, "LookHorizontal") != 0)
         {
-            transform.Rotate(new Vector3(0f, gameController.GetAxis(playerNumber, "LookHorizontal"), 0f), Space.World);
+            transform.Rotate(new Vector3(0f, inputController.GetAxis(playerNumber, "LookHorizontal"), 0f), Space.World);
         }
     }
 

@@ -6,7 +6,7 @@ public class MovableScript : IdentifiableScript
 {
     [SerializeField] private Identifier uniqueID = Identifier.Attachable;
 
-    private GameControllerScript gameController = null;
+    private InputController inputController = null;
     //private BuildSchemaScript schema = null;
     private List<GameObject> tempLeftParents = new List<GameObject>();
     private List<GameObject> tempRightParents = new List<GameObject>();
@@ -27,18 +27,18 @@ public class MovableScript : IdentifiableScript
         int playerCount = 0;
         body = this.gameObject.GetComponent<Rigidbody>();
         body.useGravity = true;
-        gameController = GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>();
+        inputController = GameObject.Find("GameControllerCamera").GetComponent<InputController>();
 
-        if (gameController != null)
+        if (inputController != null)
         {
-            playerCount = gameController.PlayerCount;
+            playerCount = inputController.PlayerCount;
 
             for (int i = 0; i < playerCount; i++)
             {
-                tempLeftParents.Add(gameController.LeftHand(i + 1));
+                tempLeftParents.Add(inputController.LeftHand(i + 1));
                 leftGuides.Add(tempLeftParents[i].transform);
 
-                tempRightParents.Add(gameController.RightHand(i + 1));
+                tempRightParents.Add(inputController.RightHand(i + 1));
                 rightGuides.Add(tempRightParents[i].transform);
 
                 hands.Add(tempLeftParents[i].GetComponentInParent<PickUpScript>());

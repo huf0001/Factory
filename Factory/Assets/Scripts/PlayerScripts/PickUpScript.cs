@@ -19,7 +19,7 @@ public class PickUpScript: MonoBehaviour
     private GameObject movingInLeft = null;
     private GameObject movingInRight = null;
 
-    private GameControllerScript gameController = null;
+    private InputController inputController = null;
 
     [SerializeField] private AudioClip pickUpSound;
     [SerializeField] private AudioClip dropSound;
@@ -48,16 +48,16 @@ public class PickUpScript: MonoBehaviour
         rightIDs.AddIdentifier(Identifier.HandEmpty);
         rightIDs.AddIdentifier(Identifier.Hand);
 
-        gameController = GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>();
+        inputController = GameObject.Find("GameControllerCamera").GetComponent<InputController>();
 
-        if (gameController == null)
+        if (inputController == null)
         {
             Debug.Log("Why is there no object in the scene named GameControllerCamera? There needs to be an object with a GameControllerScript called" +
                 " 'GameControllerCamera'. Fix it. NOW!!");
         }
         else
         {
-            playerNumber = gameController.GetPlayerNumber(this.gameObject);
+            playerNumber = inputController.GetPlayerNumber(this.gameObject);
         }
     }
 
@@ -120,7 +120,7 @@ public class PickUpScript: MonoBehaviour
 
     private void Update()
     {
-        if (gameController.GetButton(playerNumber, "LeftArm"))
+        if (inputController.GetButton(playerNumber, "LeftArm"))
         {
             if (IsEmpty(Hand.Left))
             {
@@ -132,7 +132,7 @@ public class PickUpScript: MonoBehaviour
             HandleDrop(Hand.Left, movingInLeft);
         }
 
-        if (gameController.GetButton(playerNumber, "RightArm"))
+        if (inputController.GetButton(playerNumber, "RightArm"))
         {
             if (IsEmpty(Hand.Right))
             {

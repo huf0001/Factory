@@ -21,7 +21,7 @@ public class AudioSourceController : MonoBehaviour
             return loopAndPlay;
         }
         set
-        {
+        { 
             loopAndPlay = value;
         }
     }
@@ -39,12 +39,20 @@ public class AudioSourceController : MonoBehaviour
     {
         if (!audioSource.isPlaying && loopAndPlay)
         {
+            audioSource.mute = false;
             audioSource.Play();
         }
 	}
 
     public void Play()
     {
+        audioSource.mute = false;
         audioSource.Play();
+    }
+
+    public void Stop()
+    {
+        audioSource.Stop();
+        audioSource.mute = true;
     }
 }

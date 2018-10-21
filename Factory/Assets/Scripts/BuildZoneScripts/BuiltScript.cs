@@ -34,6 +34,19 @@ public class BuiltScript : ScalableScript
         else
         {
             Shrinking = true;
+
+            if (buildZone.BuildZoneNumber == 1)
+            {
+                GameObject.Find("GameControllerCamera").GetComponent<GameController>().P1BuiltObjectShowing = false;
+            }
+            else if (buildZone.BuildZoneNumber == 2)
+            {
+                GameObject.Find("GameControllerCamera").GetComponent<GameController>().P2BuiltObjectShowing = false;
+            }
+            else
+            {
+                Debug.Log("Invalid build zone number");
+            }
         }
 
         if (FinishedShrinking())

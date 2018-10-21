@@ -21,19 +21,6 @@ public class ScalableScript : MonoBehaviour
         transform.localScale = Vector3.zero;
     }
 
-    /*protected bool Expanding
-    {
-        get
-        {
-            return expanding;
-        }
-
-        set
-        {
-            expanding = value;
-        }
-    }*/
-
     protected bool Shrinking
     {
         get

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class GameControllerScript : MonoBehaviour
+public class InputController : MonoBehaviour
 {
     [System.Serializable]
     public class PlayerAndHands
@@ -37,40 +37,17 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
-    [SerializeField] AudioController audioController;
+    [SerializeField] private GameController gameController;
     [SerializeField] private Gamepad gamepad = Gamepad.XboxController;
     [SerializeField] private PlayerAndHands[] players;
-    /*[SerializeField]*/ int difficulty;
-    [SerializeField] float timer = 60;
-    private int player1BuildCount = 0;
-    private int player2BuildCount = 0;
-    private bool finished = false;
     private bool triggeredThrow = false;
-    [SerializeField] private GameObject endGameUi;
 
     // Use this for initialization
     void Start()
     {
-        //ensures endgameUI doesn't popup on startup
-        endGameUi.SetActive(false);
-
-        switch (PlayerPrefs.GetString("difficulty"))
-        {
-            case "hard":
-                difficulty = 3;
-                break;
-            case "medium":
-                difficulty = 2;
-                break;
-            default:
-                difficulty = 1;
-                break;
-        }
-
-
         int playerNumber = 0;
 
-        for(int i = 0; i < players.Length; i++)
+        for (int i = 0; i < players.Length; i++)
         {
             playerNumber = i + 1;
 
@@ -91,11 +68,21 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (gameController.Timer <= 10 && !triggeredThrow)
+        {
+            triggeredThrow = true;
+            players[0].Player.GetComponent<PickUpScript>().TriggerThrow();
+            players[1].Player.GetComponent<PickUpScript>().TriggerThrow();
+        }
+
+    }
+            
     public GameObject LeftHand(int player)
     {
         return players[player - 1].LeftHand;
     }
-
 
     public GameObject RightHand(int player)
     {
@@ -110,14 +97,6 @@ public class GameControllerScript : MonoBehaviour
             return gamepad;
         }
     }
-
-    /*public int Difficulty
-    {
-        get
-        {
-            return difficulty;
-        }
-    }*/
 
     public int PlayerCount
     {
@@ -140,68 +119,6 @@ public class GameControllerScript : MonoBehaviour
         return 0;
     }
 
-    public void IncrementPlayer1BuildCount()
-    {
-        player1BuildCount += 1;
-    }
-
-    public void IncrementPlayer2BuildCount()
-    {
-        player2BuildCount += 1;
-    }
-
-    private void Update()
-    {
-        if (!finished)
-        {
-            if (player1BuildCount >= difficulty)
-            {
-                finished = true;
-                audioController.EndRound();
-                SetScoresForEnd();
-            }
-            else if (player2BuildCount >= difficulty)
-            {
-                finished = true;
-                audioController.EndRound();
-                SetScoresForEnd();
-            }
-            else if (timer <= 10 && !triggeredThrow)
-            {
-                triggeredThrow = true;
-                players[0].Player.GetComponent<PickUpScript>().TriggerThrow();
-                players[1].Player.GetComponent<PickUpScript>().TriggerThrow();
-                audioController.StartCountdown();
-            }
-            else if (timer <= 0)
-            {
-                finished = true;
-                Debug.Log("Time's up!");
-                audioController.EndRound();
-                SetScoresForEnd();
-            }
-            else
-            {
-                timer -= Time.deltaTime;
-            }
-        }
-    }
-
-    private void SetScoresForEnd()
-    {
-        //sets scores to display when end game screen is enabled
-        PlayerPrefs.SetInt("player1score", player1BuildCount);
-        PlayerPrefs.SetInt("player2score", player2BuildCount);
-
-        if (player1BuildCount > player2BuildCount)
-        {
-            PlayerPrefs.SetString("winner", "player1");
-        }
-        else { PlayerPrefs.SetString("winner", "player1"); }
-
-        //enables end game ui
-        endGameUi.SetActive(true);
-    }
     //Checks if the player clicked the specified button
     public bool GetButtonDown(int p, string s)
     {

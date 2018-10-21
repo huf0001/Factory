@@ -18,7 +18,7 @@ public class GamepadLook
     private Quaternion m_CameraTargetRot;
     private bool m_cursorIsLocked = true;
 
-    private GameControllerScript gameController;
+    private InputController inputController;
 
     public void Init(Transform character, Transform camera)
     {
@@ -26,9 +26,9 @@ public class GamepadLook
         m_CameraTargetRot = camera.localRotation;
     }
 
-    private GameControllerScript GetGameController()
+    private InputController GetInputController()
     {
-        GameControllerScript result = GameObject.Find("GameControllerCamera").GetComponent<GameControllerScript>();
+        InputController result = GameObject.Find("GameControllerCamera").GetComponent<InputController>();
 
         if (result == null)
         {
@@ -41,13 +41,13 @@ public class GamepadLook
 
     public void LookRotation(int player, Transform character, Transform camera)
     {
-        if (gameController == null)
+        if (inputController == null)
         {
-            gameController = GetGameController();
+            inputController = GetInputController();
         }
 
-        float yRot = gameController.GetAxis(player, "LookHorizontal") * XSensitivity;
-        float xRot = gameController.GetAxis(player, "LookVertical") * YSensitivity;
+        float yRot = inputController.GetAxis(player, "LookHorizontal") * XSensitivity;
+        float xRot = inputController.GetAxis(player, "LookVertical") * YSensitivity;
 
         m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
         m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
