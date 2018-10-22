@@ -62,20 +62,28 @@ public class UIButtonScript : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void LoadScene(string sceneName) {
+    public void LoadScene(string sceneName)
+    {
         currentScene = SceneManager.GetActiveScene();
-        if ((currentScene.name == "LevelSelect")&&(sceneName != "MainMenu")) { CheckDropdownValue(sceneName); }
-        else { SceneManager.LoadScene(sceneName); }
-    }
-
-    void CheckDropdownValue(string sceneNameCheck) {
-        GameObject levelSelectUI = GameObject.FindWithTag("LevelSelectUI");
-        Dropdown dropDownBar = levelSelectUI.transform.Find("Dropdown").GetComponent<Dropdown>(); 
-        //changes the drop downs label to red if no difficult chosen 
-        if (dropDownBar.value == 0) {
-            Text chooseDifficultyPls = levelSelectUI.transform.Find("NeedtoChoose").GetComponent<Text>();
-            chooseDifficultyPls.enabled = true;
+        if ((currentScene.name == "LevelSelect") && (sceneName != "MainMenu"))
+        {
+            if (sceneName == "easy")
+            {
+                PlayerPrefs.SetString("difficulty", "easy");
+            }
+            else if (sceneName == "medium")
+            {
+                PlayerPrefs.SetString("difficulty", "medium");
+            }
+            else
+            {
+                PlayerPrefs.SetString("difficulty", "hard");
+            }
+            SceneManager.LoadScene("Level1");
         }
-        else { SceneManager.LoadScene(sceneNameCheck); } 
+        else
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 }
