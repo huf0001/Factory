@@ -12,7 +12,7 @@ public class Built : Scalable
     // Use this for initialization
     void Start()
     {
-        Initialise();
+        Initialise(true);
     }
 
     public Schema Schema
@@ -44,8 +44,7 @@ public class Built : Scalable
 	// Update is called once per frame
 	private void Update ()
     {
-        Rotate();
-        CheckScaling();
+        UpdateScaling();
 
         if (!Dropping)
         {
@@ -84,11 +83,5 @@ public class Built : Scalable
                 Destroy(this);
             }
         }
-    }
-
-    public override void Failed()
-    {
-        schema = null;
-        base.Failed();
     }
 }

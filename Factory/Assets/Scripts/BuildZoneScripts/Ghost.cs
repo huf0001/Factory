@@ -7,14 +7,14 @@ public class Ghost : Scalable
     [System.Serializable]
     public class GhostIdentifierPair
     {
-        [SerializeField] private GameObject ghost;
+        [SerializeField] private GhostPart ghostPart;
         [SerializeField] private Identifier identifier;
 
-        public GameObject Ghost
+        public GhostPart GhostPart
         {
             get
             {
-                return ghost;
+                return ghostPart;
             }
         }
 
@@ -32,12 +32,7 @@ public class Ghost : Scalable
 
     private void Start()
     {
-        foreach (GhostIdentifierPair p in ghostComponents)
-        {
-            p.Ghost.SetActive(false);
-        }
-
-        Initialise();
+        Initialise(true);
     }
 
     public Schema Schema
@@ -59,21 +54,14 @@ public class Ghost : Scalable
         {
             if (p.Identifier == i)
             {
-                p.Ghost.SetActive(true);
+                p.GhostPart.Reveal();
             }
         }
     }
 
-    public override void Failed()
-    {
-        schema = null;
-        base.Failed();
-    }
-
     private void Update()
     {
-        Rotate();
-        CheckScaling();
+        UpdateScaling();
 
         if (FinishedShrinking() && schema != null)
         {

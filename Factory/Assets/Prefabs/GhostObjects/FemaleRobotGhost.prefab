@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4728208262673492}
   - component: {fileID: 33819535157361372}
   - component: {fileID: 23130673701882926}
+  - component: {fileID: 114967614088098210}
   m_Layer: 0
   m_Name: FemaleRobotParts
   m_TagString: Untagged
@@ -55,6 +56,7 @@ GameObject:
   - component: {fileID: 4302976277428560}
   - component: {fileID: 33252372725801048}
   - component: {fileID: 23369019195700072}
+  - component: {fileID: 114463859213353460}
   m_Layer: 0
   m_Name: FemaleRobotBody
   m_TagString: Untagged
@@ -72,6 +74,7 @@ GameObject:
   - component: {fileID: 4649955795868732}
   - component: {fileID: 33944276538922238}
   - component: {fileID: 23705680902705206}
+  - component: {fileID: 114820016405430298}
   m_Layer: 0
   m_Name: FemaleRobotEyes
   m_TagString: Untagged
@@ -105,6 +108,7 @@ GameObject:
   - component: {fileID: 4966365482133042}
   - component: {fileID: 33835100173600160}
   - component: {fileID: 23149681911750304}
+  - component: {fileID: 114437778205444038}
   m_Layer: 0
   m_Name: FemaleRobotHead
   m_TagString: Untagged
@@ -417,11 +421,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostComponents:
-  - ghost: {fileID: 1440768557296458}
+  - ghostPart: {fileID: 114463859213353460}
     identifier: 11
-  - ghost: {fileID: 1514435166729288}
+  - ghostPart: {fileID: 114820016405430298}
     identifier: 12
-  - ghost: {fileID: 1918900065490598}
+  - ghostPart: {fileID: 114437778205444038}
     identifier: 13
-  - ghost: {fileID: 1159181598140304}
+  - ghostPart: {fileID: 114967614088098210}
     identifier: 14
+--- !u!114 &114437778205444038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1918900065490598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218c2b443fc60ae408462ec30e2e0c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114463859213353460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1440768557296458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218c2b443fc60ae408462ec30e2e0c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114820016405430298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514435166729288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218c2b443fc60ae408462ec30e2e0c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114967614088098210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159181598140304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218c2b443fc60ae408462ec30e2e0c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
