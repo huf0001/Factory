@@ -105,24 +105,44 @@ public class Schema : MonoBehaviour
     private void LoadObject(GameObject item)
     {
         Identifiable itemIds = item.GetComponent<Identifiable>();
+        Scalable itemScaler = item.GetComponent<Scalable>();
 
         foreach (Identifier i in pendingComponents)
         {
-            if (itemIds.HasIdentifier(i))
+            if (itemIds.HasIdentifier(i) && itemScaler != null)
             {
-                DestroyComponentObject(item);
-                ghost.Reveal(i);
-                pendingComponents.Remove(i);
-                loadedComponents.Add(i);
-                this.transform.parent.gameObject.GetComponent<BuildZone>().PlayLoadedSound();
+                MoveIntoBuildZone(item);
+
+                if (!itemScaler.Shrinking)
+                {
+                    itemScaler.Shrinking = true;
+                    itemScaler.Rotating = true;
+                }
+                else if (itemScaler.FinishedShrinking())
+                {
+                    DestroyComponentObject(item);
+                    ghost.Reveal(i);
+                    pendingComponents.Remove(i);
+                    loadedComponents.Add(i);
+                    this.transform.parent.gameObject.GetComponent<BuildZone>().PlayLoadedSound();
+                }
 
                 return;
             }
         }
     }
 
+    private void MoveIntoBuildZone(GameObject item)
+    {
+        float increment = 0.05f;
+
+        item.transform.position = Vector3.MoveTowards(item.transform.position, buildPoint.transform.position, increment);
+    }
+
     private void DestroyComponentObject(GameObject item)
     {
+        Destroy(item.GetComponent<BuildComponent>());
+        Destroy(item.GetComponent<Scalable>());
         Destroy(item.GetComponent<Movable>());
         Destroy(item.GetComponent<Identifiable>());
         Destroy(item);
@@ -171,12 +191,14 @@ public class Schema : MonoBehaviour
     {
         if (ghost != null)
         {
-            ghost.Failed();
+            ghost.Dropping = true;
+            ghost.Schema = null;
         }
 
         if (built != null)
         {
-            built.Failed();
+            built.Dropping = true;
+            built.Schema = null;
         }
     }
 }

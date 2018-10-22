@@ -11,15 +11,55 @@ public class Scalable : MonoBehaviour
     private float rotationFactorWhenScaling = 10f;
 
     private Vector3 startScale;
-    private bool expanding = true;
-    private bool shrinking = false;
-    private bool dropping = false;
+    private bool expanding;
+    private bool shrinking;
+    private bool dropping;
+    private bool rotating;
 
     // Use this for initialization
-    protected void Initialise ()
+    protected void Initialise(bool minimise)
+    {
+        Initialise(true, false, false, true, minimise);
+    }
+
+    protected void Initialise (bool expand, bool shrink, bool drop, bool rotate, bool minimise)
     {
         startScale = transform.localScale;
-        transform.localScale = Vector3.zero;
+        expanding = expand;
+        shrinking = shrink;
+        dropping = drop;
+        rotating = rotate;
+
+        if (minimise)
+        {
+            transform.localScale = Vector3.zero;
+        }
+    }
+
+    public bool Expanding
+    {
+        get
+        {
+            return expanding;
+        }
+
+        set
+        {
+            expanding = value;
+        }
+    }
+
+    public bool Rotating
+    {
+        get
+        {
+            return rotating;
+        }
+
+        set
+        {
+            rotating = value;
+        }
     }
 
     public bool Shrinking
@@ -48,29 +88,39 @@ public class Scalable : MonoBehaviour
         }
     }
 
-    protected void Rotate()
+    protected void UpdateScaling()
     {
-        Rotate(1f);
+        UpdateScaling(1);
     }
 
-    protected void Rotate(float speedFactor)
+    protected void UpdateScaling(int n)
     {
-        transform.Rotate(new Vector3(0f, rotationSpeed * speedFactor), Space.World);
-    }
+        for (int i = 0; i < n; i++)
+        {
+            if (expanding)
+            {
+                Expand();
+            }
+            else if (shrinking)
+            {
+                Shrink();
+            }
+            else if (dropping)
+            {
+                Drop();
+            }
 
-    protected void CheckScaling()
-    {
-        if (expanding)
-        {
-            Expand();
-        }
-        else if (shrinking)
-        {
-            Shrink();
-        }
-        else if (dropping)
-        {
-            Drop();
+            if (rotating)
+            {
+                if (expanding || shrinking)
+                {
+                    Rotate(rotationFactorWhenScaling);
+                }
+                else
+                {
+                    Rotate(1);
+                }
+            }
         }
     }
 
@@ -82,8 +132,6 @@ public class Scalable : MonoBehaviour
         {
             scaleCount += 1;
             transform.localScale += startScale * scaleTick;
-
-            Rotate(rotationFactorWhenScaling);
         }
 
         if (transform.localScale.x > startScale.x)
@@ -103,28 +151,25 @@ public class Scalable : MonoBehaviour
 
             if (scaleTimer > (scaleCount + 1) * scaleTick)
             {
+                Vector3 newScale = transform.localScale - (startScale * scaleTick);
+
+                if (newScale.x < 0 || newScale.y < 0 || newScale.z < 0)
+                {
+                    transform.localScale = Vector3.zero;
+                }
+                else
+                {
+                    transform.localScale = newScale;
+                }
+
                 scaleCount += 1;
-                transform.localScale -= startScale * scaleTick;
-                Rotate(rotationFactorWhenScaling);
             }
         }
     }
 
-    protected bool FinishedShrinking()
+    protected void Rotate(float speedFactor)
     {
-        if (shrinking && (scaleCount > (1 / scaleTick)))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public virtual void Failed()
-    {
-        Dropping = true;
+        transform.Rotate(new Vector3(0f, rotationSpeed * speedFactor), Space.World);
     }
 
     private void Drop()
@@ -134,6 +179,18 @@ public class Scalable : MonoBehaviour
         if (FinishedDropping())
         {
             dropping = false;
+        }
+    }
+
+    public bool FinishedShrinking()
+    {
+        if (shrinking && (scaleCount > (1 / scaleTick)))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 

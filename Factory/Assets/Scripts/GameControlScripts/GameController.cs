@@ -80,9 +80,19 @@ public class GameController : MonoBehaviour
 
     public bool PlayerLost(int p)
     {
-        if (((p == 1) && (p2BuildCount < difficulty)) || ((p == 2) && (p1BuildCount < difficulty)))
+        if ((timer != 0))
         {
-            return false;
+            if (((p == 1) && (p2BuildCount < difficulty)) || ((p == 2) && (p1BuildCount < difficulty)))
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (((p == 1) && (p1BuildCount >= difficulty)) || ((p == 2) && (p2BuildCount >= difficulty)))
+            {
+                return false;
+            }
         }
 
         return true;
@@ -98,7 +108,6 @@ public class GameController : MonoBehaviour
             {
                 audioController.StartCountdown();
                 countdown = true;
-                Debug.Log("Countdown started");
             }
 
             if ((p1BuildCount >= difficulty) || (p2BuildCount >= difficulty) || (timer < 0))
