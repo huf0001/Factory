@@ -9853,6 +9853,11 @@ Prefab:
       propertyPath: musicButton
       value: 
       objectReference: {fileID: 1346187802}
+    - target: {fileID: 114550205794331858, guid: 090a91634eaf5974b851dea9c1223d6e,
+        type: 2}
+      propertyPath: gamepad
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 090a91634eaf5974b851dea9c1223d6e, type: 2}
   m_IsPrefabAsset: 0
