@@ -5,7 +5,6 @@ using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof (CharacterController))]
-[RequireComponent(typeof (AudioSource))]
 
 public class PlayerController : MonoBehaviour
 {
@@ -42,14 +41,13 @@ public class PlayerController : MonoBehaviour
     private float stepCycle;
     private float nextStep;
     private bool jumping;
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource feetAudioSource;
     private InputController inputController;
 
     // Use this for initialization
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
-        audioSource = GetComponent<AudioSource>();
 
         stepCycle = 0f;
         nextStep = stepCycle/2f;
@@ -139,8 +137,8 @@ public class PlayerController : MonoBehaviour
 
     private void PlayLandingSound()
     {
-        audioSource.clip = landSound;
-        audioSource.Play();
+        feetAudioSource.clip = landSound;
+        feetAudioSource.Play();
         nextStep = stepCycle + .5f;
     }
 
@@ -213,8 +211,8 @@ public class PlayerController : MonoBehaviour
 
     private void PlaySoundEffect(AudioClip sound)
     {
-        audioSource.clip = sound;
-        audioSource.Play();
+        feetAudioSource.clip = sound;
+        feetAudioSource.Play();
     }
 
     private void ProgressStepCycle(float speed, Vector3 movement)
@@ -244,12 +242,12 @@ public class PlayerController : MonoBehaviour
         // pick & play a random footstep sound from the array,
         // excluding sound at index 0
         int n = Random.Range(1, footStepSounds.Length);
-        audioSource.clip = footStepSounds[n];
-        audioSource.PlayOneShot(audioSource.clip);
+        feetAudioSource.clip = footStepSounds[n];
+        feetAudioSource.PlayOneShot(feetAudioSource.clip);
 
         // move picked sound to index 0 so it's not picked next time
         footStepSounds[n] = footStepSounds[0];
-        footStepSounds[0] = audioSource.clip;
+        footStepSounds[0] = feetAudioSource.clip;
     }
 
     private void OnTriggerStay(Collider other)

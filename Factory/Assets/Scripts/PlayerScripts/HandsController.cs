@@ -29,12 +29,13 @@ public class HandsController: MonoBehaviour
     [SerializeField] private AudioClip throwSound;
     private bool throwOn = false;
 
-    private AudioSource audioSource = new AudioSource();
+    [SerializeField] private AudioSource robotAudioSource;
+    [SerializeField] private AudioSource throwAudioSource;
 
     // Use this for initialization
     void Start ()
     {
-        audioSource = GetComponent<AudioSource>();
+        throwAudioSource.clip = throwSound;
 
         leftHandStartPoint = leftHandGuide.transform.localPosition;
         rightHandStartPoint = rightHandGuide.transform.localPosition;
@@ -246,7 +247,7 @@ public class HandsController: MonoBehaviour
         if (item.GetComponent<Movable>() != null)
         {
             item.GetComponent<Movable>().HandlePickUp(playerNumber, hand);
-            PlaySoundEffect(pickUpSound);
+            PlayRobotSoundEffect(pickUpSound);
             ChangeIDsFromPickUp(hand);
 
             if (hand == Hand.Left)
@@ -284,12 +285,10 @@ public class HandsController: MonoBehaviour
             if (throwOn)
             {
                 ThrowObject(item, hand);
-                PlaySoundEffect(throwSound);
+                PlayThrowSoundEffect();
             }
-            else
-            {
-                PlaySoundEffect(dropSound);
-            }
+
+            PlayRobotSoundEffect(dropSound);
         }
     }
 
@@ -318,9 +317,14 @@ public class HandsController: MonoBehaviour
             Debug.LogError("The gameobject you are trying to throw does not have a rigidbody");
     }
 
-    private void PlaySoundEffect(AudioClip sound)
+    private void PlayRobotSoundEffect(AudioClip sound)
     {
-        audioSource.clip = sound;
-        audioSource.Play();
+        robotAudioSource.clip = sound;
+        robotAudioSource.Play();
+    }
+
+    private void PlayThrowSoundEffect()
+    {
+        throwAudioSource.Play();
     }
 }
