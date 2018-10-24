@@ -4,51 +4,84 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UIButtonScript : MonoBehaviour {
+public class UIButtonScript : MonoBehaviour
+{
     [SerializeField] private AudioSource menuAudio;
     Scene currentScene;
     [SerializeField] private Sprite musicOn;
     [SerializeField] private Sprite musicOff;
-    [SerializeField] private Button musicButton;
+    [SerializeField] private Image musicButton;
+    [SerializeField] private Image musicButtonGameOver;
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         currentScene = SceneManager.GetActiveScene();
+
         if ((currentScene.name == "MainMenu")&&(PlayerPrefs.GetString("music") == null))
         {
             PlayerPrefs.SetString("music", "true");
-            musicButton.GetComponent<Image>().sprite = musicOn;
+            musicButton.sprite = musicOn;
+
+            if (currentScene.name == "Level1")
+            {
+                musicButtonGameOver.sprite = musicOn;
+            }
         }//sets the intial music value only if first time play; music toggling isnt preserved after instructions screen otherwise   
          //set intial music icon value based on player preference otherwise it automatically comes up as on even when off
         if ((PlayerPrefs.GetString("music") == "true"))
         {
-            musicButton.GetComponent<Image>().sprite = musicOn;
+            musicButton.sprite = musicOn;
+
+            if (currentScene.name == "Level1")
+            {
+                musicButtonGameOver.sprite = musicOn;
+            }
         }
         else
-        {
-            musicButton.GetComponent<Image>().sprite = musicOff;
-        }
+        {           
+            musicButton.sprite = musicOff;
 
+            if (currentScene.name == "Level1")
+            {
+                musicButtonGameOver.sprite = musicOff;
+            }
+        }
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         if ((PlayerPrefs.GetString("music"))=="true")
         {
             menuAudio.mute = false;
         }
-        else { menuAudio.mute = true; }
+        else
+        {
+            menuAudio.mute = true;
+        }
     }
 
-    public void ToggleMusic() {
+    public void ToggleMusic()
+    {
         if ((PlayerPrefs.GetString("music") == "true"))
         {
             PlayerPrefs.SetString("music", "false");
-            musicButton.GetComponent<Image>().sprite = musicOff;
+            musicButton.sprite = musicOff;
+
+            if (currentScene.name == "Level1")
+            {
+                musicButtonGameOver.sprite = musicOff;
+            }
         }
         else {
             PlayerPrefs.SetString("music", "true");
-            musicButton.GetComponent<Image>().sprite = musicOn;
+            musicButton.sprite = musicOn;
+
+            if (currentScene.name == "Level1")
+            {
+                musicButtonGameOver.sprite = musicOn;
+            }
         }
     }
 
@@ -97,5 +130,12 @@ public class UIButtonScript : MonoBehaviour {
         }
 
         SceneManager.LoadScene("LevelSelect");
+    }
+
+    public void BackToGame()
+    {
+        PlayerPrefs.SetString("active", "true");
+
+        GameObject.Find("PauseGameUIOverlay").SetActive(false);
     }
 }

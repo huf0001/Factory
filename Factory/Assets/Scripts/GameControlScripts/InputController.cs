@@ -140,6 +140,7 @@ public class InputController : MonoBehaviour
         {
             //check which action the player wants
             case "Jump":
+            case "Pause":
                 result = CrossPlatformInputManager.GetButtonDown("P" + p + GetGamepadPrefix() + s);
                 break;
             case "LeftArm":
@@ -165,6 +166,7 @@ public class InputController : MonoBehaviour
         {
             //check which action the player wants
             case "Jump":
+            case "Pause":
                 result = CrossPlatformInputManager.GetButton("P" + p + GetGamepadPrefix() + s);
                 break;
             case "LeftArm":

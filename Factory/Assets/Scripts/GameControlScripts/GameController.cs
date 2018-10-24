@@ -6,8 +6,10 @@ using UnityStandardAssets.CrossPlatformInput;
 public class GameController : MonoBehaviour
 {
 
-    [SerializeField] AudioController audioController;
-    [SerializeField] private GameObject endGameUi;
+    [SerializeField] private AudioController audioController;
+    [SerializeField] private InputController inputController;
+    [SerializeField] private GameObject pauseGameUI;
+    [SerializeField] private GameObject endGameUI;
     [SerializeField] float timer = 60;
 
     private bool countdown = false;
@@ -22,7 +24,8 @@ public class GameController : MonoBehaviour
     void Start()
     {
         //ensures endgameUI doesn't popup on startup
-        endGameUi.SetActive(false);
+        endGameUI.SetActive(false);
+        pauseGameUI.SetActive(false);
         PlayerPrefs.SetString("active", "true");
 
         switch (PlayerPrefs.GetString("difficulty"))
@@ -101,19 +104,24 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        CheckPauseMenu();
+
         if (timer != 0)
         {
-            timer -= Time.deltaTime;
+            if (PlayerPrefs.GetString("active") != "false")
+            {
+                timer -= Time.deltaTime;
             
-            if ((!countdown) && (timer < 10))
-            {
-                audioController.StartCountdown();
-                countdown = true;
-            }
+                if ((!countdown) && (timer < 10))
+                {
+                    audioController.StartCountdown();
+                    countdown = true;
+                }
 
-            if ((p1BuildCount >= difficulty) || (p2BuildCount >= difficulty) || (timer < 0))
-            {
-                timer = 0;
+                if ((p1BuildCount >= difficulty) || (p2BuildCount >= difficulty) || (timer < 0))
+                {
+                    timer = 0;
+                }
             }
         }
         else
@@ -144,17 +152,40 @@ public class GameController : MonoBehaviour
                 )
                 {
                     finished = true;
-                    SetScoresForEnd();
+                    EndRound();
                 }
             }
         }
     }
 
-    private void SetScoresForEnd()
+    private void CheckPauseMenu()
     {
-        //sets scores to display when end game screen is enabled
+        if (inputController.GetButtonDown(1, "Pause") || inputController.GetButtonDown(2, "Pause") || CrossPlatformInputManager.GetButtonDown("MKPause"))
+        {
+            if (PlayerPrefs.GetString("active") == "true")
+            {
+                PlayerPrefs.SetString("active", "false");
+                SetScores();
+                pauseGameUI.SetActive(true);
+            }
+            else
+            {
+                PlayerPrefs.SetString("active", "true");
+                pauseGameUI.SetActive(false);
+            }
+        }
+    }
+
+    private void SetScores()
+    {
+        //sets scores to display when pause / end game screen is enabled
         PlayerPrefs.SetInt("player1score", p1BuildCount);
         PlayerPrefs.SetInt("player2score", p2BuildCount);
+    }
+
+    private void EndRound()
+    {
+        SetScores();
 
         if (p1BuildCount > p2BuildCount)
         {
@@ -166,7 +197,7 @@ public class GameController : MonoBehaviour
         }
 
         //enables end game ui
-        endGameUi.SetActive(true);
+        endGameUI.SetActive(true);
         PlayerPrefs.SetString("active", "false");
     }
 }

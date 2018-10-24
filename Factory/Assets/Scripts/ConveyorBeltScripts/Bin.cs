@@ -16,7 +16,7 @@ public class Bin : MonoBehaviour
     // Will check that the item in question is not the player though.
     private void OnTriggerStay(Collider other)
     {
-        if (CheckGameActive())
+        if (PlayerPrefs.GetString("active") != "false")
         {
             Identifiable ids = other.gameObject.GetComponent<Identifiable>();
 
@@ -37,15 +37,5 @@ public class Bin : MonoBehaviour
             Destroy(other.gameObject);
             audioSource.Play();
         }
-    }
-
-    private bool CheckGameActive()
-    {
-        if (PlayerPrefs.GetString("active") == "false")
-        {
-            return false;
-        }
-
-        return true;
     }
 }

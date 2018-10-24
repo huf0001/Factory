@@ -118,7 +118,7 @@ public class HandsController: MonoBehaviour
 
     private void Update()
     {
-        if (CheckGameActive())
+        if (PlayerPrefs.GetString("active") != "false")
         {
             if (inputController.GetButton(playerNumber, "LeftArm"))
             {
@@ -146,16 +146,6 @@ public class HandsController: MonoBehaviour
 
             UpdateHandGuidePosition();
         }
-    }
-
-    private bool CheckGameActive()
-    {
-        if (PlayerPrefs.GetString("active") == "false")
-        {
-            return false;
-        }
-
-        return true;
     }
 
     private void UpdateHandGuidePosition()

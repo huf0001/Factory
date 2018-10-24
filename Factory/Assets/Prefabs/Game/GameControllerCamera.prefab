@@ -508,7 +508,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioController: {fileID: 114467837305749328}
-  endGameUi: {fileID: 0}
+  inputController: {fileID: 114550205794331858}
+  pauseGameUI: {fileID: 0}
+  endGameUI: {fileID: 0}
   timer: 120
 --- !u!114 &114381112481011792
 MonoBehaviour:

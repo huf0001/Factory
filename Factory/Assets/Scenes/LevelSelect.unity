@@ -602,7 +602,8 @@ MonoBehaviour:
   menuAudio: {fileID: 574578833}
   musicOn: {fileID: 21300000, guid: dce7b6da1611ceb48bbd460599a0699f, type: 3}
   musicOff: {fileID: 21300000, guid: 5ea57c2c7e5c04745b84608d36d26b9e, type: 3}
-  musicButton: {fileID: 674631980}
+  musicButton: {fileID: 674631981}
+  musicButtonGameOver: {fileID: 0}
 --- !u!82 &574578833
 AudioSource:
   m_ObjectHideFlags: 0

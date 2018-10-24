@@ -10,7 +10,7 @@ public class ConveyerBelt : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (CheckGameActive() && !CheckPlayerMoving(other.gameObject))
+        if ((PlayerPrefs.GetString("active") != "false") && !CheckPlayerMoving(other.gameObject))
         {
             if (CheckPlayer(other.gameObject))
             {
@@ -28,15 +28,7 @@ public class ConveyerBelt : MonoBehaviour
         //for that object to move towards so that it gets kicked off the conveyor belt and doesn't knock other objects off 
     }
 
-    private bool CheckGameActive()
-    {
-        if (PlayerPrefs.GetString("active") == "false")
-        {
-            return false;
-        }
 
-        return true;
-    }
 
     private bool CheckPlayerMoving(GameObject other)
     {

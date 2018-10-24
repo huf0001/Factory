@@ -89,7 +89,7 @@ public class Spawner : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (CheckGameActive())
+        if (PlayerPrefs.GetString("active") != "false")
         {
             if (time > secBetweenSpawns)
             {
@@ -102,16 +102,6 @@ public class Spawner : MonoBehaviour
             }
         }
 	}
-
-    private bool CheckGameActive()
-    {
-        if (PlayerPrefs.GetString("active") == "false")
-        {
-            return false;
-        }
-
-        return true;
-    }
 
     private void Spawn()
     {

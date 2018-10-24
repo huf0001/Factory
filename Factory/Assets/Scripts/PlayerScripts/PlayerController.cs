@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (CheckGameActive())
+        if (PlayerPrefs.GetString("active") != "false")
         {
             // the jump state needs to read here to make sure it is not missed
             if (!jump)
@@ -115,16 +115,6 @@ public class PlayerController : MonoBehaviour
         {
             UpdateWalkingAnimation(Vector3.zero);
         }
-    }
-
-    private bool CheckGameActive()
-    {
-        if (PlayerPrefs.GetString("active") == "false")
-        {
-            return false;
-        }
-
-        return true;
     }
 
     private Vector3 GetWalkInput()
@@ -194,7 +184,7 @@ public class PlayerController : MonoBehaviour
     // better for physics operations as it will be executed in sync with the physics engine
     private void FixedUpdate()
     {
-        if (CheckGameActive())
+        if (PlayerPrefs.GetString("active") != "false")
         {
             MovePlayer(walkInput, characterController.transform.position);
             HandleJump();

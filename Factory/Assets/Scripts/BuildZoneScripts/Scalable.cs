@@ -95,30 +95,33 @@ public class Scalable : MonoBehaviour
 
     protected void UpdateScaling(int n)
     {
-        for (int i = 0; i < n; i++)
+        if (PlayerPrefs.GetString("active") != "false")
         {
-            if (expanding)
+            for (int i = 0; i < n; i++)
             {
-                Expand();
-            }
-            else if (shrinking)
-            {
-                Shrink();
-            }
-            else if (dropping)
-            {
-                Drop();
-            }
-
-            if (rotating)
-            {
-                if (expanding || shrinking)
+                if (expanding)
                 {
-                    Rotate(rotationFactorWhenScaling);
+                    Expand();
                 }
-                else
+                else if (shrinking)
                 {
-                    Rotate(1);
+                    Shrink();
+                }
+                else if (dropping)
+                {
+                    Drop();
+                }
+
+                if (rotating)
+                {
+                    if (expanding || shrinking)
+                    {
+                        Rotate(rotationFactorWhenScaling);
+                    }
+                    else
+                    {
+                        Rotate(1);
+                    }
                 }
             }
         }
