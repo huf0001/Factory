@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 114137377249279770}
   - component: {fileID: 82953160874318612}
   m_Layer: 0
-  m_Name: GameMusicAudio
+  m_Name: EasyGameMusicAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -575,3 +575,4 @@ MonoBehaviour:
   musicOn: {fileID: 21300000, guid: dce7b6da1611ceb48bbd460599a0699f, type: 3}
   musicOff: {fileID: 21300000, guid: 5ea57c2c7e5c04745b84608d36d26b9e, type: 3}
   musicButton: {fileID: 0}
+  musicButtonGameOver: {fileID: 0}

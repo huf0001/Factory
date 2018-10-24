@@ -11,8 +11,24 @@ public class AudioSourceController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        audioSource.clip = audioClip;
+        if (audioClip != null)
+        {
+            audioSource.clip = audioClip;
+        }
 	}
+
+    public AudioClip Clip
+    {
+        get
+        {
+            return audioSource.clip;
+        }
+
+        set
+        {
+            audioSource.clip = value;
+        }
+    }
 
     public bool LoopAndPlay
     {

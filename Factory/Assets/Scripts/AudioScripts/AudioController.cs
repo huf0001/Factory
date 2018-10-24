@@ -4,18 +4,38 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    [SerializeField] private AudioSourceController gameMusic;
-    [SerializeField] private AudioSourceController countdown;
-    [SerializeField] private AudioSourceController victory;
+    [SerializeField] private AudioClip easyMusic;
+    [SerializeField] private AudioClip mediumMusic;
+    [SerializeField] private AudioClip hardMusic;
+
+    [SerializeField] private AudioSourceController gameMusicSource;
+    [SerializeField] private AudioSourceController countdownSource;
+    [SerializeField] private AudioSourceController victorySource;
     [SerializeField] bool playAudio;
+
+    private void Start()
+    {
+        switch (PlayerPrefs.GetString("difficulty"))
+        {
+            case "hard":
+                gameMusicSource.Clip = hardMusic;
+                break;
+            case "medium":
+                gameMusicSource.Clip = mediumMusic;
+                break;
+            default:
+                gameMusicSource.Clip = easyMusic;
+                break;
+        }
+    }
 
     private void Update()
     {
         CheckMusicPlayerPrefs();
 
-        if (!gameMusic.isPlaying && playAudio)
+        if (!gameMusicSource.isPlaying && playAudio)
         {
-            gameMusic.LoopAndPlay = true;
+            gameMusicSource.LoopAndPlay = true;
         }
     }
 
@@ -24,14 +44,14 @@ public class AudioController : MonoBehaviour
         if ((PlayerPrefs.GetString("music")) == "true")
         {
             playAudio = true;
-            gameMusic.gameObject.GetComponent<AudioSource>().mute = false;
-            countdown.gameObject.GetComponent<AudioSource>().mute = false;
+            gameMusicSource.gameObject.GetComponent<AudioSource>().mute = false;
+            countdownSource.gameObject.GetComponent<AudioSource>().mute = false;
         }
         else
         {
             playAudio = false;
-            gameMusic.gameObject.GetComponent<AudioSource>().mute = true;
-            countdown.gameObject.GetComponent<AudioSource>().mute = true;
+            gameMusicSource.gameObject.GetComponent<AudioSource>().mute = true;
+            countdownSource.gameObject.GetComponent<AudioSource>().mute = true;
         }
     }
 
@@ -39,20 +59,20 @@ public class AudioController : MonoBehaviour
     {
         if (playAudio)
         {
-            countdown.Play();
+            countdownSource.Play();
         }
     }
 
     public void StopCountdown()
     {
-        countdown.Stop();
+        countdownSource.Stop();
     }
 
     public void Victory()
     {
         if (playAudio)
         {
-            victory.Play();
+            victorySource.Play();
         }
     }
 }

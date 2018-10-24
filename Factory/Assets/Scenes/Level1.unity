@@ -3363,6 +3363,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 521022744}
   m_Mesh: {fileID: 4300208, guid: 7a4cff45c3a464f40ad005c10f1bee52, type: 3}
+--- !u!114 &529986861 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114381112481011792, guid: 090a91634eaf5974b851dea9c1223d6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1942348666}
+  m_Script: {fileID: 11500000, guid: 3d1964ae16056324dbd09cd5818bae2a, type: 3}
 --- !u!1 &530159088
 GameObject:
   m_ObjectHideFlags: 0
@@ -7379,6 +7385,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.049582947, y: 0.0013360404, z: 0.0013360418}
   m_Center: {x: 0, y: 0.0000000021536835, z: 0.04919772}
+--- !u!114 &1031332310 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114103278779417072, guid: 090a91634eaf5974b851dea9c1223d6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1942348666}
+  m_Script: {fileID: 11500000, guid: 3d1964ae16056324dbd09cd5818bae2a, type: 3}
 --- !u!1 &1089974647
 GameObject:
   m_ObjectHideFlags: 0
@@ -8805,6 +8817,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0024103615, y: 0.048866127, z: 0.003035937}
   m_Center: {x: -1.7462298e-10, y: 0.0000000018626451, z: 0}
+--- !u!114 &1501492161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114137377249279770, guid: 090a91634eaf5974b851dea9c1223d6e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1942348666}
+  m_Script: {fileID: 11500000, guid: 3d1964ae16056324dbd09cd5818bae2a, type: 3}
 --- !u!1 &1515138571
 GameObject:
   m_ObjectHideFlags: 0
@@ -9558,7 +9576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1733435361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10504,6 +10522,11 @@ Prefab:
       propertyPath: musicButton
       value: 
       objectReference: {fileID: 721878310}
+    - target: {fileID: 114881792156214678, guid: 090a91634eaf5974b851dea9c1223d6e,
+        type: 2}
+      propertyPath: musicButtonGameOver
+      value: 
+      objectReference: {fileID: 1346187803}
     - target: {fileID: 114256210292975226, guid: 090a91634eaf5974b851dea9c1223d6e,
         type: 2}
       propertyPath: pauseGameUI
@@ -10514,16 +10537,53 @@ Prefab:
       propertyPath: endGameUI
       value: 
       objectReference: {fileID: 2063616480}
-    - target: {fileID: 114881792156214678, guid: 090a91634eaf5974b851dea9c1223d6e,
+    - target: {fileID: 4645153273103362, guid: 090a91634eaf5974b851dea9c1223d6e, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962731659308554, guid: 090a91634eaf5974b851dea9c1223d6e, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114137377249279770, guid: 090a91634eaf5974b851dea9c1223d6e,
         type: 2}
-      propertyPath: musicButtonPause
+      propertyPath: audioClip
       value: 
-      objectReference: {fileID: 721878310}
-    - target: {fileID: 114881792156214678, guid: 090a91634eaf5974b851dea9c1223d6e,
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820091503516250, guid: 090a91634eaf5974b851dea9c1223d6e, type: 2}
+      propertyPath: m_Name
+      value: GameMusicAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 114467837305749328, guid: 090a91634eaf5974b851dea9c1223d6e,
         type: 2}
-      propertyPath: musicButtonGameOver
+      propertyPath: gameMusicSource
       value: 
-      objectReference: {fileID: 1346187803}
+      objectReference: {fileID: 1501492161}
+    - target: {fileID: 114467837305749328, guid: 090a91634eaf5974b851dea9c1223d6e,
+        type: 2}
+      propertyPath: countdownSource
+      value: 
+      objectReference: {fileID: 529986861}
+    - target: {fileID: 114467837305749328, guid: 090a91634eaf5974b851dea9c1223d6e,
+        type: 2}
+      propertyPath: victorySource
+      value: 
+      objectReference: {fileID: 1031332310}
+    - target: {fileID: 114467837305749328, guid: 090a91634eaf5974b851dea9c1223d6e,
+        type: 2}
+      propertyPath: easyMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f6660f5796f26c41857fa1a05b99427, type: 3}
+    - target: {fileID: 114467837305749328, guid: 090a91634eaf5974b851dea9c1223d6e,
+        type: 2}
+      propertyPath: mediumMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: d86cc84247e9d7e47b3d6247d3184715, type: 3}
+    - target: {fileID: 114467837305749328, guid: 090a91634eaf5974b851dea9c1223d6e,
+        type: 2}
+      propertyPath: hardMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 9ef61953f72ea53469f0b1ee3c011158, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 090a91634eaf5974b851dea9c1223d6e, type: 2}
   m_IsPrefabAsset: 0
