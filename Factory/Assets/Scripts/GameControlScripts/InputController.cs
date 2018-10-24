@@ -46,6 +46,7 @@ public class InputController : MonoBehaviour
     void Start()
     {
         int playerNumber = 0;
+        string gamepadPreferece = "";
 
         for (int i = 0; i < players.Length; i++)
         {
@@ -53,18 +54,29 @@ public class InputController : MonoBehaviour
 
             if (players[i].Player == null)
             {
-                Debug.Log("The game controller is missing player " + playerNumber);
+                Debug.Log("The input controller is missing player " + playerNumber);
             }
 
             if (players[i].LeftHand == null)
             {
-                Debug.Log("The game controller is missing player " + playerNumber + "'s left hand");
+                Debug.Log("The input controller is missing player " + playerNumber + "'s left hand");
             }
 
             if (players[i].RightHand == null)
             {
-                Debug.Log("The game controller is missing player " + playerNumber + "'s right hand");
+                Debug.Log("The input controller is missing player " + playerNumber + "'s right hand");
             }
+        }
+
+        gamepadPreferece = PlayerPrefs.GetString("gamepad");
+
+        if (gamepadPreferece == "dualshock")
+        {
+            gamepad = Gamepad.DualshockController;
+        }
+        else
+        {
+            gamepad = Gamepad.XboxController;
         }
     }
 

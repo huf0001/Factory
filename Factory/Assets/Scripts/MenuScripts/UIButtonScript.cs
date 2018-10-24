@@ -62,28 +62,40 @@ public class UIButtonScript : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void LoadScene(string sceneName)
+    public void LoadSceneOnly(string sceneName)
     {
-        currentScene = SceneManager.GetActiveScene();
-        if ((currentScene.name == "LevelSelect") && (sceneName != "MainMenu"))
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void LoadGameScene(string difficulty)
+    {
+        if (difficulty == "easy")
         {
-            if (sceneName == "easy")
-            {
-                PlayerPrefs.SetString("difficulty", "easy");
-            }
-            else if (sceneName == "medium")
-            {
-                PlayerPrefs.SetString("difficulty", "medium");
-            }
-            else
-            {
-                PlayerPrefs.SetString("difficulty", "hard");
-            }
-            SceneManager.LoadScene("Level1");
+            PlayerPrefs.SetString("difficulty", "easy");
+        }
+        else if (difficulty == "medium")
+        {
+            PlayerPrefs.SetString("difficulty", "medium");
         }
         else
         {
-            SceneManager.LoadScene(sceneName);
+            PlayerPrefs.SetString("difficulty", "hard");
         }
+
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void LoadLevelSelect(string gamepad)
+    {
+        if (gamepad == "dualshock")
+        {
+            PlayerPrefs.SetString("gamepad", "dualshock");
+        }
+        else
+        {
+            PlayerPrefs.SetString("gamepad", "xbox");
+        }
+
+        SceneManager.LoadScene("LevelSelect");
     }
 }
