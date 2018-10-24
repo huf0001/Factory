@@ -70,44 +70,61 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // the jump state needs to read here to make sure it is not missed
-        if (!jump)
+        if (CheckGameActive())
         {
-            jump = inputController.GetButtonDown(playerNumber, "Jump");
+            // the jump state needs to read here to make sure it is not missed
+            if (!jump)
+            {
+                jump = inputController.GetButtonDown(playerNumber, "Jump");
+            }
+
+            if (!previouslyGrounded && characterController.isGrounded)
+            {
+                StartCoroutine(jumpBob.DoBobCycle());
+                PlayLandingSound();
+                jumpMovement.y = 0f;
+                jumping = false;
+            }
+
+            if (!characterController.isGrounded && !jumping && previouslyGrounded)
+            {
+                jumpMovement.y = 0f;
+            }
+
+            previouslyGrounded = characterController.isGrounded;
+
+            //Gathering input for hand animation
+            if (inputController.GetButton(playerNumber, "LeftArm"))
+            {
+                movingLeftArm = true;
+            }
+
+            if (inputController.GetButton(playerNumber, "RightArm"))
+            {
+                movingRightArm = true;
+            }
+
+            walkInput = GetWalkInput();
+
+            //Updating the Robot so that it looks cool
+            RotatePlayer(walkInput, rotateSpeed);
+            UpdateWalkingAnimation(walkInput);
+            UpdateArms();
+        }
+        else
+        {
+            UpdateWalkingAnimation(Vector3.zero);
+        }
+    }
+
+    private bool CheckGameActive()
+    {
+        if (PlayerPrefs.GetString("active") == "false")
+        {
+            return false;
         }
 
-        if (!previouslyGrounded && characterController.isGrounded)
-        {
-            StartCoroutine(jumpBob.DoBobCycle());
-            PlayLandingSound();
-            jumpMovement.y = 0f;
-            jumping = false;
-        }
-
-        if (!characterController.isGrounded && !jumping && previouslyGrounded)
-        {
-            jumpMovement.y = 0f;
-        }
-
-        previouslyGrounded = characterController.isGrounded;
-
-        //Gathering input for hand animation
-        if (inputController.GetButton(playerNumber, "LeftArm"))
-        {
-            movingLeftArm = true;
-        }
-
-        if (inputController.GetButton(playerNumber, "RightArm"))
-        {
-            movingRightArm = true;
-        }
-
-        walkInput = GetWalkInput();
-
-        //Updating the Robot so that it looks cool
-        RotatePlayer(walkInput, rotateSpeed);
-        UpdateWalkingAnimation(walkInput);
-        UpdateArms();
+        return true;
     }
 
     private Vector3 GetWalkInput()
@@ -177,8 +194,11 @@ public class PlayerController : MonoBehaviour
     // better for physics operations as it will be executed in sync with the physics engine
     private void FixedUpdate()
     {
-        MovePlayer(walkInput, characterController.transform.position);
-        HandleJump();
+        if (CheckGameActive())
+        {
+            MovePlayer(walkInput, characterController.transform.position);
+            HandleJump();
+        }
     }
 
     private void MovePlayer(Vector3 movement, Vector3 position)

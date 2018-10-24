@@ -16,23 +16,36 @@ public class Bin : MonoBehaviour
     // Will check that the item in question is not the player though.
     private void OnTriggerStay(Collider other)
     {
-        Identifiable ids = other.gameObject.GetComponent<Identifiable>();
-
-        if (other.gameObject.tag == "Player")
+        if (CheckGameActive())
         {
-            return;
-        }
+            Identifiable ids = other.gameObject.GetComponent<Identifiable>();
 
-        if (ids != null)
-        {
-            if (ids.HasIdentifier(Identifier.PlayerMoving))
+            if (other.gameObject.tag == "Player")
             {
                 return;
             }
-        }
+
+            if (ids != null)
+            {
+                if (ids.HasIdentifier(Identifier.PlayerMoving))
+                {
+                    return;
+                }
+            }
         
-        Destroy(other.gameObject.GetComponent<Movable>());
-        Destroy(other.gameObject);
-        audioSource.Play();
+            Destroy(other.gameObject.GetComponent<Movable>());
+            Destroy(other.gameObject);
+            audioSource.Play();
+        }
+    }
+
+    private bool CheckGameActive()
+    {
+        if (PlayerPrefs.GetString("active") == "false")
+        {
+            return false;
+        }
+
+        return true;
     }
 }

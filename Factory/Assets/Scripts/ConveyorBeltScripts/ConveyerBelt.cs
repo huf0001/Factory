@@ -10,7 +10,7 @@ public class ConveyerBelt : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (!CheckPlayerMoving(other.gameObject))
+        if (CheckGameActive() && !CheckPlayerMoving(other.gameObject))
         {
             if (CheckPlayer(other.gameObject))
             {
@@ -26,6 +26,16 @@ public class ConveyerBelt : MonoBehaviour
 
         //Note: attachment base objects seem to move extra fast;  might need to add a secondary endpoint object
         //for that object to move towards so that it gets kicked off the conveyor belt and doesn't knock other objects off 
+    }
+
+    private bool CheckGameActive()
+    {
+        if (PlayerPrefs.GetString("active") == "false")
+        {
+            return false;
+        }
+
+        return true;
     }
 
     private bool CheckPlayerMoving(GameObject other)

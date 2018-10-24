@@ -118,31 +118,44 @@ public class HandsController: MonoBehaviour
 
     private void Update()
     {
-        if (inputController.GetButton(playerNumber, "LeftArm"))
+        if (CheckGameActive())
         {
-            if (IsEmpty(Hand.Left))
+            if (inputController.GetButton(playerNumber, "LeftArm"))
             {
-                DetectObjectsForPickUp(Hand.Left);
+                if (IsEmpty(Hand.Left))
+                {
+                    DetectObjectsForPickUp(Hand.Left);
+                }
             }
+            else if (IsHolding(Hand.Left))
+            {
+                HandleDrop(Hand.Left, movingInLeft);
+            }
+
+            if (inputController.GetButton(playerNumber, "RightArm"))
+            {
+                if (IsEmpty(Hand.Right))
+                {
+                    DetectObjectsForPickUp(Hand.Right);
+                }
+            }
+            else if (IsHolding(Hand.Right))
+            {
+                HandleDrop(Hand.Right, movingInRight);
+            }
+
+            UpdateHandGuidePosition();
         }
-        else if (IsHolding(Hand.Left))
+    }
+
+    private bool CheckGameActive()
+    {
+        if (PlayerPrefs.GetString("active") == "false")
         {
-            HandleDrop(Hand.Left, movingInLeft);
+            return false;
         }
 
-        if (inputController.GetButton(playerNumber, "RightArm"))
-        {
-            if (IsEmpty(Hand.Right))
-            {
-                DetectObjectsForPickUp(Hand.Right);
-            }
-        }
-        else if (IsHolding(Hand.Right))
-        {
-            HandleDrop(Hand.Right, movingInRight);
-        }
-
-        UpdateHandGuidePosition();
+        return true;
     }
 
     private void UpdateHandGuidePosition()

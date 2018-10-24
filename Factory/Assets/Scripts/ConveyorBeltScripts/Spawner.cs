@@ -89,16 +89,29 @@ public class Spawner : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (time > secBetweenSpawns)
+        if (CheckGameActive())
         {
-            Spawn();
-            time = Time.deltaTime;
-        }
-        else
-        {
-            time += Time.deltaTime;
+            if (time > secBetweenSpawns)
+            {
+                Spawn();
+                time = Time.deltaTime;
+            }
+            else
+            {
+                time += Time.deltaTime;
+            }
         }
 	}
+
+    private bool CheckGameActive()
+    {
+        if (PlayerPrefs.GetString("active") == "false")
+        {
+            return false;
+        }
+
+        return true;
+    }
 
     private void Spawn()
     {

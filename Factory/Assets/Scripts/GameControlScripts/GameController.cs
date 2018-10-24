@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
     {
         //ensures endgameUI doesn't popup on startup
         endGameUi.SetActive(false);
+        PlayerPrefs.SetString("active", "true");
 
         switch (PlayerPrefs.GetString("difficulty"))
         {
@@ -166,5 +167,6 @@ public class GameController : MonoBehaviour
 
         //enables end game ui
         endGameUi.SetActive(true);
+        PlayerPrefs.SetString("active", "false");
     }
 }
