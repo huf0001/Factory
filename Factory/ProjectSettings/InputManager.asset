@@ -295,8 +295,8 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: P1DSLookHorizontal
-    descriptiveName: for DualShock controller
-    descriptiveNegativeName: 'P1 DualShock: Rotate Horizontally'
+    descriptiveName: 'P1 DualShock: Rotate Horizontally'
+    descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
