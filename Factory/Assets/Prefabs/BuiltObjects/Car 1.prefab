@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 4681553567026420}
   - component: {fileID: 33541254330492670}
   - component: {fileID: 23085288054364610}
+  - component: {fileID: 64695350024287636}
   m_Layer: 0
   m_Name: pCube6
   m_TagString: Untagged
@@ -458,8 +459,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1333097366467988}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.806, y: 0.451, z: -2.509}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalPosition: {x: -3.4, y: 1.66, z: -0.13}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children:
   - {fileID: 4898747610021410}
   - {fileID: 4231784160928522}
@@ -508,7 +509,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1468654248471970}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00018072128, y: 0.008911747, z: 0.0019410372}
+  m_LocalPosition: {x: -0.00018072128, y: 0.021, z: 0.0019410372}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4502192884422262}
@@ -643,6 +644,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1468654248471970}
   m_Mesh: {fileID: 4300000, guid: 2cc6e4e387a74b842809eed67b2d6e13, type: 3}
+--- !u!64 &64695350024287636
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1468654248471970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 2cc6e4e387a74b842809eed67b2d6e13, type: 3}
 --- !u!65 &65908174683446518
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -651,7 +666,7 @@ BoxCollider:
   m_GameObject: {fileID: 1333097366467988}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.052680958, y: 0.047297675, z: 0.072306514}
   m_Center: {x: -0.0000000059604646, y: 0.009295401, z: 0.0020225644}
