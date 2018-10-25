@@ -30,6 +30,12 @@ public enum Identifier
     RobotHead,
     RobotParts,
 
+    //Values for Titanic parts
+    TitanicFunnels,
+    TitanicTopDeck,
+    TitanicMiddleDeck,
+    TitanicBottomDeck,
+
     // Values for the test objects used while refining the code
     TestBase,
     TestAttachableA,
