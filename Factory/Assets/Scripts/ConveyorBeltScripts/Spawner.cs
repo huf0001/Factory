@@ -5,10 +5,10 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [System.Serializable]
-    public class ItemWeightPair
+    public class ItemIdentifierPair
     {
         [SerializeField] private GameObject item;
-        [SerializeField] private int itemWeighting;
+        [SerializeField] private Identifier identifier;
 
         public GameObject Item
         {
@@ -18,70 +18,100 @@ public class Spawner : MonoBehaviour
             }
         }
 
-        public int ItemWeighting
+        public Identifier Identifier
         {
             get
             {
-                return itemWeighting;
+                return identifier;
+            }
+        }
+    }
+
+    [System.Serializable]
+    public class ItemCountPair
+    {
+        [SerializeField] private GameObject item;
+        [SerializeField] private int count;
+
+        public ItemCountPair(GameObject i, int c)
+        {
+            item = i;
+            count = c;
+        }
+
+        public GameObject Item
+        {
+            get
+            {
+                return item;
+            }
+        }
+
+        public int Count
+        {
+            get
+            {
+                return count;
+            }
+
+            set
+            {
+                count = value;
             }
         }
     }
 
     [SerializeField] private float secBetweenSpawns = 2f;
-    [SerializeField] ItemWeightPair[] easyItems;
-    [SerializeField] ItemWeightPair[] mediumItems;
-    [SerializeField] ItemWeightPair[] hardItems;
+    [SerializeField] ItemIdentifierPair[] easyItems;
+    [SerializeField] ItemIdentifierPair[] mediumItems;
+    [SerializeField] ItemIdentifierPair[] hardItems;
 
-    private List<GameObject> weightedObjects = new List<GameObject>();
+    private Dictionary<Identifier, ItemCountPair> allObjects = new Dictionary<Identifier, ItemCountPair>();
     private float time = 0f;
     
     // Use this for initialization
 	void Start ()
     {
         int difficulty;
+        int count;
 
         switch (PlayerPrefs.GetString("difficulty"))
         {
             case "hard":
                 difficulty = 3;
+                count = 2;
                 break;
             case "medium":
                 difficulty = 2;
+                count = 4;
                 break;
             default:
                 difficulty = 1;
+                count = 6;
                 break;
         }
 
         if (difficulty > 0 && easyItems.Length > 0)
-        { foreach (ItemWeightPair p in easyItems)
+        {
+            foreach (ItemIdentifierPair o in easyItems)
             {
-                for (int i = 0; i < p.ItemWeighting; i++)
-                {
-                    weightedObjects.Add(p.Item);
-                }
+                allObjects.Add(o.Identifier, new ItemCountPair(o.Item, count));
             }
         }
 
         if (difficulty > 1 && mediumItems.Length > 0)
         {
-            foreach (ItemWeightPair p in mediumItems)
+            foreach (ItemIdentifierPair o in mediumItems)
             {
-                for (int i = 0; i < p.ItemWeighting; i++)
-                {
-                    weightedObjects.Add(p.Item);
-                }
+                allObjects.Add(o.Identifier, new ItemCountPair(o.Item, count));
             }
         }
 
         if (difficulty > 2 && hardItems.Length > 0)
         {
-            foreach (ItemWeightPair p in hardItems)
+            foreach (ItemIdentifierPair o in hardItems)
             {
-                for (int i = 0; i < p.ItemWeighting; i++)
-                {
-                    weightedObjects.Add(p.Item);
-                }
+                allObjects.Add(o.Identifier, new ItemCountPair(o.Item, count));
             }
         }
     }
@@ -105,9 +135,34 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        int i = Random.Range(0, weightedObjects.Count);
-        GameObject spawning = Instantiate(weightedObjects[i]);
-        spawning.transform.position = this.gameObject.transform.position;
-        spawning.transform.rotation = this.gameObject.transform.rotation;
+        List<Identifier> spawnables = new List<Identifier>();
+        GameObject spawning;
+        int i = 0;
+
+        foreach (KeyValuePair<Identifier, ItemCountPair> p in allObjects)
+        {
+            if (p.Value.Count > 0)
+            {
+                for (int j = 0; j < p.Value.Count - 1; j++)
+                {
+                    spawnables.Add(p.Key);
+                }
+            }
+        }
+
+        if (spawnables.Count > 0)
+        {
+            i = Random.Range(0, spawnables.Count - 1);
+            allObjects[spawnables[i]].Count -= 1;
+            spawning = Instantiate(allObjects[spawnables[i]].Item);
+            spawning.GetComponent<Movable>().Spawner = this;
+            spawning.transform.position = transform.position;
+            spawning.transform.rotation = transform.rotation;
+        }
+    }
+
+    public void ReStock(Identifier id)
+    {
+        allObjects[id].Count += 1;
     }
 }

@@ -804,3 +804,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueID: 9
+  lifespan: 40
