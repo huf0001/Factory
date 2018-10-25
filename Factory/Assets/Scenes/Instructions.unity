@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -746,7 +746,8 @@ MonoBehaviour:
   menuAudio: {fileID: 1373181829}
   musicOn: {fileID: 21300000, guid: dce7b6da1611ceb48bbd460599a0699f, type: 3}
   musicOff: {fileID: 21300000, guid: 5ea57c2c7e5c04745b84608d36d26b9e, type: 3}
-  musicButton: {fileID: 1163156057}
+  musicButton: {fileID: 1163156058}
+  musicButtonGameOver: {fileID: 0}
 --- !u!82 &1373181829
 AudioSource:
   m_ObjectHideFlags: 0
@@ -870,10 +871,10 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: P1MKMoveHorizontal
-  m_VerticalAxis: P1MKMoveVertical
-  m_SubmitButton: P1DSSubmit
-  m_CancelButton: P1DSCancel
+  m_HorizontalAxis: P1XBMoveHorizontal
+  m_VerticalAxis: P1XBMoveVertical
+  m_SubmitButton: P1XBSubmit
+  m_CancelButton: P1XBCancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
@@ -1144,7 +1145,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1373181828}
-        m_MethodName: LoadScene
+        m_MethodName: LoadSceneOnly
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

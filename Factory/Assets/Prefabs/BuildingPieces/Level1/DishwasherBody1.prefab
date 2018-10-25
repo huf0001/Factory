@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 114168303758108666}
   - component: {fileID: 65859226013421806}
   - component: {fileID: 54281777267939834}
+  - component: {fileID: 114154565929269142}
   m_Layer: 0
   m_Name: DishwasherBody1
   m_TagString: Untagged
@@ -780,6 +781,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.030224396, y: 0.05094362, z: 0.04425512}
   m_Center: {x: -0.0006186548, y: 0, z: 0}
+--- !u!114 &114154565929269142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1821258930924162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61728adf02c0a2439182d1f31a6bd25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114168303758108666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -791,4 +803,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a338dec0b90618e4d9c66d5faf0b1823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 16
+  uniqueID: 9

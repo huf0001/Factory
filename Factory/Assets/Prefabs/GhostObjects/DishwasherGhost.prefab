@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 4499869493254630}
   - component: {fileID: 33561028528085630}
   - component: {fileID: 23898867680907100}
+  - component: {fileID: 114736317149007658}
   m_Layer: 0
   m_Name: DishwasherBody2
   m_TagString: Untagged
@@ -71,6 +72,7 @@ GameObject:
   - component: {fileID: 4184083834865876}
   - component: {fileID: 33285725819684290}
   - component: {fileID: 23974824026558074}
+  - component: {fileID: 114025847327623040}
   m_Layer: 0
   m_Name: DishwasherBody1
   m_TagString: Untagged
@@ -88,6 +90,7 @@ GameObject:
   - component: {fileID: 4375348678683412}
   - component: {fileID: 33002748037795140}
   - component: {fileID: 23713792381303678}
+  - component: {fileID: 114463563544842586}
   m_Layer: 0
   m_Name: DishwasherBase
   m_TagString: Untagged
@@ -332,6 +335,28 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095802131125278}
   m_Mesh: {fileID: 4300000, guid: 27e2b6f999a1c7f418dffa5e725ec09f, type: 3}
+--- !u!114 &114025847327623040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780233664076710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218c2b443fc60ae408462ec30e2e0c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114463563544842586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1943587251770970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218c2b443fc60ae408462ec30e2e0c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114690095729781886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -344,9 +369,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostComponents:
-  - ghost: {fileID: 1780233664076710}
-    identifier: 16
-  - ghost: {fileID: 1427270253463144}
-    identifier: 17
-  - ghost: {fileID: 1943587251770970}
-    identifier: 15
+  - ghostPart: {fileID: 114025847327623040}
+    identifier: 9
+  - ghostPart: {fileID: 114736317149007658}
+    identifier: 10
+  - ghostPart: {fileID: 114463563544842586}
+    identifier: 8
+--- !u!114 &114736317149007658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427270253463144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218c2b443fc60ae408462ec30e2e0c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114907198838806780}
   - component: {fileID: 65696258685776292}
   - component: {fileID: 54116547529059726}
+  - component: {fileID: 114447828815019150}
   m_Layer: 0
   m_Name: FemaleRobotEyes
   m_TagString: Untagged
@@ -258,6 +259,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.004184429, y: 0.01, z: 0.017004784}
   m_Center: {x: -0.001344504, y: 0, z: 0.000103325365}
+--- !u!114 &114447828815019150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1155540778061472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61728adf02c0a2439182d1f31a6bd25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114907198838806780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,4 +281,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a338dec0b90618e4d9c66d5faf0b1823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 19
+  uniqueID: 12

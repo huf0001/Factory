@@ -6,264 +6,8 @@ InputManager:
   serializedVersion: 2
   m_Axes:
   - serializedVersion: 3
-    m_Name: P1MKMoveHorizontal
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: a
-    positiveButton: d
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 3
-    snap: 1
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P1MKMoveVertical
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: s
-    positiveButton: w
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 3
-    snap: 1
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P1MKLookHorizontal
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: q
-    positiveButton: e
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 3
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P1MKLeftArm
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: z
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P1MKRightArm
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: x
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P1MKJump
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: left shift
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P1MKSubmit
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: return
-    altNegativeButton: 
-    altPositiveButton: enter
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P1MKCancel
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: escape
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P1DSMoveHorizontal
-    descriptiveName: for DualShock controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 0
-    dead: 0.019
-    sensitivity: 0.1
-    snap: 0
-    invert: 0
-    type: 2
-    axis: 0
-    joyNum: 1
-  - serializedVersion: 3
-    m_Name: P1DSMoveVertical
-    descriptiveName: for DualShock controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 0
-    dead: 0.019
-    sensitivity: 0.1
-    snap: 0
-    invert: 1
-    type: 2
-    axis: 1
-    joyNum: 1
-  - serializedVersion: 3
-    m_Name: P1DSLookHorizontal
-    descriptiveName: for DualShock controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 0
-    dead: 0.001
-    sensitivity: 1
-    snap: 1
-    invert: 0
-    type: 2
-    axis: 2
-    joyNum: 1
-  - serializedVersion: 3
-    m_Name: P1DSLeftArm
-    descriptiveName: for DualShock controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: joystick 1 button 6
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 3
-    joyNum: 1
-  - serializedVersion: 3
-    m_Name: P1DSRightArm
-    descriptiveName: for DualShock controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: joystick 1 button 7
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 1
-  - serializedVersion: 3
-    m_Name: P1DSJump
-    descriptiveName: for DualShock controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: joystick 1 button 1
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 1
-  - serializedVersion: 3
-    m_Name: P1DSSubmit
-    descriptiveName: for DualShock Controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: joystick 1 button 0
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 1
-  - serializedVersion: 3
-    m_Name: P1DSCancel
-    descriptiveName: 'for DualShock controllers '
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: joystick 1 button 2
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 1
-  - serializedVersion: 3
     m_Name: P1XBMoveHorizontal
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P1 Xbox: Move Horizontally'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -279,7 +23,7 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: P1XBMoveVertical
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P1 Xbox: Move Vertically'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -295,7 +39,7 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: P1XBLookHorizontal
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P1 Xbox: Rotate Horizontally'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -311,7 +55,7 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: P1XBLeftArm
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P1 Xbox: Left Arm'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -327,7 +71,7 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: P1XBRightArm
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P1 Xbox: Right Arm'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -343,7 +87,7 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: P1XBJump
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P1 Xbox: Jump'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick 1 button 0
@@ -358,8 +102,24 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
+    m_Name: P1XBPause
+    descriptiveName: 'P1 Xbox: Pause'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 7
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
     m_Name: P1XBSubmit
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P1 Xbox: Submit'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick 1 button 2
@@ -375,7 +135,7 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: P1XBCancel
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P1 Xbox: Cancel'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick 1 button 1
@@ -390,264 +150,8 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: P2MKMoveHorizontal
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: j
-    positiveButton: l
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 3
-    snap: 1
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P2MKMoveVertical
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: k
-    positiveButton: i
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 3
-    snap: 1
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P2MKLookHorizontal
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: u
-    positiveButton: o
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 3
-    dead: 0.001
-    sensitivity: 3
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P2MKLeftArm
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: n
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P2MKRightArm
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: m
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P2MKJump
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: right shift
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P2MKSubmit
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: return
-    altNegativeButton: 
-    altPositiveButton: enter
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P2MKCancel
-    descriptiveName: for keyboard
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: escape
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: P2DSMoveHorizontal
-    descriptiveName: for DualShock controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 0
-    dead: 0.019
-    sensitivity: 0.1
-    snap: 0
-    invert: 0
-    type: 2
-    axis: 0
-    joyNum: 2
-  - serializedVersion: 3
-    m_Name: P2DSMoveVertical
-    descriptiveName: for DualShock controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 0
-    dead: 0.019
-    sensitivity: 0.1
-    snap: 0
-    invert: 1
-    type: 2
-    axis: 1
-    joyNum: 2
-  - serializedVersion: 3
-    m_Name: P2DSLookHorizontal
-    descriptiveName: for DualShock controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 0
-    dead: 0.001
-    sensitivity: 1
-    snap: 1
-    invert: 0
-    type: 2
-    axis: 2
-    joyNum: 2
-  - serializedVersion: 3
-    m_Name: P2DSLeftArm
-    descriptiveName: for DualShock controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: joystick 2 button 6
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 3
-    joyNum: 2
-  - serializedVersion: 3
-    m_Name: P2DSRightArm
-    descriptiveName: for DualShock controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: joystick 2 button 7
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 2
-  - serializedVersion: 3
-    m_Name: P2DSJump
-    descriptiveName: for DualShock controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: joystick 2 button 1
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 2
-  - serializedVersion: 3
-    m_Name: P2DSSubmit
-    descriptiveName: for DualShock Controller
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: joystick 2 button 0
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 2
-  - serializedVersion: 3
-    m_Name: P2DSCancel
-    descriptiveName: 'for DualShock controllers '
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: joystick 2 button 2
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 2
-  - serializedVersion: 3
     m_Name: P2XBMoveHorizontal
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P2 Xbox: Move Horizontally'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -663,7 +167,7 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: P2XBMoveVertical
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P2 Xbox: Move Vertically'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -679,7 +183,7 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: P2XBLookHorizontal
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P2 Xbox: Rotate Horizontally'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -695,7 +199,7 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: P2XBLeftArm
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P2 Xbox: Left Arm'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -711,7 +215,7 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: P2XBRightArm
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P2 Xbox: Right Arm'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
@@ -727,7 +231,7 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: P2XBJump
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P2 Xbox: Jump'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick 2 button 0
@@ -742,8 +246,24 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
+    m_Name: P2XBPause
+    descriptiveName: 'P2 Xbox: Pause'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 7
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
     m_Name: P2XBSubmit
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P2 Xbox: Submit'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick 2 button 2
@@ -759,7 +279,7 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: P2XBCancel
-    descriptiveName: 'for Xbox controllers '
+    descriptiveName: 'P2 Xbox: Cancel'
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick 2 button 1
@@ -773,3 +293,307 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 2
+  - serializedVersion: 3
+    m_Name: P1DSMoveHorizontal
+    descriptiveName: 'P1 DualShock: Move Horizontally'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.019
+    sensitivity: 0.1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: P1DSMoveVertical
+    descriptiveName: 'P1 DualShock: Move Vertically'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.019
+    sensitivity: 0.1
+    snap: 0
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: P1DSLookHorizontal
+    descriptiveName: 'P1 DualShock: Rotate Horizontally'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.001
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: P1DSLeftArm
+    descriptiveName: 'P1 DualShock: Left Arm'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 6
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 3
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: P1DSRightArm
+    descriptiveName: 'P1 DualShock: Right Arm'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 7
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: P1DSJump
+    descriptiveName: 'P1 DualShock: Jump'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 1
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: P1DSPause
+    descriptiveName: 'P1 DualShock: Pause'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 9
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: P1DSSubmit
+    descriptiveName: 'P1 DualShock: Submit'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: P1DSCancel
+    descriptiveName: 'P1 DualShock: Cancel'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 2
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: P2DSMoveHorizontal
+    descriptiveName: 'P2 DualShock: Move Horizontally'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.019
+    sensitivity: 0.1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: P2DSMoveVertical
+    descriptiveName: 'P2 DualShock: Move Vertically'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.019
+    sensitivity: 0.1
+    snap: 0
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: P2DSLookHorizontal
+    descriptiveName: 'P2 DualShock: Look Horizontally'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.001
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: P2DSLeftArm
+    descriptiveName: 'P2 DualShock: Left Arm'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 6
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 3
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: P2DSRightArm
+    descriptiveName: 'P2 DualShock: Right Arm'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 7
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: P2DSJump
+    descriptiveName: 'P2 DualShock: Jump'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 1
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: P2DSPause
+    descriptiveName: 'P2 DualShock: Pause'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 9
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: P2DSSubmit
+    descriptiveName: 'P2 DualShock: Submit'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: P2DSCancel
+    descriptiveName: 'P2 DualShock: Cancel'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 2
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: MKPause
+    descriptiveName: 'Mouse and Keyboard: Pause'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: escape
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0

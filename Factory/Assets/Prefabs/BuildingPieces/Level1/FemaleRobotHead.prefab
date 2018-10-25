@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114604547657039848}
   - component: {fileID: 65367834017645926}
   - component: {fileID: 54938372470876538}
+  - component: {fileID: 114385529597737618}
   m_Layer: 0
   m_Name: FemaleRobotHead
   m_TagString: Untagged
@@ -113,6 +114,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.009999999, z: 0.009999999}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114385529597737618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1219507498680110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61728adf02c0a2439182d1f31a6bd25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114604547657039848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,4 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a338dec0b90618e4d9c66d5faf0b1823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 20
+  uniqueID: 13

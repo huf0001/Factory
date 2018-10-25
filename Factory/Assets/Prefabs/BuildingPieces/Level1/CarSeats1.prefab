@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 54395654277380228}
   - component: {fileID: 65235673030701606}
   - component: {fileID: 114980648288302274}
+  - component: {fileID: 114813000555458964}
   m_Layer: 0
   m_Name: CarSeats1
   m_TagString: Untagged
@@ -374,6 +375,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.027033765, y: 0.034696568, z: 0.06}
   m_Center: {x: 0.0014831235, y: 0.0023482738, z: 0}
+--- !u!114 &114813000555458964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1813596524701800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61728adf02c0a2439182d1f31a6bd25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114980648288302274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -385,4 +397,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a338dec0b90618e4d9c66d5faf0b1823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 13
+  uniqueID: 6
