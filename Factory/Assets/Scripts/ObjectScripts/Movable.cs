@@ -121,6 +121,6 @@ public class Movable : Identifiable
 
     private void OnDestroy()
     {
-        spawner.ReStock(uniqueID);
+        spawner.ReStockComponent(uniqueID);
     }
 }

@@ -67,6 +67,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] ItemIdentifierPair[] hardItems;
 
     private Dictionary<Identifier, ItemCountPair> allObjects = new Dictionary<Identifier, ItemCountPair>();
+    private Dictionary<Identifier, ItemCountPair> restockObjects = new Dictionary<Identifier, ItemCountPair>();
     private float time = 0f;
     
     // Use this for initialization
@@ -96,6 +97,7 @@ public class Spawner : MonoBehaviour
             foreach (ItemIdentifierPair o in easyItems)
             {
                 allObjects.Add(o.Identifier, new ItemCountPair(o.Item, count));
+                restockObjects.Add(o.Identifier, new ItemCountPair(o.Item, 0));
             }
         }
 
@@ -104,6 +106,7 @@ public class Spawner : MonoBehaviour
             foreach (ItemIdentifierPair o in mediumItems)
             {
                 allObjects.Add(o.Identifier, new ItemCountPair(o.Item, count));
+                restockObjects.Add(o.Identifier, new ItemCountPair(o.Item, 0));
             }
         }
 
@@ -112,6 +115,7 @@ public class Spawner : MonoBehaviour
             foreach (ItemIdentifierPair o in hardItems)
             {
                 allObjects.Add(o.Identifier, new ItemCountPair(o.Item, count));
+                restockObjects.Add(o.Identifier, new ItemCountPair(o.Item, 0));
             }
         }
     }
@@ -135,19 +139,14 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        List<Identifier> spawnables = new List<Identifier>();
-        GameObject spawning;
         int i = 0;
+        GameObject spawning;
+        List<Identifier> spawnables = GetSpawnables();
 
-        foreach (KeyValuePair<Identifier, ItemCountPair> p in allObjects)
+        if (spawnables.Count == 0)
         {
-            if (p.Value.Count > 0)
-            {
-                for (int j = 0; j < p.Value.Count - 1; j++)
-                {
-                    spawnables.Add(p.Key);
-                }
-            }
+            ReStockAll();
+            spawnables = GetSpawnables();
         }
 
         if (spawnables.Count > 0)
@@ -161,8 +160,35 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public void ReStock(Identifier id)
+    private List<Identifier> GetSpawnables()
     {
-        allObjects[id].Count += 1;
+        List<Identifier> spawnables = new List<Identifier>();
+
+        foreach (KeyValuePair<Identifier, ItemCountPair> p in allObjects)
+        {
+            if (p.Value.Count > 0)
+            {
+                for (int j = 0; j < p.Value.Count - 1; j++)
+                {
+                    spawnables.Add(p.Key);
+                }
+            }
+        }
+
+        return spawnables;
+    }
+
+    private void ReStockAll()
+    {
+        foreach (KeyValuePair<Identifier, ItemCountPair> p in allObjects)
+        {
+            p.Value.Count += restockObjects[p.Key].Count;
+            restockObjects[p.Key].Count = 0;
+        }
+    }
+
+    public void ReStockComponent(Identifier id)
+    {
+        restockObjects[id].Count += 1;
     }
 }

@@ -9,7 +9,7 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1699309147527780}
+  m_RootGameObject: {fileID: 1943584252232074}
   m_IsPrefabAsset: 1
 --- !u!1 &1699309147527780
 GameObject:
@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4593814451150844}
   - component: {fileID: 33639852236637224}
   - component: {fileID: 23439835934162260}
-  - component: {fileID: 114512145198496308}
   - component: {fileID: 64098223797132720}
   m_Layer: 0
   m_Name: Titanic
@@ -30,6 +29,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1943584252232074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4560558898102546}
+  - component: {fileID: 114512145198496308}
+  m_Layer: 0
+  m_Name: Titanic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4560558898102546
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1943584252232074}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.62, y: 1.44, z: 2.53}
+  m_LocalScale: {x: 15.401575, y: 10.354, z: 10.354}
+  m_Children:
+  - {fileID: 4593814451150844}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4593814451150844
 Transform:
   m_ObjectHideFlags: 1
@@ -37,10 +66,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1699309147527780}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.73, y: 2.1241517, z: -2.5405025}
-  m_LocalScale: {x: 15.401575, y: 10.354, z: 10.354}
+  m_LocalPosition: {x: 0, y: 0.088, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 4560558898102546}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23439835934162260
@@ -108,7 +137,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1699309147527780}
+  m_GameObject: {fileID: 1943584252232074}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f04fc6c514f5ae44bf05e5ed778b33b, type: 3}

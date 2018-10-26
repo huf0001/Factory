@@ -34,15 +34,15 @@ public class GameController : MonoBehaviour
         switch (PlayerPrefs.GetString("difficulty"))
         {
             case "hard":
-                difficulty = 3;
+                difficulty = 4;
                 timer = hardtimer;
                 break;
             case "medium":
-                difficulty = 2;
+                difficulty = 3;
                 timer = mediumtimer;
                 break;
             default:
-                difficulty = 1;
+                difficulty = 2;
                 timer = easytimer;
                 break;
         }
