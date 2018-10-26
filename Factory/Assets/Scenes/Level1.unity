@@ -1126,82 +1126,6 @@ Transform:
   m_Father: {fileID: 679299020}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &123200443
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 100002, guid: 737a0e1a054d2fe47a725086f6d1bd13,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 123200444}
-  - component: {fileID: 123200446}
-  - component: {fileID: 123200445}
-  m_Layer: 0
-  m_Name: TitanicBottomDeck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &123200444
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 400002, guid: 737a0e1a054d2fe47a725086f6d1bd13,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 123200443}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.042896636, z: -0.0038146973}
-  m_LocalScale: {x: 3.7672865, y: 4.628492, z: 21.229084}
-  m_Children: []
-  m_Father: {fileID: 1434244311}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &123200445
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2300000, guid: 737a0e1a054d2fe47a725086f6d1bd13,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 123200443}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100002, guid: 737a0e1a054d2fe47a725086f6d1bd13, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &123200446
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3300000, guid: 737a0e1a054d2fe47a725086f6d1bd13,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 123200443}
-  m_Mesh: {fileID: 4300000, guid: 737a0e1a054d2fe47a725086f6d1bd13, type: 3}
 --- !u!1 &126855895
 GameObject:
   m_ObjectHideFlags: 0
@@ -3391,6 +3315,52 @@ Transform:
   m_Father: {fileID: 457892373}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &446826593
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4593814451150844, guid: 01e2b2f0269d31a4ea7da96903464269, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593814451150844, guid: 01e2b2f0269d31a4ea7da96903464269, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.1241517
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593814451150844, guid: 01e2b2f0269d31a4ea7da96903464269, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2.5405025
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593814451150844, guid: 01e2b2f0269d31a4ea7da96903464269, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593814451150844, guid: 01e2b2f0269d31a4ea7da96903464269, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593814451150844, guid: 01e2b2f0269d31a4ea7da96903464269, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593814451150844, guid: 01e2b2f0269d31a4ea7da96903464269, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593814451150844, guid: 01e2b2f0269d31a4ea7da96903464269, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699309147527780, guid: 01e2b2f0269d31a4ea7da96903464269, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 01e2b2f0269d31a4ea7da96903464269, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &457892372
 GameObject:
   m_ObjectHideFlags: 0
@@ -3423,86 +3393,6 @@ Transform:
   - {fileID: 442750074}
   m_Father: {fileID: 679299020}
   m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &511053582
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 100008, guid: 75990797475ddbc48a71d62a0fb581f5,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 511053585}
-  - component: {fileID: 511053584}
-  - component: {fileID: 511053583}
-  m_Layer: 0
-  m_Name: Titanic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!23 &511053583
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2300000, guid: 75990797475ddbc48a71d62a0fb581f5,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 511053582}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: 75990797475ddbc48a71d62a0fb581f5, type: 3}
-  - {fileID: 2100002, guid: 75990797475ddbc48a71d62a0fb581f5, type: 3}
-  - {fileID: 2100004, guid: 75990797475ddbc48a71d62a0fb581f5, type: 3}
-  - {fileID: 2100006, guid: 75990797475ddbc48a71d62a0fb581f5, type: 3}
-  - {fileID: 2100008, guid: 75990797475ddbc48a71d62a0fb581f5, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &511053584
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3300000, guid: 75990797475ddbc48a71d62a0fb581f5,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 511053582}
-  m_Mesh: {fileID: 4300000, guid: 75990797475ddbc48a71d62a0fb581f5, type: 3}
---- !u!4 &511053585
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 400008, guid: 75990797475ddbc48a71d62a0fb581f5,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 511053582}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3500001, y: 2.1241517, z: -2.5405025}
-  m_LocalScale: {x: 15.401575, y: 10.354, z: 10.354}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511740420
 GameObject:
@@ -3669,82 +3559,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.049582947, y: 0.0013360452, z: 0.0013360418}
   m_Center: {x: 0, y: 0.000000003783498, z: 0.04919772}
---- !u!1 &518595357
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 100006, guid: a57fcb0d30653d04e8ffb14341d66b0e,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 518595358}
-  - component: {fileID: 518595360}
-  - component: {fileID: 518595359}
-  m_Layer: 0
-  m_Name: TitanicFunnels
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &518595358
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 400006, guid: a57fcb0d30653d04e8ffb14341d66b0e,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 518595357}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.042247847, z: -0.028330754}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1434244311}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &518595359
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2300000, guid: a57fcb0d30653d04e8ffb14341d66b0e,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 518595357}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100002, guid: a57fcb0d30653d04e8ffb14341d66b0e, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &518595360
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3300000, guid: a57fcb0d30653d04e8ffb14341d66b0e,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 518595357}
-  m_Mesh: {fileID: 4300000, guid: a57fcb0d30653d04e8ffb14341d66b0e, type: 3}
 --- !u!1 &521022744
 GameObject:
   m_ObjectHideFlags: 0
@@ -6547,82 +6361,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 751995112}
   m_Mesh: {fileID: 4300128, guid: 7a4cff45c3a464f40ad005c10f1bee52, type: 3}
---- !u!1 &755009565
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 675b6ef59e8b9484f96a38349025f997,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 755009566}
-  - component: {fileID: 755009568}
-  - component: {fileID: 755009567}
-  m_Layer: 0
-  m_Name: TitanicTopDeck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &755009566
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 675b6ef59e8b9484f96a38349025f997,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 755009565}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.042896636, z: -0.0038146973}
-  m_LocalScale: {x: 3.7672865, y: 4.628492, z: 21.229084}
-  m_Children: []
-  m_Father: {fileID: 1434244311}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &755009567
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2300000, guid: 675b6ef59e8b9484f96a38349025f997,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 755009565}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100002, guid: 675b6ef59e8b9484f96a38349025f997, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &755009568
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3300000, guid: 675b6ef59e8b9484f96a38349025f997,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 755009565}
-  m_Mesh: {fileID: 4300000, guid: 675b6ef59e8b9484f96a38349025f997, type: 3}
 --- !u!1 &762717461
 GameObject:
   m_ObjectHideFlags: 0
@@ -7607,82 +7345,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0017743483, y: 0.01169084, z: 0.0017743491}
   m_Center: {x: 0.04923254, y: 0.0000000030267984, z: 0.0000000016298145}
---- !u!1 &953177269
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 100002, guid: d388bc5ef729c3942aea81a97959feee,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 953177270}
-  - component: {fileID: 953177272}
-  - component: {fileID: 953177271}
-  m_Layer: 0
-  m_Name: TitanicMiddleDeck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &953177270
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 400002, guid: d388bc5ef729c3942aea81a97959feee,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 953177269}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.042896636, z: -0.0038146973}
-  m_LocalScale: {x: 3.7672865, y: 4.628492, z: 21.229084}
-  m_Children: []
-  m_Father: {fileID: 1434244311}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &953177271
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2300000, guid: d388bc5ef729c3942aea81a97959feee,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 953177269}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100002, guid: d388bc5ef729c3942aea81a97959feee, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &953177272
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3300000, guid: d388bc5ef729c3942aea81a97959feee,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 953177269}
-  m_Mesh: {fileID: 4300000, guid: d388bc5ef729c3942aea81a97959feee, type: 3}
 --- !u!1 &960085855 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1817225044454948, guid: 1c955d35534cdbb4cac2c733d29ec2f7,
@@ -8083,6 +7745,52 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1942348666}
   m_Script: {fileID: 11500000, guid: 3d1964ae16056324dbd09cd5818bae2a, type: 3}
+--- !u!1001 &1038001581
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4179909474647442, guid: 79a06f747d720204c802bf8e15b2ddce, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179909474647442, guid: 79a06f747d720204c802bf8e15b2ddce, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.1241517
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179909474647442, guid: 79a06f747d720204c802bf8e15b2ddce, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2.5405025
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179909474647442, guid: 79a06f747d720204c802bf8e15b2ddce, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179909474647442, guid: 79a06f747d720204c802bf8e15b2ddce, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179909474647442, guid: 79a06f747d720204c802bf8e15b2ddce, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179909474647442, guid: 79a06f747d720204c802bf8e15b2ddce, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179909474647442, guid: 79a06f747d720204c802bf8e15b2ddce, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843881987799906, guid: 79a06f747d720204c802bf8e15b2ddce, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 79a06f747d720204c802bf8e15b2ddce, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1089974647
 GameObject:
   m_ObjectHideFlags: 0
@@ -9184,86 +8892,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0024103618, y: 0.048866127, z: 0.003035937}
   m_Center: {x: -0.0000000146683306, y: 0.0000000018626451, z: 0}
---- !u!1 &1434244308
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 100008, guid: 01712800b278cbe46a0b7dbc834bfe3d,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1434244311}
-  - component: {fileID: 1434244310}
-  - component: {fileID: 1434244309}
-  m_Layer: 0
-  m_Name: TitanicGhost
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!23 &1434244309
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2300000, guid: 01712800b278cbe46a0b7dbc834bfe3d,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1434244308}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: 01712800b278cbe46a0b7dbc834bfe3d, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1434244310
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3300000, guid: 01712800b278cbe46a0b7dbc834bfe3d,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1434244308}
-  m_Mesh: {fileID: 4300000, guid: 01712800b278cbe46a0b7dbc834bfe3d, type: 3}
---- !u!4 &1434244311
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 400008, guid: 01712800b278cbe46a0b7dbc834bfe3d,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1434244308}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.86, y: 2.1241517, z: -2.5405025}
-  m_LocalScale: {x: 15.401575, y: 10.354, z: 10.354}
-  m_Children:
-  - {fileID: 518595358}
-  - {fileID: 755009566}
-  - {fileID: 953177270}
-  - {fileID: 123200444}
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1449659317
 GameObject:
   m_ObjectHideFlags: 0
