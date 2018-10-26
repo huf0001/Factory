@@ -10,7 +10,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private InputController inputController;
     [SerializeField] private GameObject pauseGameUI;
     [SerializeField] private GameObject endGameUI;
-    [SerializeField] float timer = 60;
+    [SerializeField] private float easytimer = 90;
+    [SerializeField] private float mediumtimer = 120;
+    [SerializeField] private float hardtimer = 180;
+    private float timer = 0;
 
     private bool countdown = false;
     private bool audioFinished = false;
@@ -32,12 +35,15 @@ public class GameController : MonoBehaviour
         {
             case "hard":
                 difficulty = 3;
+                timer = hardtimer;
                 break;
             case "medium":
                 difficulty = 2;
+                timer = mediumtimer;
                 break;
             default:
                 difficulty = 1;
+                timer = easytimer;
                 break;
         }
     }

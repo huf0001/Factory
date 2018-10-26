@@ -83,11 +83,11 @@ public class Spawner : MonoBehaviour
                 break;
             case "medium":
                 difficulty = 2;
-                count = 4;
+                count = 3;
                 break;
             default:
                 difficulty = 1;
-                count = 6;
+                count = 4;
                 break;
         }
 
