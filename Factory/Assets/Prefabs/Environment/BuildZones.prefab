@@ -886,7 +886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
   buildPoint: {fileID: 1495571225153062}
-  buildZoneNumber: 1
+  buildZoneNumber: 2
   buildSchemaObjects:
   - {fileID: 1209852873319860}
   - {fileID: 1489000093786790}

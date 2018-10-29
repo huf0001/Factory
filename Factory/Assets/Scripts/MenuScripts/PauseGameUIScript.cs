@@ -18,10 +18,4 @@ public class PauseGameUIScript : MonoBehaviour
         robScoreText.text = player1Score.ToString();
         botScoreText.text = player2Score.ToString();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
