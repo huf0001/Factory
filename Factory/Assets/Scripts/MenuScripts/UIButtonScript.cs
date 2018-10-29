@@ -17,8 +17,10 @@ public class UIButtonScript : MonoBehaviour
     void Start()
     {
         currentScene = SceneManager.GetActiveScene();
-
-        if ((currentScene.name == "MainMenu")&&(PlayerPrefs.GetString("music") == null))
+        
+        // sets the intial music value only if first time play; music toggling isnt preserved after instructions screen otherwise   
+        // set intial music icon value based on player preference otherwise it automatically comes up as on even when off
+        if ((currentScene.name == "MainMenu") && (PlayerPrefs.GetString("music") == null))
         {
             PlayerPrefs.SetString("music", "true");
             musicButton.sprite = musicOn;
@@ -27,9 +29,9 @@ public class UIButtonScript : MonoBehaviour
             {
                 musicButtonGameOver.sprite = musicOn;
             }
-        }//sets the intial music value only if first time play; music toggling isnt preserved after instructions screen otherwise   
-         //set intial music icon value based on player preference otherwise it automatically comes up as on even when off
-        if ((PlayerPrefs.GetString("music") == "true"))
+        }
+
+        if (PlayerPrefs.GetString("music") == "true")
         {
             musicButton.sprite = musicOn;
 
@@ -52,7 +54,7 @@ public class UIButtonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((PlayerPrefs.GetString("music"))=="true")
+        if (PlayerPrefs.GetString("music")=="true")
         {
             menuAudio.mute = false;
         }
@@ -64,7 +66,7 @@ public class UIButtonScript : MonoBehaviour
 
     public void ToggleMusic()
     {
-        if ((PlayerPrefs.GetString("music") == "true"))
+        if (PlayerPrefs.GetString("music") == "true")
         {
             PlayerPrefs.SetString("music", "false");
             musicButton.sprite = musicOff;
@@ -74,7 +76,8 @@ public class UIButtonScript : MonoBehaviour
                 musicButtonGameOver.sprite = musicOff;
             }
         }
-        else {
+        else
+        {
             PlayerPrefs.SetString("music", "true");
             musicButton.sprite = musicOn;
 
