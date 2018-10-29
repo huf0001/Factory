@@ -129,7 +129,7 @@ public class UIButtonScript : MonoBehaviour
             PlayerPrefs.SetString("gamepad", "xbox");
         }
 
-        SceneManager.LoadScene("LevelSelect");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void BackToGame()
