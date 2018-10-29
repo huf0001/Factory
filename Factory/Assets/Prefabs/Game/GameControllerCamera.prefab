@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 114137377249279770}
   - component: {fileID: 82953160874318612}
   m_Layer: 0
-  m_Name: EasyGameMusicAudio
+  m_Name: GameMusicAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 82953160874318612}
-  audioClip: {fileID: 8300000, guid: 8f6660f5796f26c41857fa1a05b99427, type: 3}
+  audioClip: {fileID: 0}
 --- !u!114 &114256210292975226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -511,7 +511,9 @@ MonoBehaviour:
   inputController: {fileID: 114550205794331858}
   pauseGameUI: {fileID: 0}
   endGameUI: {fileID: 0}
-  timer: 120
+  easytimer: 90
+  mediumtimer: 120
+  hardtimer: 180
 --- !u!114 &114381112481011792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -536,9 +538,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587f46b1735ec874ca8113d301e1bfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMusic: {fileID: 114137377249279770}
-  countdown: {fileID: 114381112481011792}
-  victory: {fileID: 114103278779417072}
+  easyMusic: {fileID: 8300000, guid: 8f6660f5796f26c41857fa1a05b99427, type: 3}
+  mediumMusic: {fileID: 8300000, guid: d86cc84247e9d7e47b3d6247d3184715, type: 3}
+  hardMusic: {fileID: 8300000, guid: 9ef61953f72ea53469f0b1ee3c011158, type: 3}
+  gameMusicSource: {fileID: 114137377249279770}
+  countdownSource: {fileID: 114381112481011792}
+  victorySource: {fileID: 114103278779417072}
   playAudio: 1
 --- !u!114 &114550205794331858
 MonoBehaviour:

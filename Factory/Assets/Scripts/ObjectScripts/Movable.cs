@@ -5,7 +5,9 @@ using UnityEngine;
 public class Movable : Identifiable
 {
     [SerializeField] private Identifier uniqueID = Identifier.Attachable;
+    [SerializeField] private float lifespan = 40f;
 
+    private Spawner spawner;
     private InputController inputController = null;
     private List<GameObject> tempLeftParents = new List<GameObject>();
     private List<GameObject> tempRightParents = new List<GameObject>();
@@ -34,6 +36,33 @@ public class Movable : Identifiable
                 tempRightParents.Add(inputController.RightHand(i + 1));
                 rightGuides.Add(tempRightParents[i].transform);
             }
+        }
+    }
+
+    public Spawner Spawner
+    {
+        get
+        {
+            return spawner;
+        }
+
+        set
+        {
+            spawner = value;
+        }
+    }
+
+    void Update()
+    {
+        if (!HasIdentifier(Identifier.PlayerMoving))
+        {
+            lifespan -= Time.deltaTime;
+        }
+
+        if (lifespan <= 0)
+        {
+            Destroy(this.gameObject);
+            Destroy(this);
         }
     }
 
@@ -88,5 +117,10 @@ public class Movable : Identifiable
         {
             body = value;
         }
+    }
+
+    private void OnDestroy()
+    {
+        spawner.ReStockComponent(uniqueID);
     }
 }

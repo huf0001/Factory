@@ -10,7 +10,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private InputController inputController;
     [SerializeField] private GameObject pauseGameUI;
     [SerializeField] private GameObject endGameUI;
-    [SerializeField] float timer = 60;
+    [SerializeField] private float easytimer = 90;
+    [SerializeField] private float mediumtimer = 120;
+    [SerializeField] private float hardtimer = 180;
+    private float timer = 0;
 
     private bool countdown = false;
     private bool audioFinished = false;
@@ -27,17 +30,21 @@ public class GameController : MonoBehaviour
         endGameUI.SetActive(false);
         pauseGameUI.SetActive(false);
         PlayerPrefs.SetString("active", "true");
+        PlayerPrefs.SetString("EndGame", "false");
 
         switch (PlayerPrefs.GetString("difficulty"))
         {
             case "hard":
-                difficulty = 3;
+                difficulty = 4;
+                timer = hardtimer;
                 break;
             case "medium":
-                difficulty = 2;
+                difficulty = 3;
+                timer = mediumtimer;
                 break;
             default:
-                difficulty = 1;
+                difficulty = 2;
+                timer = easytimer;
                 break;
         }
     }
@@ -84,7 +91,7 @@ public class GameController : MonoBehaviour
 
     public bool PlayerLost(int p)
     {
-        if ((timer != 0))
+        if (timer != 0)
         {
             if (((p == 1) && (p2BuildCount < difficulty)) || ((p == 2) && (p1BuildCount < difficulty)))
             {
@@ -160,18 +167,21 @@ public class GameController : MonoBehaviour
 
     private void CheckPauseMenu()
     {
-        if (inputController.GetButtonDown(1, "Pause") || inputController.GetButtonDown(2, "Pause") || CrossPlatformInputManager.GetButtonDown("MKPause"))
+        if (PlayerPrefs.GetString("EndGame") != "true")
         {
-            if (PlayerPrefs.GetString("active") == "true")
+            if (inputController.GetButtonDown(1, "Pause") || inputController.GetButtonDown(2, "Pause") || CrossPlatformInputManager.GetButtonDown("MKPause"))
             {
-                PlayerPrefs.SetString("active", "false");
-                SetScores();
-                pauseGameUI.SetActive(true);
-            }
-            else
-            {
-                PlayerPrefs.SetString("active", "true");
-                pauseGameUI.SetActive(false);
+                if (PlayerPrefs.GetString("active") == "true")
+                {
+                    PlayerPrefs.SetString("active", "false");
+                    SetScores();
+                    pauseGameUI.SetActive(true);
+                }
+                else
+                {
+                    PlayerPrefs.SetString("active", "true");
+                    pauseGameUI.SetActive(false);
+                }
             }
         }
     }
@@ -191,13 +201,21 @@ public class GameController : MonoBehaviour
         {
             PlayerPrefs.SetString("winner", "player1");
         }
-        else
+        else if (p2BuildCount == p1BuildCount && p1BuildCount != 0)
+        {
+            PlayerPrefs.SetString("winner", "tie");
+        }
+        else if (p1BuildCount < p2BuildCount)
         {
             PlayerPrefs.SetString("winner", "player2");
+        }
+        else { //if they both got zero
+            PlayerPrefs.SetString("winner", "none");
         }
 
         //enables end game ui
         endGameUI.SetActive(true);
         PlayerPrefs.SetString("active", "false");
+        PlayerPrefs.SetString("EndGame", "true");
     }
 }

@@ -40,12 +40,10 @@ public class Built : Scalable
             buildZone = value;
         }
     }
-	
-	// Update is called once per frame
-	private void Update ()
-    {
-        UpdateScaling();
 
+    // Update is called once per frame
+    private void Update()
+    {
         if (!Dropping)
         {
             if (time < lifespan)
@@ -83,5 +81,10 @@ public class Built : Scalable
                 Destroy(this);
             }
         }
+    }
+
+    private void FixedUpdate ()
+    {
+        UpdateScaling();
     }
 }

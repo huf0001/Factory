@@ -304,7 +304,7 @@ InputManager:
     gravity: 0
     dead: 0.019
     sensitivity: 0.1
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 0
@@ -339,7 +339,7 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 2
+    axis: 5
     joyNum: 1
   - serializedVersion: 3
     m_Name: P1DSLeftArm
@@ -483,7 +483,7 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 2
+    axis: 5
     joyNum: 2
   - serializedVersion: 3
     m_Name: P2DSLeftArm
@@ -596,4 +596,84 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: MKLookHorizontal
+    descriptiveName: Mouse Horizontal
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 1
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: MKLookVertical
+    descriptiveName: Mouse Vertical
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 1
+    axis: 1
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: MKSelect
+    descriptiveName: 'Mouse and Keyboard: Select'
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: UIDSHorizontal
+    descriptiveName: UI control for ps4 controller
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 6
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: UIDSVertical
+    descriptiveName: UI control for ps4 controller
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 8
     joyNum: 0

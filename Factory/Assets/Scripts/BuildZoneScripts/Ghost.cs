@@ -61,8 +61,6 @@ public class Ghost : Scalable
 
     private void Update()
     {
-        UpdateScaling();
-
         if (FinishedShrinking() && schema != null)
         {
             schema.SchemaComplete();
@@ -71,6 +69,11 @@ public class Ghost : Scalable
         {
             DestroyGhost();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        UpdateScaling();
     }
 
     public void DestroyGhost()

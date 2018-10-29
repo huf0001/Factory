@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueID: 5
+  lifespan: 40
 --- !u!114 &114368707845011328
 MonoBehaviour:
   m_ObjectHideFlags: 1

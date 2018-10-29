@@ -131,7 +131,7 @@ public class Scalable : MonoBehaviour
     {
         scaleTimer += Time.deltaTime;
 
-        if (scaleTimer > (scaleCount + 1) * scaleTick)
+        if (scaleTimer > ((scaleCount + 1) * scaleTick)/3)
         {
             scaleCount += 1;
             transform.localScale += startScale * scaleTick;
@@ -152,7 +152,7 @@ public class Scalable : MonoBehaviour
         {
             scaleTimer += Time.deltaTime;
 
-            if (scaleTimer > (scaleCount + 1) * scaleTick)
+            if (scaleTimer > ((scaleCount + 1) * scaleTick)/3)
             {
                 Vector3 newScale = transform.localScale - (startScale * scaleTick);
 

@@ -398,3 +398,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueID: 7
+  lifespan: 40

@@ -572,3 +572,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueID: 8
+  lifespan: 40

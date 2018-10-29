@@ -28,13 +28,13 @@ public class BuildZone : MonoBehaviour
         switch (PlayerPrefs.GetString("difficulty"))
         {
             case "hard":
-                difficulty = 3;
+                difficulty = 4;
                 break;
             case "medium":
-                difficulty = 2;
+                difficulty = 3;
                 break;
             default:
-                difficulty = 1;
+                difficulty = 2;
                 break;
         }
 
@@ -56,6 +56,10 @@ public class BuildZone : MonoBehaviour
         {
             return buildZoneNumber;
         }
+    }
+
+    public string GetCurrentSchemaName(int index) {
+        return schemas[index].gameObject.name;
     }
 
     private void Update()
