@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11752,8 +11752,8 @@ MonoBehaviour:
   botScoreText: {fileID: 593720069}
   robOutcome: {fileID: 1880875368}
   botOutcome: {fileID: 15318315}
-  winSprite: {fileID: 0}
-  loseSprite: {fileID: 0}
+  winSprite: {fileID: 21300000, guid: 480bfc943b4f698408b7f6bbb6f06577, type: 3}
+  loseSprite: {fileID: 21300000, guid: fe835a544190ef345af684038cc5005b, type: 3}
 --- !u!1 &2086501482
 GameObject:
   m_ObjectHideFlags: 0

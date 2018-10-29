@@ -22,15 +22,27 @@ public class EndGameUIScript : MonoBehaviour {
 
         //set UI up for Rob winning
         //player 1 is rob
-        if (PlayerPrefs.GetString("winner") == "player1") {
+        if (PlayerPrefs.GetString("winner") == "player1")
+        {
             robOutcome.sprite = winSprite;
             botOutcome.sprite = loseSprite;
         }
+        //set up so both win
+        else if (PlayerPrefs.GetString("winner") == "tie")
+        {
+            robOutcome.sprite = winSprite;
+            botOutcome.sprite = winSprite;
+        }
         //set ui up for Bot winning 
         //player 2 is bot 
-       else {
+        else if (PlayerPrefs.GetString("winner") == "player2")
+        {
             robOutcome.sprite = loseSprite;
             botOutcome.sprite = winSprite;
+        }
+        else {
+            robOutcome.sprite = loseSprite;
+            botOutcome.sprite = loseSprite;
         }
     }
 	

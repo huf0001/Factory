@@ -201,9 +201,16 @@ public class GameController : MonoBehaviour
         {
             PlayerPrefs.SetString("winner", "player1");
         }
-        else
+        else if (p2BuildCount == p1BuildCount && p1BuildCount != 0)
+        {
+            PlayerPrefs.SetString("winner", "tie");
+        }
+        else if (p1BuildCount < p2BuildCount)
         {
             PlayerPrefs.SetString("winner", "player2");
+        }
+        else { //if they both got zero
+            PlayerPrefs.SetString("winner", "none");
         }
 
         //enables end game ui
