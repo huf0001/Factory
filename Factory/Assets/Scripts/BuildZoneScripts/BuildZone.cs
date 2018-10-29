@@ -58,6 +58,10 @@ public class BuildZone : MonoBehaviour
         }
     }
 
+    public string GetCurrentSchemaName(int index) {
+        return schemas[index].gameObject.name;
+    }
+
     private void Update()
     {
         if (gameController.PlayerLost(buildZoneNumber) && currentSchema != null)
