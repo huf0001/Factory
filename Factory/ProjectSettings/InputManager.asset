@@ -304,7 +304,7 @@ InputManager:
     gravity: 0
     dead: 0.019
     sensitivity: 0.1
-    snap: 1
+    snap: 0
     invert: 0
     type: 2
     axis: 0
@@ -339,7 +339,7 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 2
+    axis: 5
     joyNum: 1
   - serializedVersion: 3
     m_Name: P1DSLeftArm
@@ -483,7 +483,7 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 2
+    axis: 5
     joyNum: 2
   - serializedVersion: 3
     m_Name: P2DSLeftArm
