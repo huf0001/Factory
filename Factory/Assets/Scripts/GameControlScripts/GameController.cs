@@ -48,6 +48,9 @@ public class GameController : MonoBehaviour
                 break;
         }
     }
+    
+    public int P1BuildCount { get { return p1BuildCount; } }
+    public int P2BuildCount { get { return p2BuildCount; } }
 
     public void IncrementPlayer1BuildCount()
     {
