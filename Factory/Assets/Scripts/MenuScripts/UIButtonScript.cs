@@ -108,17 +108,18 @@ public class UIButtonScript : MonoBehaviour
         if (difficulty == "easy")
         {
             PlayerPrefs.SetString("difficulty", "easy");
+            SceneManager.LoadScene("EasyInstructions");
         }
         else if (difficulty == "medium")
         {
             PlayerPrefs.SetString("difficulty", "medium");
+            SceneManager.LoadScene("MediumInstructions");
         }
         else
         {
             PlayerPrefs.SetString("difficulty", "hard");
+            SceneManager.LoadScene("HardInstructions");
         }
-
-        SceneManager.LoadScene("Level1");
     }
 
     public void LoadLevelSelect(string gamepad)

@@ -153,8 +153,105 @@ public class Level1GameUIScript : MonoBehaviour {
             }
         }
     }
-    private void UpdateMedium(Sprite currentSprite, string name) { }
-    private void UpdateHard(Sprite currentSprite, string name) { }
+
+    private void UpdateMedium(Sprite currentSprite, string name) {
+        if (name == "rob")
+        {
+            if (currentSprite == buildList[0]) {
+                robBuildObjectUI[0].sprite = buildList[1];
+                robBuildObjectUI[1].sprite = buildList[2];
+                robBuildObjectUI[2].sprite = buildList[0];
+            }
+            else if (currentSprite == buildList[1]) {
+                robBuildObjectUI[0].sprite = buildList[2];
+                robBuildObjectUI[1].sprite = buildList[0];
+                robBuildObjectUI[2].sprite = buildList[1];
+            }
+            else {
+                robBuildObjectUI[0].sprite = buildList[0];
+                robBuildObjectUI[1].sprite = buildList[1];
+                robBuildObjectUI[2].sprite = buildList[2];
+            }
+        }
+        else {
+            if (currentSprite == buildList[0])
+            {
+                botBuildObjectUI[0].sprite = buildList[1];
+                botBuildObjectUI[1].sprite = buildList[2];
+                botBuildObjectUI[2].sprite = buildList[0];
+            }
+            else if (currentSprite == buildList[1])
+            {
+                botBuildObjectUI[0].sprite = buildList[2];
+                botBuildObjectUI[1].sprite = buildList[0];
+                botBuildObjectUI[2].sprite = buildList[1];
+            }
+            else
+            {
+                botBuildObjectUI[0].sprite = buildList[0];
+                botBuildObjectUI[1].sprite = buildList[1];
+                botBuildObjectUI[2].sprite = buildList[2];
+            }
+        }
+    }
+
+    private void UpdateHard(Sprite currentSprite, string name) {
+        if (name == "rob")
+        {
+            if (currentSprite == buildList[0])
+            {
+                robBuildObjectUI[0].sprite = buildList[1];
+                robBuildObjectUI[1].sprite = buildList[2];
+                robBuildObjectUI[2].sprite = buildList[3];
+            }
+            else if (currentSprite == buildList[1])
+            {
+                robBuildObjectUI[0].sprite = buildList[2];
+                robBuildObjectUI[1].sprite = buildList[3];
+                robBuildObjectUI[2].sprite = buildList[0];
+            }
+            else if (currentSprite == buildList[2])
+            {
+                robBuildObjectUI[0].sprite = buildList[3];
+                robBuildObjectUI[1].sprite = buildList[0];
+                robBuildObjectUI[2].sprite = buildList[1];
+            }
+            else {
+                robBuildObjectUI[0].sprite = buildList[0];
+                robBuildObjectUI[1].sprite = buildList[1];
+                robBuildObjectUI[2].sprite = buildList[2];
+            }
+        }
+        else
+        {
+            if (currentSprite == buildList[0])
+            {
+                botBuildObjectUI[0].sprite = buildList[1];
+                botBuildObjectUI[1].sprite = buildList[2];
+                botBuildObjectUI[2].sprite = buildList[3];
+            }
+            else if (currentSprite == buildList[1])
+            {
+                botBuildObjectUI[0].sprite = buildList[2];
+                botBuildObjectUI[1].sprite = buildList[3];
+                botBuildObjectUI[2].sprite = buildList[0];
+            }
+            else if (currentSprite == buildList[2])
+            {
+                botBuildObjectUI[0].sprite = buildList[3];
+                botBuildObjectUI[1].sprite = buildList[0];
+                botBuildObjectUI[2].sprite = buildList[1];
+            }
+            else
+            {
+                botBuildObjectUI[0].sprite = buildList[0];
+                botBuildObjectUI[1].sprite = buildList[1];
+                botBuildObjectUI[2].sprite = buildList[2];
+            }
+        }
+    }
+
+
 }
 
 
