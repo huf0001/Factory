@@ -77,28 +77,84 @@ public class Level1GameUIScript : MonoBehaviour {
 
         if (gameController.P1BuildCount > p1BuildCount) {
             p1BuildCount = gameController.P1BuildCount;
+            SpriteComplete(robBuildObjectUI[0]);
             UpdateRobsBuilds();
         }
 
         if (gameController.P2BuildCount > p2BuildCount)
         {
             p2BuildCount = gameController.P2BuildCount;
+            SpriteComplete(botBuildObjectUI[0]);
             UpdateBotsBuilds();
         }
     }
 
+    private void SpriteComplete(Image completedBuild) {
+        completedBuild.color = Color.green;
+    }
+
     private void UpdateRobsBuilds() {
+        robBuildObjectUI[0].color = Color.white;
+        string name = "rob";
         switch (difficulty) {
             case 4:
-                
+                UpdateHard(robBuildObjectUI[0].sprite, name);
                 break;
             case 3:
-                
+                UpdateMedium(robBuildObjectUI[0].sprite, name);
                 break;
             default:
-                
+                UpdateEasy(robBuildObjectUI[0].sprite, name);
                 break;
         }
     }
-    private void UpdateBotsBuilds() { }
+    private void UpdateBotsBuilds() {
+        botBuildObjectUI[0].color = Color.white;
+        string name = "bot";
+        switch (difficulty)
+        {
+            case 4:
+                UpdateHard(botBuildObjectUI[0].sprite, name);
+                break;
+            case 3:
+                UpdateMedium(botBuildObjectUI[0].sprite, name);
+                break;
+            default:
+                UpdateEasy(botBuildObjectUI[0].sprite, name);
+                break;
+        }
+    }
+
+    private void UpdateEasy(Sprite currentSprite, string name) {
+        if (name == "rob") {
+            if (currentSprite = buildList[0]) {
+                robBuildObjectUI[0].sprite = buildList[1];
+                robBuildObjectUI[1].sprite = buildList[0];
+                robBuildObjectUI[2].sprite = buildList[1];
+            }
+            else {
+                robBuildObjectUI[0].sprite = buildList[0];
+                robBuildObjectUI[1].sprite = buildList[1];
+                robBuildObjectUI[2].sprite = buildList[0];
+            }
+        }
+        else {
+            if (currentSprite = buildList[0])
+            {
+                botBuildObjectUI[0].sprite = buildList[1];
+                botBuildObjectUI[1].sprite = buildList[0];
+                botBuildObjectUI[2].sprite = buildList[1];
+            }
+            else
+            {
+                botBuildObjectUI[0].sprite = buildList[0];
+                botBuildObjectUI[1].sprite = buildList[1];
+                botBuildObjectUI[2].sprite = buildList[0];
+            }
+        }
+    }
+    private void UpdateMedium(Sprite currentSprite, string name) { }
+    private void UpdateHard(Sprite currentSprite, string name) { }
 }
+
+
