@@ -1044,6 +1044,54 @@ Prefab:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 1171599874}
+    - target: {fileID: 114497343776139216, guid: 6f1058e3c2a8ce94bba4600833e16af6,
+        type: 2}
+      propertyPath: ghostObjectPrefab
+      value: 
+      objectReference: {fileID: 1751236262374714, guid: d8ed95735d2cbff44bc5363e632e3ad6,
+        type: 2}
+    - target: {fileID: 114976279782062724, guid: 6f1058e3c2a8ce94bba4600833e16af6,
+        type: 2}
+      propertyPath: ghostObjectPrefab
+      value: 
+      objectReference: {fileID: 1699213254366522, guid: 2cee20225505ef845a4cefbb7c04d0f7,
+        type: 2}
+    - target: {fileID: 114231016914713902, guid: 6f1058e3c2a8ce94bba4600833e16af6,
+        type: 2}
+      propertyPath: ghostObjectPrefab
+      value: 
+      objectReference: {fileID: 1757836414722554, guid: fff7140fc4399644190789a2a773f2a2,
+        type: 2}
+    - target: {fileID: 114460307154830322, guid: 6f1058e3c2a8ce94bba4600833e16af6,
+        type: 2}
+      propertyPath: ghostObjectPrefab
+      value: 
+      objectReference: {fileID: 1843881987799906, guid: 79a06f747d720204c802bf8e15b2ddce,
+        type: 2}
+    - target: {fileID: 114682199043074006, guid: 6f1058e3c2a8ce94bba4600833e16af6,
+        type: 2}
+      propertyPath: ghostObjectPrefab
+      value: 
+      objectReference: {fileID: 1751236262374714, guid: d8ed95735d2cbff44bc5363e632e3ad6,
+        type: 2}
+    - target: {fileID: 114888983281353652, guid: 6f1058e3c2a8ce94bba4600833e16af6,
+        type: 2}
+      propertyPath: ghostObjectPrefab
+      value: 
+      objectReference: {fileID: 1699213254366522, guid: 2cee20225505ef845a4cefbb7c04d0f7,
+        type: 2}
+    - target: {fileID: 114386292945245844, guid: 6f1058e3c2a8ce94bba4600833e16af6,
+        type: 2}
+      propertyPath: ghostObjectPrefab
+      value: 
+      objectReference: {fileID: 1757836414722554, guid: fff7140fc4399644190789a2a773f2a2,
+        type: 2}
+    - target: {fileID: 114262223958565836, guid: 6f1058e3c2a8ce94bba4600833e16af6,
+        type: 2}
+      propertyPath: ghostObjectPrefab
+      value: 
+      objectReference: {fileID: 1843881987799906, guid: 79a06f747d720204c802bf8e15b2ddce,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f1058e3c2a8ce94bba4600833e16af6, type: 2}
   m_IsPrefabAsset: 0
