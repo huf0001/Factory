@@ -1092,6 +1092,16 @@ Prefab:
       value: 
       objectReference: {fileID: 1843881987799906, guid: 79a06f747d720204c802bf8e15b2ddce,
         type: 2}
+    - target: {fileID: 82760313219616288, guid: 6f1058e3c2a8ce94bba4600833e16af6,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 82979729128736704, guid: 6f1058e3c2a8ce94bba4600833e16af6,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f1058e3c2a8ce94bba4600833e16af6, type: 2}
   m_IsPrefabAsset: 0
@@ -2144,7 +2154,7 @@ Prefab:
     - target: {fileID: 82164445186220988, guid: 1c955d35534cdbb4cac2c733d29ec2f7,
         type: 2}
       propertyPath: m_Volume
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 114423905258752802, guid: 1c955d35534cdbb4cac2c733d29ec2f7,
         type: 2}
@@ -3367,6 +3377,21 @@ Prefab:
       propertyPath: m_ConnectedAnchor.z
       value: 0.000000023108441
       objectReference: {fileID: 0}
+    - target: {fileID: 82297045539826954, guid: adf132a1356be534582041bb2fc83eb1,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 82495604134821730, guid: adf132a1356be534582041bb2fc83eb1,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 82172661266741798, guid: adf132a1356be534582041bb2fc83eb1,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adf132a1356be534582041bb2fc83eb1, type: 2}
   m_IsPrefabAsset: 0
@@ -4587,6 +4612,21 @@ Prefab:
         type: 2}
       propertyPath: m_ConnectedAnchor.y
       value: 0.021999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 82872807666832322, guid: 0e23fbbd80a690c4ea66a41d284ca267,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 82492669270794962, guid: 0e23fbbd80a690c4ea66a41d284ca267,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 82463385618736110, guid: 0e23fbbd80a690c4ea66a41d284ca267,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e23fbbd80a690c4ea66a41d284ca267, type: 2}
@@ -9342,6 +9382,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6c2444310ecc568449263dd8176162f0, type: 3}
   timerUIObject: {fileID: 1846818900}
   gameController: {fileID: 1171599874}
+  bluePrintWait: 3
 --- !u!114 &1257414174
 MonoBehaviour:
   m_ObjectHideFlags: 0
