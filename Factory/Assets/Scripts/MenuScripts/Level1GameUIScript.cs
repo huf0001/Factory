@@ -20,6 +20,7 @@ public class Level1GameUIScript : MonoBehaviour {
     private int difficulty;
     private int p1BuildCount;
     private int p2BuildCount;
+    private string name;
 
     // Use this for initialization
     void Start()
@@ -28,8 +29,8 @@ public class Level1GameUIScript : MonoBehaviour {
         string timerText = timerInt.ToString();
         timerUIObject.text = timerText;
 
-        p1BuildCount = 0;
-        p2BuildCount = 0;
+        p1BuildCount = gameController.P1BuildCount;
+        p2BuildCount = gameController.P2BuildCount;
 
         switch (PlayerPrefs.GetString("difficulty"))
         {
@@ -76,27 +77,34 @@ public class Level1GameUIScript : MonoBehaviour {
         timerUIObject.text = timerText;
 
         if (gameController.P1BuildCount > p1BuildCount) {
+            Debug.Log(p1BuildCount + " p1 build count");
             p1BuildCount = gameController.P1BuildCount;
             StartCoroutine(SpriteComplete(robBuildObjectUI[0]));
-            UpdateRobsBuilds();
         }
 
         if (gameController.P2BuildCount > p2BuildCount)
         {
+            Debug.Log(p2BuildCount + " p2 build count");
             p2BuildCount = gameController.P2BuildCount;
             StartCoroutine(SpriteComplete(botBuildObjectUI[0]));
-            UpdateBotsBuilds();
         }
     }
 
     IEnumerator SpriteComplete(Image completedBuild) {
         completedBuild.color = Color.green;
         yield return new WaitForSeconds(10);
+        completedBuild.color = Color.white;
+        if (completedBuild == robBuildObjectUI[0])
+        {
+            UpdateRobsBuilds();
+        }
+        else {
+            UpdateBotsBuilds();
+        }
     }
 
     private void UpdateRobsBuilds() {
-        robBuildObjectUI[0].color = Color.white;
-        string name = "rob";
+        name = "rob";
         switch (difficulty) {
             case 4:
                 UpdateHard(robBuildObjectUI[0].sprite, name);
@@ -110,8 +118,7 @@ public class Level1GameUIScript : MonoBehaviour {
         }
     }
     private void UpdateBotsBuilds() {
-        botBuildObjectUI[0].color = Color.white;
-        string name = "bot";
+        name = "bot";
         switch (difficulty)
         {
             case 4:
@@ -251,8 +258,6 @@ public class Level1GameUIScript : MonoBehaviour {
             }
         }
     }
-
-
 }
 
 
