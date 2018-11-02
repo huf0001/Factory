@@ -122,6 +122,7 @@ public class Schema : MonoBehaviour
                 }
                 else if (itemScaler.FinishedShrinking())
                 {
+                    Debug.Log("Build component finished shrinking");
                     DestroyComponentObject(item);
                     ghost.Reveal(i);
                     pendingComponents.Remove(i);
