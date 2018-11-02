@@ -21,6 +21,7 @@ public class Level1GameUIScript : MonoBehaviour {
     private int p1BuildCount;
     private int p2BuildCount;
     private string name;
+    [SerializeField] private float bluePrintWait = 3f;
 
     // Use this for initialization
     void Start()
@@ -92,7 +93,7 @@ public class Level1GameUIScript : MonoBehaviour {
 
     IEnumerator SpriteComplete(Image completedBuild) {
         completedBuild.color = Color.green;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(bluePrintWait);
         completedBuild.color = Color.white;
         if (completedBuild == robBuildObjectUI[0])
         {
