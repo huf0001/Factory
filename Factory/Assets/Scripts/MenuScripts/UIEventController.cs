@@ -62,14 +62,14 @@ public class UIEventController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (gamepadPreference == Gamepad.DualshockController)
+        /*if (gamepadPreference == Gamepad.DualshockController)
         {
             Debug.Log(DSEventSystem.currentSelectedGameObject.name + " selected");
         }
         else
         {
             Debug.Log(XBEventSystem.currentSelectedGameObject.name + " selected");
-        }
+        }*/
 
         if (gamepadPreference == Gamepad.XboxController)
         {

@@ -124,6 +124,7 @@ public class BuildZone : MonoBehaviour
         {
             currentSchema = schemas[0];
             currentSchema.SpawnGhost();
+            Debug.Log("GhostSpawned");
         }
         else
         {

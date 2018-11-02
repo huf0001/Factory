@@ -6,7 +6,8 @@ public class Schema : MonoBehaviour
 {
     [SerializeField] private BuildZone buildZone;
     [SerializeField] private Transform buildPoint;
-    [SerializeField] private GameObject ghostObject;
+    [SerializeField] private GameObject ghostObjectPrefab;
+    private GameObject ghostObject = null;
     private Ghost ghost = null;
     [SerializeField] Identifier[] components;
     [SerializeField] private GameObject finalObject;
@@ -39,7 +40,8 @@ public class Schema : MonoBehaviour
 
     public void SpawnGhost()
     {
-        ghostObject = Instantiate(ghostObject);
+        Debug.Log("SpawningGhost");
+        ghostObject = Instantiate(ghostObjectPrefab);
         CentreInBuildZone(ghostObject);
         ghost = ghostObject.GetComponent<Ghost>();
         ghost.Schema = this;

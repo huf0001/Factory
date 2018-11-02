@@ -152,7 +152,7 @@ public class GameController : MonoBehaviour
                 audioFinished = true;
             }
 
-            if (!finished)
+            /*if (!finished)
             {
                 if 
                 (
@@ -161,10 +161,10 @@ public class GameController : MonoBehaviour
                     || ((p1BuildCount < difficulty) && (p2BuildCount < difficulty))
                 )
                 {
-                    finished = true;
+                    finished = true;*/
                     EndRound();
-                }
-            }
+                //}
+            //}
         }
     }
 
