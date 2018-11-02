@@ -6,7 +6,8 @@ public class Schema : MonoBehaviour
 {
     [SerializeField] private BuildZone buildZone;
     [SerializeField] private Transform buildPoint;
-    [SerializeField] private GameObject ghostObject;
+    [SerializeField] private GameObject ghostObjectPrefab;
+    private GameObject ghostObject = null;
     private Ghost ghost = null;
     [SerializeField] Identifier[] components;
     [SerializeField] private GameObject finalObject;
@@ -29,8 +30,6 @@ public class Schema : MonoBehaviour
             Debug.Log("Warning: Couldn't find the build zone. Schemas need build zones.");
         }
 
-        ghost = ghostObject.GetComponent<Ghost>();
-
         foreach (Identifier i in components)
         {
             pendingComponents.Add(i);
@@ -39,7 +38,8 @@ public class Schema : MonoBehaviour
 
     public void SpawnGhost()
     {
-        ghostObject = Instantiate(ghostObject);
+        Debug.Log("SpawningGhost");
+        ghostObject = Instantiate(ghostObjectPrefab);
         CentreInBuildZone(ghostObject);
         ghost = ghostObject.GetComponent<Ghost>();
         ghost.Schema = this;
@@ -120,6 +120,7 @@ public class Schema : MonoBehaviour
                 }
                 else if (itemScaler.FinishedShrinking())
                 {
+                    Debug.Log("Build component finished shrinking");
                     DestroyComponentObject(item);
                     ghost.Reveal(i);
                     pendingComponents.Remove(i);
@@ -200,5 +201,18 @@ public class Schema : MonoBehaviour
             built.Dropping = true;
             built.Schema = null;
         }
+    }
+
+    public void ResetSchema()
+    {
+        int count = loadedComponents.Count;
+
+        for (int i = 0; i < count; i++)
+        {
+            pendingComponents.Add(loadedComponents[0]);
+            loadedComponents.Remove(loadedComponents[0]);
+        }
+
+        built = null;
     }
 }

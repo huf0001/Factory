@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class UIButtonScript : MonoBehaviour
 {
-    [SerializeField] private AudioSource menuAudio;
-    Scene currentScene;
     [SerializeField] private Sprite musicOn;
     [SerializeField] private Sprite musicOff;
     [SerializeField] private Image musicButton;
     [SerializeField] private Image musicButtonGameOver;
+
+    private AudioSource menuAudio = null;
+    private Scene currentScene;
 
     // Use this for initialization
     void Start()
@@ -51,21 +52,46 @@ public class UIButtonScript : MonoBehaviour
         }
     }
 
+    private AudioSource GetMenuAudio()
+    {
+        if (GameObject.Find("MusicAudioSource") != null)
+        {
+            return GameObject.Find("MusicAudioSource").GetComponent<AudioSource>();
+        }
+
+        Debug.Log("MenuAudioSource missing for UIButtonScript");
+        return null;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (PlayerPrefs.GetString("music")=="true")
+        if (SceneManager.GetActiveScene().name != "ControllerSelect")
         {
-            menuAudio.mute = false;
-        }
-        else
-        {
-            menuAudio.mute = true;
+            if (menuAudio != null)
+            {
+                if (PlayerPrefs.GetString("music") == "true")
+                {
+                    menuAudio.mute = false;
+                }
+                else
+                {
+                    menuAudio.mute = true;
+                }
+
+                //Debug.Log("MenuAudio should have updated whether it was on or off");
+            }
+            else
+            {
+                menuAudio = GetMenuAudio();
+            }
         }
     }
 
     public void ToggleMusic()
     {
+        Debug.Log("Calling toggle music");
+
         if (PlayerPrefs.GetString("music") == "true")
         {
             PlayerPrefs.SetString("music", "false");
@@ -103,25 +129,26 @@ public class UIButtonScript : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void LoadGameScene(string difficulty)
+    public void LoadInstructionsScene(string difficulty)
     {
         if (difficulty == "easy")
         {
             PlayerPrefs.SetString("difficulty", "easy");
+            SceneManager.LoadScene("EasyInstructions");
         }
         else if (difficulty == "medium")
         {
             PlayerPrefs.SetString("difficulty", "medium");
+            SceneManager.LoadScene("MediumInstructions");
         }
         else
         {
             PlayerPrefs.SetString("difficulty", "hard");
+            SceneManager.LoadScene("HardInstructions");
         }
-
-        SceneManager.LoadScene("Level1");
     }
 
-    public void LoadLevelSelect(string gamepad)
+    public void LoadMainMenu(string gamepad)
     {
         if (gamepad == "dualshock")
         {
