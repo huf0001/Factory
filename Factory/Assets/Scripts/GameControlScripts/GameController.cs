@@ -54,18 +54,18 @@ public class GameController : MonoBehaviour
 
     public void IncrementPlayer1BuildCount()
     {
-        if (p2BuildCount < difficulty)
-        {
+        //if (p2BuildCount < difficulty)
+        //{
             p1BuildCount += 1;
-        }
+        //}
     }
 
     public void IncrementPlayer2BuildCount()
     {
-        if (p1BuildCount < difficulty)
-        {
+        //if (p1BuildCount < difficulty)
+        //{
             p2BuildCount += 1;
-        }
+        //}
     }
 
     public bool P1BuiltObjectShowing
@@ -128,18 +128,18 @@ public class GameController : MonoBehaviour
                     countdown = true;
                 }
 
-                if ((p1BuildCount >= difficulty) || (p2BuildCount >= difficulty) || (timer < 0))
+                /*if ((p1BuildCount >= difficulty) || (p2BuildCount >= difficulty) || (timer < 0))
                 {
                     timer = 0;
-                }
+                }*/
             }
         }
         else
         {
             if (!audioFinished)
             {
-                if ((p1BuildCount >= difficulty) || (p2BuildCount >= difficulty))
-                {
+                //if ((p1BuildCount >= difficulty) || (p2BuildCount >= difficulty))
+                //{
                     if (countdown)
                     {
                         audioController.StopCountdown();
@@ -147,7 +147,7 @@ public class GameController : MonoBehaviour
                     }
 
                     audioController.Victory();
-                }
+                //}
 
                 audioFinished = true;
             }

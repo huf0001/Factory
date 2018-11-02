@@ -201,4 +201,15 @@ public class Schema : MonoBehaviour
             built.Schema = null;
         }
     }
+
+    public void ResetSchema()
+    {
+        foreach (Identifier i in loadedComponents)
+        {
+            pendingComponents.Add(i);
+            loadedComponents.Remove(i);
+        }
+
+        built = null;
+    }
 }

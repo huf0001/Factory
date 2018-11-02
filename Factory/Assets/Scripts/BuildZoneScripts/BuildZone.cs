@@ -58,15 +58,15 @@ public class BuildZone : MonoBehaviour
         }
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (gameController.PlayerLost(buildZoneNumber) && currentSchema != null)
         {
             currentSchema.Failed();
-            DeleteSchema(currentSchema);
+            MoveSchemaToBack(currentSchema);
             currentSchema = null;
         }
-    }
+    }*/
 
     private void OnTriggerStay(Collider other)
     {                
@@ -98,16 +98,18 @@ public class BuildZone : MonoBehaviour
 
     public void ChangeCurrentSchema(Schema s, GameObject o, Built b)
     {
-        DeleteSchema(s);
+        MoveSchemaToBack(s);
         DestroyBuiltObject(o, b);
         NextSchema();
     }
 
-    private void DeleteSchema(Schema s)
+    private void MoveSchemaToBack(Schema s)
     {
         schemas.Remove(s);
-        Destroy(s.gameObject);
-        Destroy(s);
+        schemas.Add(s);
+        s.ResetSchema();
+        //Destroy(s.gameObject);
+        //Destroy(s);
     }
 
     private void DestroyBuiltObject(GameObject o, Built b)

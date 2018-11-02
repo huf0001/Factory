@@ -78,6 +78,8 @@ public class UIButtonScript : MonoBehaviour
                 {
                     menuAudio.mute = true;
                 }
+
+                Debug.Log("MenuAudio should have updated whether it was on or off");
             }
             else
             {
