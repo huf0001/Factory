@@ -77,24 +77,25 @@ public class Level1GameUIScript : MonoBehaviour {
 
         if (gameController.P1BuildCount > p1BuildCount) {
             p1BuildCount = gameController.P1BuildCount;
-            SpriteComplete(robBuildObjectUI[0]);
+            StartCoroutine(SpriteComplete(robBuildObjectUI[0]));
             UpdateRobsBuilds();
         }
 
         if (gameController.P2BuildCount > p2BuildCount)
         {
             p2BuildCount = gameController.P2BuildCount;
-            SpriteComplete(botBuildObjectUI[0]);
+            StartCoroutine(SpriteComplete(botBuildObjectUI[0]));
             UpdateBotsBuilds();
         }
     }
 
-    private void SpriteComplete(Image completedBuild) {
+    IEnumerator SpriteComplete(Image completedBuild) {
         completedBuild.color = Color.green;
+        yield return new WaitForSeconds(5);
+        completedBuild.color = Color.white;
     }
 
     private void UpdateRobsBuilds() {
-        robBuildObjectUI[0].color = Color.white;
         string name = "rob";
         switch (difficulty) {
             case 4:
@@ -109,7 +110,6 @@ public class Level1GameUIScript : MonoBehaviour {
         }
     }
     private void UpdateBotsBuilds() {
-        botBuildObjectUI[0].color = Color.white;
         string name = "bot";
         switch (difficulty)
         {
