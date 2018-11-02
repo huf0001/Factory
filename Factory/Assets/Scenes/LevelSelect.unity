@@ -1239,10 +1239,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c8cdb4b7dda3046b1b687904d4394a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DSeventSystem: {fileID: 884132774}
-  XboxeventSystem: {fileID: 2004737987}
-  DSeventSystemObject: {fileID: 884132772}
-  XboxeventSystemObject: {fileID: 2004737985}
+  DSEventSystem: {fileID: 884132774}
+  XBEventSystem: {fileID: 2004737987}
+  DSEventSystemObject: {fileID: 884132772}
+  XBEventSystemObject: {fileID: 2004737985}
   firstSelected: {fileID: 1827252056}
 --- !u!1 &1255217036
 GameObject:
@@ -1689,10 +1689,10 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: UIXboxHorizontal
-  m_VerticalAxis: UIXoxVertical
-  m_SubmitButton: P1XboxSubmit
-  m_CancelButton: P1XboxCancel
+  m_HorizontalAxis: UIXBHorizontal
+  m_VerticalAxis: UIXBVertical
+  m_SubmitButton: P1XBSubmit
+  m_CancelButton: P1XBCancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0

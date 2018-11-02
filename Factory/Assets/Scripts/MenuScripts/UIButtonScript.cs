@@ -88,6 +88,8 @@ public class UIButtonScript : MonoBehaviour
 
     public void ToggleMusic()
     {
+        Debug.Log("Calling toggle music");
+
         if (PlayerPrefs.GetString("music") == "true")
         {
             PlayerPrefs.SetString("music", "false");

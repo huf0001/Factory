@@ -678,7 +678,7 @@ InputManager:
     axis: 8
     joyNum: 0
   - serializedVersion: 3
-    m_Name: UIXboxHorizontal
+    m_Name: UIXBHorizontal
     descriptiveName: UI control for xbox one controller
     descriptiveNegativeName: 
     negativeButton: 
@@ -694,7 +694,7 @@ InputManager:
     axis: 5
     joyNum: 0
   - serializedVersion: 3
-    m_Name: UIXboxVertical
+    m_Name: UIXBVertical
     descriptiveName: UI control for xbox controller
     descriptiveNegativeName: 
     negativeButton: 
