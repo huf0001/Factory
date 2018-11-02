@@ -108,6 +108,8 @@ public class BuildZone : MonoBehaviour
         schemas.Remove(s);
         schemas.Add(s);
         s.ResetSchema();
+
+
         //Destroy(s.gameObject);
         //Destroy(s);
     }

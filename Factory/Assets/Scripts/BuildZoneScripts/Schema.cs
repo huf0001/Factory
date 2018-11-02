@@ -205,10 +205,12 @@ public class Schema : MonoBehaviour
 
     public void ResetSchema()
     {
-        foreach (Identifier i in loadedComponents)
+        int count = loadedComponents.Count;
+
+        for (int i = 0; i < count; i++)
         {
-            pendingComponents.Add(i);
-            loadedComponents.Remove(i);
+            pendingComponents.Add(loadedComponents[0]);
+            loadedComponents.Remove(loadedComponents[0]);
         }
 
         built = null;
