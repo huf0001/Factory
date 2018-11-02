@@ -59,7 +59,7 @@ public class UIButtonScript : MonoBehaviour
             return GameObject.Find("MusicAudioSource").GetComponent<AudioSource>();
         }
 
-        Debug.Log("MenuAudioSource missing for UIButtonScript");
+        //Debug.Log("MenuAudioSource missing for UIButtonScript");
         return null;
     }
 
@@ -90,7 +90,7 @@ public class UIButtonScript : MonoBehaviour
 
     public void ToggleMusic()
     {
-        Debug.Log("Calling toggle music");
+        //Debug.Log("Calling toggle music");
 
         if (PlayerPrefs.GetString("music") == "true")
         {
@@ -101,6 +101,8 @@ public class UIButtonScript : MonoBehaviour
             {
                 musicButtonGameOver.sprite = musicOff;
             }
+
+            //Debug.Log("Toggling music should have registered, and music should be on");
         }
         else
         {
@@ -111,6 +113,8 @@ public class UIButtonScript : MonoBehaviour
             {
                 musicButtonGameOver.sprite = musicOn;
             }
+
+            //Debug.Log("Toggling music should have registered, and music should be off");
         }
     }
 

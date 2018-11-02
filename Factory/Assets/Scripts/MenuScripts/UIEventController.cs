@@ -75,7 +75,7 @@ public class UIEventController : MonoBehaviour
         {
             if (CrossPlatformInputManager.GetButtonDown("P1XBSubmit") || CrossPlatformInputManager.GetButtonDown("P2XBSubmit"))
             {
-                Debug.Log("Clicking " + XBEventSystem.currentSelectedGameObject.name);
+                //Debug.Log("Clicking " + XBEventSystem.currentSelectedGameObject.name);
                 XBEventSystem.currentSelectedGameObject.GetComponent<Button>().onClick.Invoke();
             }
         }
@@ -83,7 +83,7 @@ public class UIEventController : MonoBehaviour
         {
             if (CrossPlatformInputManager.GetButtonDown("P1DSSubmit") || CrossPlatformInputManager.GetButtonDown("P2DSSubmit"))
             {
-                Debug.Log("Clicking " + DSEventSystem.currentSelectedGameObject.name);
+                //Debug.Log("Clicking " + DSEventSystem.currentSelectedGameObject.name);
                 DSEventSystem.currentSelectedGameObject.GetComponent<Button>().onClick.Invoke();
             }
         }
