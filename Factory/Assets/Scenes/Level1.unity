@@ -3392,6 +3392,16 @@ Prefab:
       propertyPath: m_Volume
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 135932011644796774, guid: adf132a1356be534582041bb2fc83eb1,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 135307570051271560, guid: adf132a1356be534582041bb2fc83eb1,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adf132a1356be534582041bb2fc83eb1, type: 2}
   m_IsPrefabAsset: 0
@@ -4627,6 +4637,16 @@ Prefab:
         type: 2}
       propertyPath: m_Volume
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 135530226142158978, guid: 0e23fbbd80a690c4ea66a41d284ca267,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 135028157467241198, guid: 0e23fbbd80a690c4ea66a41d284ca267,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e23fbbd80a690c4ea66a41d284ca267, type: 2}

@@ -14,7 +14,7 @@ public class ConveyerBelt : MonoBehaviour
         {
             if (CheckPlayer(other.gameObject))
             {
-                multiplier = 0.5f;
+                multiplier = 0.35f;
             }
             else
             {

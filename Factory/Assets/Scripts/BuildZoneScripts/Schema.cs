@@ -38,7 +38,7 @@ public class Schema : MonoBehaviour
 
     public void SpawnGhost()
     {
-        Debug.Log("SpawningGhost");
+        //Debug.Log("SpawningGhost");
         ghostObject = Instantiate(ghostObjectPrefab);
         CentreInBuildZone(ghostObject);
         ghost = ghostObject.GetComponent<Ghost>();
@@ -120,7 +120,7 @@ public class Schema : MonoBehaviour
                 }
                 else if (itemScaler.FinishedShrinking())
                 {
-                    Debug.Log("Build component finished shrinking");
+                    //Debug.Log("Build component finished shrinking");
                     DestroyComponentObject(item);
                     ghost.Reveal(i);
                     pendingComponents.Remove(i);

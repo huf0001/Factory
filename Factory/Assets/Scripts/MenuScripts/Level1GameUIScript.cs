@@ -78,14 +78,14 @@ public class Level1GameUIScript : MonoBehaviour {
         timerUIObject.text = timerText;
 
         if (gameController.P1BuildCount > p1BuildCount) {
-            Debug.Log(p1BuildCount + " p1 build count");
+            //Debug.Log(p1BuildCount + " p1 build count");
             p1BuildCount = gameController.P1BuildCount;
             StartCoroutine(SpriteComplete(robBuildObjectUI[0]));
         }
 
         if (gameController.P2BuildCount > p2BuildCount)
         {
-            Debug.Log(p2BuildCount + " p2 build count");
+            //Debug.Log(p2BuildCount + " p2 build count");
             p2BuildCount = gameController.P2BuildCount;
             StartCoroutine(SpriteComplete(botBuildObjectUI[0]));
         }
