@@ -7,10 +7,20 @@ public class SingleMusicAudio : MonoBehaviour
 {
     [SerializeField] private bool playInGame = false;
     private bool loadedInGame = false;
+    private static bool menuMusicLoaded = false;
 
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+
+        if (playInGame)
+        {
+            menuMusicLoaded = false;
+        }
+        else if (menuMusicLoaded)
+        {
+            Destroy(this.gameObject);
+        }
     }
     
     void OnEnable()
@@ -42,6 +52,13 @@ public class SingleMusicAudio : MonoBehaviour
             }
 
             loadedInGame = true;
+        }
+        else
+        {
+            if (!menuMusicLoaded)
+            {
+                menuMusicLoaded = true;
+            }
         }
     }
 }
