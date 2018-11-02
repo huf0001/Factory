@@ -91,11 +91,11 @@ public class Level1GameUIScript : MonoBehaviour {
 
     IEnumerator SpriteComplete(Image completedBuild) {
         completedBuild.color = Color.green;
-        yield return new WaitForSeconds(5);
-        completedBuild.color = Color.white;
+        yield return new WaitForSeconds(10);
     }
 
     private void UpdateRobsBuilds() {
+        robBuildObjectUI[0].color = Color.white;
         string name = "rob";
         switch (difficulty) {
             case 4:
@@ -110,6 +110,7 @@ public class Level1GameUIScript : MonoBehaviour {
         }
     }
     private void UpdateBotsBuilds() {
+        botBuildObjectUI[0].color = Color.white;
         string name = "bot";
         switch (difficulty)
         {
