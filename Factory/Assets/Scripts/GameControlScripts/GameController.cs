@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private float easytimer = 90;
     [SerializeField] private float mediumtimer = 120;
     [SerializeField] private float hardtimer = 180;
-    private float timer = 0;
+    [SerializeField] private float timer = 0;
 
     private bool countdown = false;
     private bool audioFinished = false;
