@@ -504,7 +504,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 53782124}
+  m_TargetGraphic: {fileID: 129407064}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4151,7 +4151,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 534837878}
+  m_TargetGraphic: {fileID: 1748649357}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -8558,7 +8558,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1006691212}
+  m_TargetGraphic: {fileID: 209894638}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -8846,7 +8846,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1105644081}
+  m_TargetGraphic: {fileID: 1561713484}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -9141,9 +9141,9 @@ MonoBehaviour:
   inputController: {fileID: 896012649}
   pauseGameUI: {fileID: 1733435360}
   endGameUI: {fileID: 2063616480}
-  easytimer: 90
-  mediumtimer: 120
-  hardtimer: 180
+  easytimer: 120
+  mediumtimer: 150
+  hardtimer: 210
 --- !u!1 &1202848324
 GameObject:
   m_ObjectHideFlags: 0
@@ -12335,7 +12335,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1973050236}
+  m_TargetGraphic: {fileID: 85242860}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
