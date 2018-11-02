@@ -128,10 +128,10 @@ public class GameController : MonoBehaviour
                     countdown = true;
                 }
 
-                /*if ((p1BuildCount >= difficulty) || (p2BuildCount >= difficulty) || (timer < 0))
+                if (/*(p1BuildCount >= difficulty) || (p2BuildCount >= difficulty) ||*/ (timer < 0))
                 {
                     timer = 0;
-                }*/
+                }
             }
         }
         else

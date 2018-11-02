@@ -30,8 +30,6 @@ public class Schema : MonoBehaviour
             Debug.Log("Warning: Couldn't find the build zone. Schemas need build zones.");
         }
 
-        ghost = ghostObject.GetComponent<Ghost>();
-
         foreach (Identifier i in components)
         {
             pendingComponents.Add(i);
