@@ -128,7 +128,7 @@ public class Level1GameUIScript : MonoBehaviour {
 
     private void UpdateEasy(Sprite currentSprite, string name) {
         if (name == "rob") {
-            if (currentSprite = buildList[0]) {
+            if (currentSprite == buildList[0]) {
                 robBuildObjectUI[0].sprite = buildList[1];
                 robBuildObjectUI[1].sprite = buildList[0];
                 robBuildObjectUI[2].sprite = buildList[1];
@@ -140,7 +140,7 @@ public class Level1GameUIScript : MonoBehaviour {
             }
         }
         else {
-            if (currentSprite = buildList[0])
+            if (currentSprite == buildList[0])
             {
                 botBuildObjectUI[0].sprite = buildList[1];
                 botBuildObjectUI[1].sprite = buildList[0];
